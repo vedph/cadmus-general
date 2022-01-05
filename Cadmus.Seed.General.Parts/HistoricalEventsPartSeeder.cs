@@ -9,12 +9,12 @@ using System.Collections.Generic;
 namespace Cadmus.Seed.General.Parts
 {
     /// <summary>
-    /// Seeder for <see cref="EventsPartSeeder"/>.
-    /// Tag: <c>seed.it.vedph.events</c>.
+    /// Seeder for <see cref="HistoricalEventsPartSeeder"/>.
+    /// Tag: <c>seed.it.vedph.historical-events</c>.
     /// </summary>
     /// <seealso cref="PartSeederBase" />
-    [Tag("seed.it.vedph.events")]
-    public sealed class EventsPartSeeder : PartSeederBase
+    [Tag("seed.it.vedph.historical-events")]
+    public sealed class HistoricalEventsPartSeeder : PartSeederBase
     {
         private static List<RelatedEntity> GetRelatedEntities(int count,
             string relation, string prefix)
@@ -31,14 +31,14 @@ namespace Cadmus.Seed.General.Parts
             return entities;
         }
 
-        private static List<Event> GetEvents(int count)
+        private static List<HistoricalEvent> GetEvents(int count)
         {
-            List<Event> events = new List<Event>();
+            List<HistoricalEvent> events = new List<HistoricalEvent>();
             for (int n = 1; n <= count; n++)
             {
                 bool even = n % 2 == 0;
 
-                events.Add(new Faker<Event>()
+                events.Add(new Faker<HistoricalEvent>()
                     .RuleFor(e => e.Eid, "events/" + Guid.NewGuid().ToString("N"))
                     .RuleFor(e => e.Type, even? "death" : "birth")
                     .RuleFor(e => e.Chronotope, SeedHelper.GetAssertedChronotopes(1)[0])
@@ -74,7 +74,7 @@ namespace Cadmus.Seed.General.Parts
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            EventsPart part = new Faker<EventsPart>()
+            HistoricalEventsPart part = new Faker<HistoricalEventsPart>()
                .RuleFor(p => p.Events, f => GetEvents(f.Random.Number(1, 3)))
                .Generate();
             SetPartMetadata(part, roleId, item);

@@ -4,7 +4,7 @@ This solution contains the Cadmus general parts library derived from `Cadmus.Par
 
 The library includes all the old parts with these additions:
 
-- EventsPart: historical events part.
-- MetadataPart: generic metadata part.
+- `HistoricalEventsPart`: historical events part.
+- `MetadataPart`: generic metadata part.
 
 No part or fragment ID has been changed.

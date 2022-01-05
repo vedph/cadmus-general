@@ -7,7 +7,7 @@ namespace Cadmus.General.Parts
     /// <summary>
     /// A generic historical event.
     /// </summary>
-    public class Event
+    public class HistoricalEvent
     {
         /// <summary>
         /// Gets or sets the ID of this event.

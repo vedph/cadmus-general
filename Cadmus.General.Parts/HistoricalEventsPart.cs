@@ -7,25 +7,25 @@ namespace Cadmus.General.Parts
 {
     /// <summary>
     /// Generic historical events part.
-    /// <para>Tag: <c>it.vedph.events</c>.</para>
+    /// <para>Tag: <c>it.vedph.historical-events</c>.</para>
     /// </summary>
-    [Tag("it.vedph.events")]
-    public sealed class EventsPart : PartBase
+    [Tag("it.vedph.historical-events")]
+    public sealed class HistoricalEventsPart : PartBase
     {
         /// <summary>
         /// Gets or sets the entries.
         /// </summary>
-        public List<Event> Events { get; set; }
+        public List<HistoricalEvent> Events { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventsPart"/> class.
+        /// Initializes a new instance of the <see cref="HistoricalEventsPart"/> class.
         /// </summary>
-        public EventsPart()
+        public HistoricalEventsPart()
         {
-            Events = new List<Event>();
+            Events = new List<HistoricalEvent>();
         }
 
-        private void AddChronotopePins(Event entry, DataPinBuilder builder)
+        private void AddChronotopePins(HistoricalEvent entry, DataPinBuilder builder)
         {
             if (entry.Chronotope.Place?.Value != null)
             {
@@ -49,7 +49,7 @@ namespace Cadmus.General.Parts
             }
         }
 
-        private void AddRelatedEntriesPins(Event entry, DataPinBuilder builder)
+        private void AddRelatedEntriesPins(HistoricalEvent entry, DataPinBuilder builder)
         {
             foreach (RelatedEntity entity in entry.RelatedEntities)
             {
@@ -75,7 +75,7 @@ namespace Cadmus.General.Parts
 
             if (Events?.Count > 0)
             {
-                foreach (Event entry in Events)
+                foreach (HistoricalEvent entry in Events)
                 {
                     builder.AddValue("eid", entry.Eid);
                     builder.AddValue("type", entry.Type);

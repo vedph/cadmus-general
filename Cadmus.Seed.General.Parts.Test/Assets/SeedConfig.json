@@ -10,7 +10,7 @@
       "sortKey": "categories"
     },
     {
-      "typeId": "it.vedph.events",
+      "typeId": "it.vedph.historical-events",
       "name": "events",
       "description": "Historical events.",
       "required": false,
@@ -113,7 +113,7 @@
         "id": "seed.it.vedph.historical-date"
       },
       {
-        "id": "seed.it.vedph.events"
+        "id": "seed.it.vedph.historical-events"
       },
       {
         "id": "seed.it.vedph.keywords",

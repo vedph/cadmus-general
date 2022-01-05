@@ -1,7 +1,7 @@
 ﻿namespace Cadmus.General.Parts
 {
     /// <summary>
-    /// Any entity related to an <see cref="Event"/>.
+    /// Any entity related to an <see cref="HistoricalEvent"/>.
     /// </summary>
     public class RelatedEntity
     {

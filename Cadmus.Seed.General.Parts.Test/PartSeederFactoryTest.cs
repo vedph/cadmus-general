@@ -34,9 +34,9 @@ namespace Cadmus.Seed.General.Parts.Test
             Assert.True(seeders.ContainsKey(key));
             Assert.NotNull(seeders[key] as CategoriesPartSeeder);
 
-            key = "it.vedph.events";
+            key = "it.vedph.historical-events";
             Assert.True(seeders.ContainsKey(key));
-            Assert.NotNull(seeders[key] as EventsPartSeeder);
+            Assert.NotNull(seeders[key] as HistoricalEventsPartSeeder);
 
             key = "it.vedph.historical-date";
             Assert.True(seeders.ContainsKey(key));
