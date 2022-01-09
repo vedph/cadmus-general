@@ -44,7 +44,7 @@ namespace Cadmus.General.Parts
             {
                 foreach (AssertedProperName name in Names)
                 {
-                    string n = name.Value?.GetFullName();
+                    string n = name.GetFullName();
                     if (!string.IsNullOrEmpty(n))
                         builder.AddValue("name", n, filter: true);
                 }

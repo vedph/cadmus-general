@@ -77,21 +77,18 @@ namespace Cadmus.General.Parts.Test
 
             for (int n = 1; n <= 3; n++)
             {
-                part.Names.Add(new AssertedProperName
+                part.Names.Add(new AssertedProperName(new ProperName
                 {
-                    Value = new ProperName
+                    Language = "eng",
+                    Pieces = new List<ProperNamePiece>
                     {
-                        Language = "eng",
-                        Pieces = new List<ProperNamePiece>
+                        new ProperNamePiece
                         {
-                            new ProperNamePiece
-                            {
-                                Type = "name",
-                                Value = "Name" + new string((char)('A' + n - 1), 1)
-                            }
+                            Type = "name",
+                            Value = "Name" + new string((char)('A' + n - 1), 1)
                         }
                     }
-                });
+                }));
             }
 
             List<DataPin> pins = part.GetDataPins(null).ToList();

@@ -22,10 +22,8 @@ namespace Cadmus.Seed.General.Parts
             for (int n = 1; n <= count; n++)
             {
                 names.Add(new Faker<AssertedProperName>()
-                    .RuleFor(a => a.Value, f => new ProperName
-                    {
-                        Language = "eng",
-                        Pieces = new List<ProperNamePiece>
+                    .RuleFor(a => a.Language, "eng")
+                    .RuleFor(a => a.Pieces, f => new List<ProperNamePiece>
                         {
                             new ProperNamePiece
                             {
@@ -38,8 +36,7 @@ namespace Cadmus.Seed.General.Parts
                                 Value = f.Name.LastName()
                             },
                         }
-                    })
-                    .Generate());
+                    ).Generate());
             }
             return names;
         }

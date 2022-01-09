@@ -36,14 +36,14 @@ namespace Cadmus.General.Parts
                     entry.Chronotope.Place.Value);
             }
 
-            if (entry.Chronotope.Date?.Value != null)
+            if (entry.Chronotope.Date != null)
             {
                 double sortValue =
-                    entry.Chronotope.Date.Value.GetSortValue();
+                    entry.Chronotope.Date.GetSortValue();
                 builder.AddValue("date-value", sortValue);
 
                 builder.AddValue("hasDate@" + entry.Eid,
-                    entry.Chronotope.Date.Value.ToString());
+                    entry.Chronotope.Date.ToString());
                 builder.AddValue("hasDateValue@" + entry.Eid,
                     sortValue);
             }
@@ -67,7 +67,7 @@ namespace Cadmus.General.Parts
         /// <returns>The pins: <c>tot-count</c> and a collection of pins with
         /// these keys: <c>eid</c>, <c>type</c>, <c>place</c>, <c>date-value</c>.
         /// </returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item)
+        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
             DataPinBuilder builder = new DataPinBuilder();
 
