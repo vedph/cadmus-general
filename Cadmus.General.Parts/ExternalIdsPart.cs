@@ -17,14 +17,14 @@ namespace Cadmus.General.Parts
         /// <summary>
         /// Gets or sets the entries.
         /// </summary>
-        public List<ExternalId> Ids { get; set; }
+        public List<AssertedId> Ids { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExternalIdsPart"/> class.
         /// </summary>
         public ExternalIdsPart()
         {
-            Ids = new List<ExternalId>();
+            Ids = new List<AssertedId>();
         }
 
         /// <summary>

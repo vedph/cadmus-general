@@ -16,14 +16,14 @@ namespace Cadmus.Seed.General.Parts
     [Tag("seed.it.vedph.external-ids")]
     public sealed class ExternalIdsPartSeeder : PartSeederBase
     {
-        private List<ExternalId> GetIds(int min, int max)
+        private List<AssertedId> GetIds(int min, int max)
         {
-            List<ExternalId> ids = new List<ExternalId>();
+            List<AssertedId> ids = new List<AssertedId>();
             for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
             {
                 bool uri = Randomizer.Seed.Next(0, 2) == 0;
 
-                ids.Add(new Faker<ExternalId>()
+                ids.Add(new Faker<AssertedId>()
                     .RuleFor(i => i.Value, f => uri
                         ? f.Internet.Url()
                         : Guid.NewGuid().ToString())

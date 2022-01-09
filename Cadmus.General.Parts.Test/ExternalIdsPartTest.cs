@@ -71,7 +71,7 @@ namespace Cadmus.General.Parts.Test
             ExternalIdsPart part = GetEmptyPart();
             for (int n = 1; n <= 3; n++)
             {
-                part.Ids.Add(new ExternalId
+                part.Ids.Add(new AssertedId
                 {
                     Value = $"{n:000}",
                     Tag = "tag"
