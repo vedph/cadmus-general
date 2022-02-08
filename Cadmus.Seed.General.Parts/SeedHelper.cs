@@ -22,8 +22,9 @@ namespace Cadmus.Seed.General.Parts
                 refs.Add(new Faker<DocReference>()
                     .RuleFor(r => r.Type, "book")
                     .RuleFor(r => r.Tag, f => f.PickRandom(null, "tag"))
-                    .RuleFor(r => r.Citation, f => f.Person.LastName + " " +
-                        f.Date.Past(10) + f.Random.Number(1, 100))
+                    .RuleFor(r => r.Type, "biblio")
+                    .RuleFor(r => r.Citation,
+                        f => f.Person.LastName + " " + f.Date.Past(10).Year)
                     .RuleFor(r => r.Note, f => f.Lorem.Sentence())
                     .Generate());
             }
