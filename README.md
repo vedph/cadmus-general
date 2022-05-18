@@ -260,5 +260,11 @@ ID: `fr.it.vedph.comment`
 
 ## History
 
+### 2.0.0
+
+- 2022-05-18: upgraded to NET 6.0.
+
+### 1.0.4
+
 - 2022-01-16: added `ChronotopesPart`.
 - 2022-01-09: added assertion to external IDs part. Accordingly, the corresponding bricks editor has been updated in the bricks shell project.

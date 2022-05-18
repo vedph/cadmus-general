@@ -11,11 +11,12 @@ namespace Cadmus.Cli.Plugin.General
 {
     /// <summary>
     /// CLI repository factory provider for general parts.
+    /// Tag: <c>repository-factory-provider.general</c>.
     /// </summary>
     /// <seealso cref="ICliRepositoryFactoryProvider" />
     [Tag("repository-factory-provider.general")]
-    public sealed class GeneralCliRepositoryFactoryProvider :
-        ICliRepositoryFactoryProvider
+    public sealed class GeneralCliCadmusRepositoryProvider :
+        ICliCadmusRepositoryProvider
     {
         private readonly IPartTypeProvider _partTypeProvider;
 
@@ -26,9 +27,9 @@ namespace Cadmus.Cli.Plugin.General
 
         /// <summary>
         /// Initializes a new instance of the
-        /// <see cref="GeneralCliRepositoryFactoryProvider"/> class.
+        /// <see cref="GeneralCliCadmusRepositoryProvider"/> class.
         /// </summary>
-        public GeneralCliRepositoryFactoryProvider()
+        public GeneralCliCadmusRepositoryProvider()
         {
             TagAttributeToTypeMap map = new();
             map.Add(new[]
@@ -56,7 +57,7 @@ namespace Cadmus.Cli.Plugin.General
 
             repository.Configure(new MongoCadmusRepositoryOptions
             {
-                ConnectionString = string.Format(ConnectionString, database)
+                ConnectionString = string.Format(ConnectionString!, database)
             });
 
             return repository;
