@@ -47,7 +47,7 @@ namespace Cadmus.Seed.General.Parts
             if (_options?.Languages == null || _options.Languages.Length == 0)
                 return null;
 
-            IndexKeywordsPart part = new IndexKeywordsPart();
+            IndexKeywordsPart part = new();
             SetPartMetadata(part, roleId, item);
 
             int count = Randomizer.Seed.Next(1, 4);

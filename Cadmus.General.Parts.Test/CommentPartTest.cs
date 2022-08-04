@@ -53,7 +53,6 @@ namespace Cadmus.General.Parts.Test
             Assert.Equal(part.RoleId, part2.RoleId);
             Assert.Equal(part.CreatorId, part2.CreatorId);
             Assert.Equal(part.UserId, part2.UserId);
-            // TODO: check parts data here...
         }
 
         [Fact]
@@ -78,7 +77,7 @@ namespace Cadmus.General.Parts.Test
                 {
                     Citation = $"w{n}"
                 });
-                part.ExternalIds.Add(new ExternalId { Value = $"i{n}" });
+                part.ExternalIds.Add(new AssertedId { Value = $"i{n}" });
                 part.Categories.Add($"c{n}");
                 part.Keywords.Add(new IndexKeyword
                 {

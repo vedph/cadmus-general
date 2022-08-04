@@ -72,7 +72,7 @@ namespace Cadmus.General.Parts.Test
                 {
                     Citation = $"w{n}"
                 });
-                fr.ExternalIds.Add(new ExternalId { Value = $"i{n}" });
+                fr.ExternalIds.Add(new AssertedId { Value = $"i{n}" });
                 fr.Categories.Add($"c{n}");
                 fr.Keywords.Add(new IndexKeyword
                 {

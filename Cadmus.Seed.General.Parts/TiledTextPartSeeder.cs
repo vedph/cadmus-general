@@ -31,7 +31,7 @@ namespace Cadmus.Seed.General.Parts
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            TiledTextPart part = new TiledTextPart();
+            TiledTextPart part = new();
             SetPartMetadata(part, roleId, item);
 
             // citation
@@ -46,7 +46,7 @@ namespace Cadmus.Seed.General.Parts
             foreach (string line in text.Split('\n'))
             {
                 // row
-                TextTileRow row = new TextTileRow
+                TextTileRow row = new()
                 {
                     Y = y++,
                 };
@@ -60,7 +60,7 @@ namespace Cadmus.Seed.General.Parts
                 int x = 1;
                 foreach (string token in line.Trim().Split(' '))
                 {
-                    TextTile tile = new TextTile
+                    TextTile tile = new()
                     {
                         X = x++,
                     };

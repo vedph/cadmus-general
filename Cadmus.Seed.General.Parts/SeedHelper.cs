@@ -15,7 +15,7 @@ namespace Cadmus.Seed.General.Parts
         /// <returns>References.</returns>
         public static List<DocReference> GetDocReferences(int min, int max)
         {
-            List<DocReference> refs = new List<DocReference>();
+            List<DocReference> refs = new();
 
             for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
             {
@@ -33,24 +33,24 @@ namespace Cadmus.Seed.General.Parts
         }
 
         /// <summary>
-        /// Gets a list of external IDs.
+        /// Gets a list of asserted IDs.
         /// </summary>
         /// <param name="min">The min number of IDs to get.</param>
         /// <param name="max">The max number of IDs to get.</param>
         /// <returns>IDs.</returns>
-        public static List<ExternalId> GetExternalIds(int min, int max)
+        public static List<AssertedId> GetAssertedIds(int min, int max)
         {
-            List<ExternalId> ids = new List<ExternalId>();
-            Faker faker = new Faker();
+            List<AssertedId> ids = new();
+            Faker faker = new();
 
             for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
             {
                 ids.Add(faker.Random.Bool()
-                    ? new ExternalId
+                    ? new AssertedId
                     {
                         Value = faker.Internet.Url(),
                         Scope = "myweb"
-                    } : new ExternalId
+                    } : new AssertedId
                     {
                         Value = faker.Hacker.Abbreviation(),
                         Scope = "mydb"
@@ -67,7 +67,7 @@ namespace Cadmus.Seed.General.Parts
         /// <returns>Chronotopes.</returns>
         public static List<AssertedChronotope> GetAssertedChronotopes(int count)
         {
-            List<AssertedChronotope> chronotopes = new List<AssertedChronotope>();
+            List<AssertedChronotope> chronotopes = new();
             for (int n = 1; n <= count; n++)
             {
                 bool even = n % 2 == 0;

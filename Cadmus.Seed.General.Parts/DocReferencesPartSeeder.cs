@@ -30,7 +30,7 @@ namespace Cadmus.Seed.General.Parts
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            DocReferencesPart part = new DocReferencesPart
+            DocReferencesPart part = new()
             {
                 References = SeedHelper.GetDocReferences(2, 5)
             };

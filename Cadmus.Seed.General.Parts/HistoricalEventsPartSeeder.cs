@@ -19,7 +19,7 @@ namespace Cadmus.Seed.General.Parts
         private static List<RelatedEntity> GetRelatedEntities(int count,
             string relation, string prefix)
         {
-            List<RelatedEntity> entities = new List<RelatedEntity>();
+            List<RelatedEntity> entities = new();
             for (int n = 1; n <= count; n++)
             {
                 entities.Add(new RelatedEntity
@@ -33,7 +33,7 @@ namespace Cadmus.Seed.General.Parts
 
         private static List<HistoricalEvent> GetEvents(int count)
         {
-            List<HistoricalEvent> events = new List<HistoricalEvent>();
+            List<HistoricalEvent> events = new();
             for (int n = 1; n <= count; n++)
             {
                 bool even = n % 2 == 0;

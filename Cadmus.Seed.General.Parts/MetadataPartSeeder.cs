@@ -25,7 +25,7 @@ namespace Cadmus.Seed.General.Parts
 
         private static List<Metadatum> GetMetadata(int count)
         {
-            List<Metadatum> metadata = new List<Metadatum>();
+            List<Metadatum> metadata = new();
             for (int n = 1; n <= count; n++)
             {
                 int type = Randomizer.Seed.Next(0, DataTypes.Length);

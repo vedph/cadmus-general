@@ -40,8 +40,8 @@ namespace Cadmus.Seed.General.Parts
         private IList<Tuple<string, string>> PickLocAndTexts(
             TiledTextPart part, int count)
         {
-            HashSet<Tuple<int, int>> usedCoords = new HashSet<Tuple<int, int>>();
-            List<Tuple<string, string>> results = new List<Tuple<string, string>>();
+            HashSet<Tuple<int, int>> usedCoords = new();
+            List<Tuple<string, string>> results = new();
 
             while (count > 0)
             {

@@ -49,7 +49,7 @@ namespace Cadmus.Seed.General.Parts
         {
             Match m = Regex.Match(name, "(?<l>[^,]+)(?:,(?<f>.+))?");
 
-            BibAuthor author = new BibAuthor();
+            BibAuthor author = new();
 
             if (!m.Success)
             {
@@ -92,14 +92,14 @@ namespace Cadmus.Seed.General.Parts
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            BibliographyPart part = new BibliographyPart();
+            BibliographyPart part = new();
             SetPartMetadata(part, roleId, item);
 
-            Faker f = new Faker();
+            Faker f = new();
 
             for (int i = 0; i < 5; i++)
             {
-                BibEntry entry = new BibEntry
+                BibEntry entry = new()
                 {
                     TypeId = Seed.SeedHelper.RandomPickOneOf(_typeIds),
                     Tag = f.PickRandom(null, "alpha", "beta"),
@@ -143,7 +143,7 @@ namespace Cadmus.Seed.General.Parts
                 }
 
                 // keywords
-                List<Keyword> keywords = new List<Keyword>();
+                List<Keyword> keywords = new();
                 for (int j = 0; j < Randomizer.Seed.Next(0, 3); j++)
                 {
                     keywords.Add(new Keyword

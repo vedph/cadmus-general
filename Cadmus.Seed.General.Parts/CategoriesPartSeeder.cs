@@ -50,7 +50,7 @@ namespace Cadmus.Seed.General.Parts
                 return null;
             }
 
-            CategoriesPart part = new CategoriesPart();
+            CategoriesPart part = new();
             SetPartMetadata(part, roleId, item);
 
             // pick from 1 to 3 categories, all different

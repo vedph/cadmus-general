@@ -49,7 +49,7 @@ namespace Cadmus.General.Parts
         /// <summary>
         /// Gets or sets the optional external IDs related to this comment.
         /// </summary>
-        public List<ExternalId> ExternalIds
+        public List<AssertedId> ExternalIds
         {
             get { return _comment.ExternalIds; }
             set { _comment.ExternalIds = value; }

@@ -1,6 +1,6 @@
-# Cadmus.General.Parts
+# Cadmus General Parts
 
-- [Cadmus.General.Parts](#cadmusgeneralparts)
+- [Cadmus General Parts](#cadmus-general-parts)
   - [Parts](#parts)
     - [BibliographyPart](#bibliographypart)
     - [CategoriesPart](#categoriespart)
@@ -8,6 +8,7 @@
     - [CommentPart](#commentpart)
     - [DocReferencesPart](#docreferencespart)
     - [ExtBibliographyPart](#extbibliographypart)
+    - [ExternalIdsPart](#externalidspart)
     - [HierarchyPart](#hierarchypart)
     - [HistoricalDatePart](#historicaldatepart)
     - [HistoricalEventsPart](#historicaleventspart)
@@ -22,15 +23,13 @@
   - [Fragments](#fragments)
     - [CommentLayerFragment](#commentlayerfragment)
   - [History](#history)
+    - [2.1.0](#210)
+    - [2.0.0](#200)
+    - [1.0.4](#104)
 
 This solution contains the Cadmus general parts library derived from `Cadmus.Parts`, in the context of the general refactoring towards a more streamlined and modular system.
 
-The library includes all the old parts with these additions:
-
-- `HistoricalEventsPart`: historical events part.
-- `MetadataPart`: generic metadata part.
-
-No part or fragment ID has been changed.
+The library includes all the old parts with some additions. No part or fragment ID has been changed.
 
 ## Parts
 
@@ -102,10 +101,7 @@ ID: `it.vedph.comment`
 - tag (`string`)
 - text (`string`)
 - references (`DocReference[]`)
-- externalIds (`ExternalId[]`):
-  - tag (`string`)
-  - value (`string`)
-  - scope (`string`)
+- externalIds (`AssertedId[]`)
 - categories (`string[]`)
 - keywords (`IndexKeyword[]`)
 
@@ -129,6 +125,20 @@ ID: `it.vedph.ext-bibliography`
   - payload (`string`)
   - tag (`string`)
   - note (`string`)
+
+### ExternalIdsPart
+
+ID: `it.vedph.external-ids`
+
+- ids (`AssertedId[]`):
+  - tag (`string`)
+  - value\* (`string`)
+  - scope (`string`)
+  - assertion (`Assertion`):
+    - tag (`string`)
+    - rank\* (`string`)
+    - note (`string`)
+    - references (`DocReference[]`)
 
 ### HierarchyPart
 
@@ -251,14 +261,15 @@ ID: `fr.it.vedph.comment`
 - tag (`string`)
 - text (`string`)
 - references (`DocReference[]`)
-- externalIds (`ExternalId[]`):
-  - tag (`string`)
-  - value (`string`)
-  - scope (`string`)
+- externalIds (`AssertedId[]`)
 - categories (`string[]`)
 - keywords (`IndexKeyword[]`)
 
 ## History
+
+### 2.1.0
+
+- 2022-08-04: replaced `ExternalId` with `AssertedId` in comments.
 
 ### 2.0.0
 

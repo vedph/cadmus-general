@@ -44,7 +44,7 @@ namespace Cadmus.Seed.General.Parts
 
         private List<IndexKeyword> GetKeywords(int count)
         {
-            List<IndexKeyword> keywords = new List<IndexKeyword>();
+            List<IndexKeyword> keywords = new();
 
             for (int n = 1; n <= count; n++)
             {
@@ -77,7 +77,7 @@ namespace Cadmus.Seed.General.Parts
                 .RuleFor(p => p.Tag, f => f.PickRandom("scholarly", "general"))
                 .RuleFor(p => p.Text, f => f.Lorem.Sentence())
                 .RuleFor(p => p.References, SeedHelper.GetDocReferences(1, 3))
-                .RuleFor(p => p.ExternalIds, SeedHelper.GetExternalIds(1, 3))
+                .RuleFor(p => p.ExternalIds, SeedHelper.GetAssertedIds(1, 3))
                 .RuleFor(p => p.Categories, f => new List<string>(
                     new[] { f.PickRandom(_options.Categories) }))
                 .RuleFor(p => p.Keywords, f => GetKeywords(f.Random.Number(1, 3)))

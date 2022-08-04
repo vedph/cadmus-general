@@ -46,7 +46,7 @@ namespace Cadmus.Seed.General.Parts
 
         private static HistoricalDate GetRandomDate()
         {
-            HistoricalDate date = new HistoricalDate();
+            HistoricalDate date = new();
 
             if (Randomizer.Seed.Next(1, 10) == 0)
             {
@@ -70,7 +70,7 @@ namespace Cadmus.Seed.General.Parts
         /// <returns>References.</returns>
         private static List<DocReference> GetDocReferences(int min, int max)
         {
-            List<DocReference> refs = new List<DocReference>();
+            List<DocReference> refs = new();
 
             for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
             {
@@ -104,7 +104,7 @@ namespace Cadmus.Seed.General.Parts
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            HistoricalDatePart part = new HistoricalDatePart();
+            HistoricalDatePart part = new();
             SetPartMetadata(part, roleId, item);
 
             part.Date = GetRandomDate();

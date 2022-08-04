@@ -41,7 +41,7 @@ namespace Cadmus.Seed.General.Parts
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            ExtBibliographyPart part = new ExtBibliographyPart();
+            ExtBibliographyPart part = new();
             SetPartMetadata(part, roleId, item);
 
             if (_entries?.Length > 0)

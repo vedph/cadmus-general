@@ -86,7 +86,7 @@ namespace Cadmus.General.Parts.Test
                     Chronotope = new AssertedChronotope
                     {
                         Place = new AssertedPlace { Value = even ? "Even" : "Odd" },
-                        Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD"))
+                        Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD")!)
                     },
                     RelatedEntities = even
                         ? new List<RelatedEntity>{

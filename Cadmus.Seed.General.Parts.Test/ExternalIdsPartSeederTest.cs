@@ -35,12 +35,12 @@ namespace Cadmus.Seed.General.Parts.Test
 
             Assert.NotNull(part);
 
-            ExternalIdsPart p = part as ExternalIdsPart;
+            ExternalIdsPart? p = part as ExternalIdsPart;
             Assert.NotNull(p);
 
-            TestHelper.AssertPartMetadata(p);
+            TestHelper.AssertPartMetadata(p!);
 
-            Assert.NotEmpty(p.Ids);
+            Assert.NotEmpty(p!.Ids);
         }
     }
 }

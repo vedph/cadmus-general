@@ -18,7 +18,7 @@ namespace Cadmus.Seed.General.Parts
     {
         private static List<AssertedProperName> GetNames(int count)
         {
-            List<AssertedProperName> names = new List<AssertedProperName>();
+            List<AssertedProperName> names = new();
             for (int n = 1; n <= count; n++)
             {
                 names.Add(new Faker<AssertedProperName>()

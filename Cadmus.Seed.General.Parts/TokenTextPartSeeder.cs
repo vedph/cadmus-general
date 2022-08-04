@@ -31,7 +31,7 @@ namespace Cadmus.Seed.General.Parts
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            TokenTextPart part = new TokenTextPart();
+            TokenTextPart part = new();
             SetPartMetadata(part, roleId, item);
 
             // citation

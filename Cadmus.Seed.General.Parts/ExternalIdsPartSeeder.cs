@@ -18,7 +18,7 @@ namespace Cadmus.Seed.General.Parts
     {
         private List<AssertedId> GetIds(int min, int max)
         {
-            List<AssertedId> ids = new List<AssertedId>();
+            List<AssertedId> ids = new();
             for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
             {
                 bool uri = Randomizer.Seed.Next(0, 2) == 0;
