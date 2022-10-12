@@ -267,6 +267,10 @@ ID: `fr.it.vedph.comment`
 
 ## History
 
+### 2.1.1
+
+- 2022-10-12: updated packages.
+
 ### 2.1.0
 
 - 2022-08-04: replaced `ExternalId` with `AssertedId` in comments.

@@ -14,6 +14,7 @@ namespace Cadmus.Cli.Plugin.General
     /// CLI general parts seeder factory provider.
     /// </summary>
     /// <seealso cref="ICliPartSeederFactoryProvider" />
+    [Obsolete("Replace CLI providers with API providers")]
     [Tag("part-seeder-factory-provider.general")]
     public sealed class GeneralCliPartSeederFactoryProvider
         : ICliPartSeederFactoryProvider

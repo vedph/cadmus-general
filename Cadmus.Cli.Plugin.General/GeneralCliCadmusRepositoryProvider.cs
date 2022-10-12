@@ -14,6 +14,7 @@ namespace Cadmus.Cli.Plugin.General
     /// Tag: <c>repository-factory-provider.general</c>.
     /// </summary>
     /// <seealso cref="ICliRepositoryFactoryProvider" />
+    [Obsolete("Replace CLI providers with API providers")]
     [Tag("repository-factory-provider.general")]
     public sealed class GeneralCliCadmusRepositoryProvider :
         ICliCadmusRepositoryProvider
