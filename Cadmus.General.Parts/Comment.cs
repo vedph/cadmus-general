@@ -66,7 +66,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             if (!string.IsNullOrEmpty(Tag)) sb.Append('[').Append(Tag).Append(']');
 
             if (!string.IsNullOrEmpty(Text))
@@ -112,7 +112,7 @@ namespace Cadmus.General.Parts
         /// <c>fr.key.{INDEXID}.{LANG}</c>=keywords.</returns>
         public IEnumerable<DataPin> GetDataPins(IItem item, IPart part, string prefix)
         {
-            DataPinBuilder builder = new DataPinBuilder(
+            DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
 
             // fr.tag

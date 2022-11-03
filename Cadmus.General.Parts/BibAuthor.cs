@@ -32,7 +32,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder(LastName);
+            StringBuilder sb = new(LastName);
             if (!string.IsNullOrEmpty(FirstName))
                 sb.Append(", ").Append(FirstName);
             if (!string.IsNullOrEmpty(RoleId))

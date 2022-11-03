@@ -63,7 +63,7 @@ namespace Cadmus.General.Parts
             if (loc.IsRange)
             {
                 // tokens range
-                StringBuilder sb = new StringBuilder();
+                StringBuilder sb = new();
 
                 int bLineIndex = loc.B.Y - 1;
                 if (bLineIndex < aLineIndex || bLineIndex >= textPart.Lines.Count)
@@ -130,7 +130,7 @@ namespace Cadmus.General.Parts
         /// <returns>Pins.</returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            List<DataPin> pins = new List<DataPin>();
+            List<DataPin> pins = new();
             if (Fragments == null) return pins;
 
             // add pins from fragments

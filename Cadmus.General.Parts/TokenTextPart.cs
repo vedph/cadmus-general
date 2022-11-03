@@ -52,7 +52,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            List<DataPin> pins = new List<DataPin>
+            List<DataPin> pins = new()
             {
                 CreateDataPin("line-count",
                 Lines?.Count.ToString(CultureInfo.InvariantCulture) ?? "0")
@@ -207,7 +207,7 @@ namespace Cadmus.General.Parts
 
             if (Lines == null) return "";
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             int lastY = location.IsRange ? location.B.Y : location.A.Y;
 
             for (int y = location.A.Y; y <= lastY; y++)

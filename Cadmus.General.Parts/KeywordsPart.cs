@@ -68,7 +68,7 @@ namespace Cadmus.General.Parts
             if (Keywords == null || Keywords.Count == 0)
                 return Enumerable.Empty<DataPin>();
 
-            List<DataPin> pins = new List<DataPin>
+            List<DataPin> pins = new()
             {
                 CreateDataPin("tot-count",
                     (Keywords?.Count ?? 0).ToString(CultureInfo.InvariantCulture))

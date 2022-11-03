@@ -47,7 +47,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            DataPinBuilder builder = new DataPinBuilder(
+            DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
 
             builder.AddValue("date-value",

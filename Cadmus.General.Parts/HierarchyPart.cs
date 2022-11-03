@@ -85,7 +85,7 @@ namespace Cadmus.General.Parts
         /// <returns>pins</returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            List<DataPin> pins = new List<DataPin>
+            List<DataPin> pins = new()
             {
                 CreateDataPin("y", Y.ToString(CultureInfo.InvariantCulture)),
                 CreateDataPin("x", X.ToString(CultureInfo.InvariantCulture))
@@ -124,7 +124,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder("[Hierarchy]");
+            StringBuilder sb = new("[Hierarchy]");
 
             if (Tag != null) sb.Append(" (").Append(Tag).Append(')');
 

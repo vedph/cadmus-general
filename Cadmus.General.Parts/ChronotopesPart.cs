@@ -37,7 +37,7 @@ namespace Cadmus.General.Parts
         /// these keys: <c>place</c>, <c>date-value</c>.</returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            DataPinBuilder builder = new DataPinBuilder(
+            DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
 
             builder.Set("tot", Chronotopes?.Count ?? 0, false);
@@ -86,7 +86,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             sb.Append("[Chronotopes]");
 

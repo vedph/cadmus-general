@@ -40,7 +40,7 @@ namespace Cadmus.General.Parts
         /// <c>keyword.LANG</c> (keyword filtered with digits).</returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            DataPinBuilder builder = new DataPinBuilder(
+            DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
 
             // tot-count
@@ -156,7 +156,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             sb.Append("[Bibliography]");
             if (Entries?.Count > 0)

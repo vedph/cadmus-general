@@ -23,6 +23,8 @@
   - [Fragments](#fragments)
     - [CommentLayerFragment](#commentlayerfragment)
   - [History](#history)
+    - [2.1.2](#212)
+    - [2.1.1](#211)
     - [2.1.0](#210)
     - [2.0.0](#200)
     - [1.0.4](#104)
@@ -266,6 +268,10 @@ ID: `fr.it.vedph.comment`
 - keywords (`IndexKeyword[]`)
 
 ## History
+
+### 2.1.2
+
+- 2022-11-03: updated packages.
 
 ### 2.1.1
 

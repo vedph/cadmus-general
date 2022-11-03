@@ -36,7 +36,7 @@ namespace Cadmus.General.Parts
         /// these keys: <c>name</c>.</returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            DataPinBuilder builder = new DataPinBuilder(DataPinHelper.DefaultFilter);
+            DataPinBuilder builder = new(DataPinHelper.DefaultFilter);
 
             builder.Set("tot", Names?.Count ?? 0, false);
 
@@ -78,7 +78,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             sb.Append("[Names]");
 

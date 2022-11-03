@@ -60,7 +60,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            List<DataPin> pins = new List<DataPin>
+            List<DataPin> pins = new()
             {
                 CreateDataPin("row-count",
                 Rows?.Count.ToString(CultureInfo.InvariantCulture) ?? "0")

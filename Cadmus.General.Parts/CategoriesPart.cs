@@ -39,7 +39,7 @@ namespace Cadmus.General.Parts
         /// keys: <c>category</c> (filtered, with digits).</returns>
         public override IEnumerable<DataPin> GetDataPins(IItem item = null)
         {
-            DataPinBuilder builder = new DataPinBuilder(
+            DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
 
             builder.Set("tot", Categories?.Count ?? 0, false);

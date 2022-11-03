@@ -38,7 +38,7 @@ namespace Cadmus.General.Parts
         {
             if (entry == null) throw new ArgumentNullException(nameof(entry));
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             // [type]
             sb.Append('[').Append(entry.TypeId).Append("] ");

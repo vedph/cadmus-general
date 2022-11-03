@@ -52,7 +52,7 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             if (!string.IsNullOrEmpty(Eid)) sb.Append('#').Append(Eid);
             if (!string.IsNullOrEmpty(Type))
