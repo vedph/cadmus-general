@@ -86,7 +86,7 @@ namespace Cadmus.Seed.General.Parts.Test
         [Fact]
         public void GetFragmentSeeder_Comment_Ok()
         {
-            IFragmentSeeder seeder = _factory.GetFragmentSeeder(
+            IFragmentSeeder? seeder = _factory.GetFragmentSeeder(
                 "seed.fr.it.vedph.comment");
             Assert.NotNull(seeder);
         }

@@ -60,8 +60,8 @@ namespace Cadmus.General.Parts.Test
             HierarchyPart part = GetPart();
             part.Tag = null;
 
-            Dictionary<string, string> pins = part.GetDataPins()
-                .ToDictionary(p => p.Name, p => p.Value);
+            Dictionary<string, string?> pins = part.GetDataPins()
+                .ToDictionary(p => p.Name!, p => p.Value);
 
             Assert.Equal(2, pins.Count);
             Assert.True(pins.ContainsKey("y"));
@@ -75,8 +75,8 @@ namespace Cadmus.General.Parts.Test
         {
             HierarchyPart part = GetPart();
 
-            Dictionary<string, string> pins = part.GetDataPins()
-                .ToDictionary(p => p.Name, p => p.Value);
+            Dictionary<string, string?> pins = part.GetDataPins()
+                .ToDictionary(p => p.Name!, p => p.Value);
 
             Assert.Equal(3, pins.Count);
             Assert.True(pins.ContainsKey("y"));

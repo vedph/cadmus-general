@@ -269,6 +269,10 @@ ID: `fr.it.vedph.comment`
 
 ## History
 
+### 2.2.0
+
+- 2022-11-04: updated packages (nullability enabled in Cadmus core).
+
 ### 2.1.2
 
 - 2022-11-03: updated packages.
