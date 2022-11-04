@@ -22,7 +22,7 @@ namespace Cadmus.General.Parts
         /// <summary>
         /// Gets or sets the parent identifier.
         /// </summary>
-        public string ParentId { get; set; }
+        public string? ParentId { get; set; }
 
         /// <summary>
         /// Gets or sets the children IDs.
@@ -52,7 +52,7 @@ namespace Cadmus.General.Parts
         /// Gets or sets the tag. This can be used for multiple hierarchies,
         /// so that all the parts with the same tag belong to the same hierarchy.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HierarchyPart"/> class.
@@ -83,7 +83,7 @@ namespace Cadmus.General.Parts
         /// </list>
         /// </remarks>
         /// <returns>pins</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             List<DataPin> pins = new()
             {

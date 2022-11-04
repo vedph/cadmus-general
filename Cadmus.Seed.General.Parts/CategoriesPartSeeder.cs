@@ -3,6 +3,7 @@ using Cadmus.Core;
 using Cadmus.General.Parts;
 using Fusi.Tools.Config;
 using System;
+using System.Collections.Generic;
 
 namespace Cadmus.Seed.General.Parts
 {
@@ -15,7 +16,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class CategoriesPartSeeder : PartSeederBase,
         IConfigurable<CategoriesPartSeederOptions>
     {
-        private CategoriesPartSeederOptions _options;
+        private CategoriesPartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -35,8 +36,8 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -44,7 +45,7 @@ namespace Cadmus.Seed.General.Parts
                 throw new ArgumentNullException(nameof(factory));
 
             if (_options?.Categories == null
-                || _options.Categories.Length == 0
+                || _options.Categories.Count == 0
                 || _options.MaxCategoriesPerItem < 1)
             {
                 return null;
@@ -54,9 +55,9 @@ namespace Cadmus.Seed.General.Parts
             SetPartMetadata(part, roleId, item);
 
             // pick from 1 to 3 categories, all different
-            int count = Randomizer.Seed.Next(1, _options.MaxCategoriesPerItem + 1);
+            int count = Randomizer.Seed.Next(1, _options!.MaxCategoriesPerItem + 1);
             foreach (string category in Seed.SeedHelper.RandomPickOf(
-                _options.Categories, count))
+                _options.Categories, count)!)
             {
                 part.Categories.Add(category);
             }
@@ -78,6 +79,6 @@ namespace Cadmus.Seed.General.Parts
         /// <summary>
         /// Gets or sets the categories to pick from.
         /// </summary>
-        public string[] Categories { get; set; }
+        public IList<string>? Categories { get; set; }
     }
 }

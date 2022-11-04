@@ -10,12 +10,12 @@
         /// <summary>
         /// Language (usually an ISO 639 3-letters code).
         /// </summary>
-        public string Language { get; set; }
+        public string? Language { get; set; }
 
         /// <summary>
         /// Keyword text value.
         /// </summary>
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Textual representation of this keyword.

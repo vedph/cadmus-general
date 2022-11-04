@@ -18,7 +18,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class CommentLayerFragmentSeeder : FragmentSeederBase,
         IConfigurable<CommentPartSeederOptions>
     {
-        private CommentPartSeederOptions _options;
+        private CommentPartSeederOptions? _options;
 
         /// <summary>
         /// Gets the type of the fragment.
@@ -34,14 +34,14 @@ namespace Cadmus.Seed.General.Parts
         {
             _options = options ?? new CommentPartSeederOptions();
 
-            if (_options.Languages == null || _options.Languages.Length == 0)
+            if (_options.Languages == null || _options.Languages.Count == 0)
             {
                 _options.Languages = new[]
                 {
                     "eng", "deu", "ita", "fra", "spa"
                 };
             }
-            if (_options.Categories == null || _options.Categories.Length == 0)
+            if (_options.Categories == null || _options.Categories.Count == 0)
             {
                 _options.Categories = new[]
                 {
@@ -58,7 +58,7 @@ namespace Cadmus.Seed.General.Parts
             {
                 keywords.Add(new Faker<IndexKeyword>()
                     .RuleFor(k => k.IndexId, f => f.PickRandom(null, "ixa", "ixb"))
-                    .RuleFor(k => k.Language, f => f.PickRandom(_options.Languages))
+                    .RuleFor(k => k.Language, f => f.PickRandom(_options!.Languages))
                     .RuleFor(k => k.Value, f => f.Lorem.Word())
                     .Generate());
             }
@@ -75,7 +75,7 @@ namespace Cadmus.Seed.General.Parts
         /// <returns>A new fragment.</returns>
         /// <exception cref="ArgumentNullException">item or location or
         /// baseText</exception>
-        public override ITextLayerFragment GetFragment(
+        public override ITextLayerFragment? GetFragment(
             IItem item, string location, string baseText)
         {
             if (item == null)
@@ -92,7 +92,7 @@ namespace Cadmus.Seed.General.Parts
                 .RuleFor(p => p.References, SeedHelper.GetDocReferences(1, 3))
                 .RuleFor(p => p.ExternalIds, SeedHelper.GetAssertedIds(1, 3))
                 .RuleFor(p => p.Categories, f => new List<string>(
-                    new[] { f.PickRandom(_options.Categories) }))
+                    new[] { f.PickRandom(_options!.Categories) }))
                 .RuleFor(p => p.Keywords, f => GetKeywords(f.Random.Number(1, 3)))
                 .Generate();
         }

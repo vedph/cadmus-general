@@ -19,19 +19,19 @@ namespace Cadmus.General.Parts
         /// Gets or sets the optional tag linked to this note. You might want to use
         /// this value to categorize or group notes according to some criteria.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the text. The format of the text is chosen by the
         /// implementor (it might be plain text, Markdown, RTF, HTML, XML, etc).
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Gets the text.
         /// </summary>
         /// <returns>full text</returns>
-        public string GetText() => Text;
+        public string GetText() => Text ?? "";
 
         /// <summary>
         /// Get all the key=value pairs exposed by the implementor.
@@ -41,7 +41,7 @@ namespace Cadmus.General.Parts
         /// can optionally be passed to this method for those parts requiring
         /// to access further data.</param>
         /// <returns>pins</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             return Tag != null
                 ? new[]
@@ -80,7 +80,7 @@ namespace Cadmus.General.Parts
             if (Text != null)
             {
                 sb.Append(Text.Length > 100
-                    ? Text.Substring(0, 100) + "..."
+                    ? Text[..100] + "..."
                     : Text);
             }
             return sb.ToString();

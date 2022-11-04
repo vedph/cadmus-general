@@ -35,14 +35,14 @@ namespace Cadmus.General.Parts
         /// to access further data.</param>
         /// <returns>The pins: <c>tot-count</c> and a collection of pins with
         /// the <c>id</c> key.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new();
 
             builder.Set("tot", Ids?.Count ?? 0, false);
 
             if (Ids?.Count > 0)
-                builder.AddValues("id", Ids.Select(i => i.Value));
+                builder.AddValues("id", Ids.Select(i => i.Value!));
 
             return builder.Build(this);
         }
@@ -55,14 +55,14 @@ namespace Cadmus.General.Parts
         {
             return new List<DataPinDefinition>(new[]
             {
-            new DataPinDefinition(DataPinValueType.Integer,
-               "tot-count",
-               "The total count of entries."),
-            new DataPinDefinition(DataPinValueType.String,
-               "id",
-               "The IDs.",
-               "M")
-        });
+                new DataPinDefinition(DataPinValueType.Integer,
+                   "tot-count",
+                   "The total count of entries."),
+                new DataPinDefinition(DataPinValueType.String,
+                   "id",
+                   "The IDs.",
+                   "M")
+            });
         }
 
         /// <summary>

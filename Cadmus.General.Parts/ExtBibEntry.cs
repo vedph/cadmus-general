@@ -14,27 +14,27 @@
         /// <summary>
         /// Gets or sets the identifier for this entry.
         /// </summary>
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Gets or sets a human-friendly label for this entry.
         /// </summary>
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         /// <summary>
         /// Gets or sets the optional payload.
         /// </summary>
-        public string Payload { get; set; }
+        public string? Payload { get; set; }
 
         /// <summary>
         /// Gets or sets an optional tag assigned to this entry.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Gets or sets an optional note.
         /// </summary>
-        public string Note { get; set; }
+        public string? Note { get; set; }
 
         /// <summary>
         /// Converts to string.

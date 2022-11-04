@@ -60,7 +60,7 @@ namespace Cadmus.General.Parts
         /// The pins are returned sorted by index ID, language and then value.
         /// The value is filtered, with digits.
         /// </returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             if (Keywords == null || Keywords.Count == 0)
                 return Enumerable.Empty<DataPin>();
@@ -70,6 +70,7 @@ namespace Cadmus.General.Parts
                 CreateDataPin("tot-count",
                     (Keywords?.Count ?? 0).ToString(CultureInfo.InvariantCulture))
             };
+            if (Keywords == null) return pins;
 
             IDataPinTextFilter filter = DataPinHelper.DefaultFilter;
 

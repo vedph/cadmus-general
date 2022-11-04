@@ -14,12 +14,12 @@ namespace Cadmus.Seed.General.Parts
     /// Seeder for <see cref="TiledTextLayerPart{TFragment}"/>.
     /// Tag: <c>seed.it.vedph.tiled-text-layer</c>.
     /// </summary>
-    /// <seealso cref="Cadmus.Seed.PartSeederBase" />
+    /// <seealso cref="PartSeederBase" />
     [Tag("seed.it.vedph.tiled-text-layer")]
     public sealed class TiledTextLayerPartSeeder : PartSeederBase,
         IConfigurable<TiledTextLayerPartSeederOptions>
     {
-        private TiledTextLayerPartSeederOptions _options;
+        private TiledTextLayerPartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -37,7 +37,7 @@ namespace Cadmus.Seed.General.Parts
         /// <param name="part">The part.</param>
         /// <param name="count">The count.</param>
         /// <returns>A list of tuples where 1=location, 2=base text.</returns>
-        private IList<Tuple<string, string>> PickLocAndTexts(
+        private static IList<Tuple<string, string>> PickLocAndTexts(
             TiledTextPart part, int count)
         {
             HashSet<Tuple<int, int>> usedCoords = new();
@@ -73,7 +73,7 @@ namespace Cadmus.Seed.General.Parts
         {
             if (string.IsNullOrEmpty(text)) return text;
             int i = text.LastIndexOf(':');
-            return i > -1 ? text.Substring(0, i) : text;
+            return i > -1 ? text[..i] : text;
         }
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -97,21 +97,21 @@ namespace Cadmus.Seed.General.Parts
             if (_options == null || _options.MaxFragmentCount < 1) return null;
 
             // get the base text part; nothing to do if none
-            TiledTextPart textPart = item.Parts
+            TiledTextPart? textPart = item.Parts
                 .OfType<TiledTextPart>()
                 .FirstOrDefault();
             if (textPart == null) return null;
 
             // get the seeder; nothing to do if none
-            string frTypeId = StripColonSuffix(roleId);
-            IFragmentSeeder seeder =
+            string? frTypeId = StripColonSuffix(roleId!);
+            IFragmentSeeder? seeder =
                 factory.GetFragmentSeeder("seed." + frTypeId);
             if (seeder == null) return null;
 
             // get the layer part for the specified fragment type
             Type constructedType = typeof(TiledTextLayerPart<>)
                 .MakeGenericType(seeder.GetFragmentType());
-            IPart part = (IPart)Activator.CreateInstance(constructedType);
+            IPart part = (IPart)Activator.CreateInstance(constructedType)!;
 
             // seed metadata
             SetPartMetadata(part, roleId, item);
@@ -127,7 +127,7 @@ namespace Cadmus.Seed.General.Parts
 
             foreach (var lt in locAndTexts)
             {
-                ITextLayerFragment fr = seeder.GetFragment(
+                ITextLayerFragment? fr = seeder.GetFragment(
                     item, lt.Item1, lt.Item2);
                 if (fr != null)
                 {

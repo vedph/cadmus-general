@@ -45,6 +45,14 @@ namespace Cadmus.General.Parts
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextLine"/> class.
+        /// </summary>
+        public TextLine()
+        {
+            _text = "";
+        }
+
         #region Tokens
         /// <summary>
         /// Get the number of the token whose character is at the specified column
@@ -82,9 +90,10 @@ namespace Cadmus.General.Parts
             int currentToken = 1;
             for (int i = 0; i < _text.Length; i++)
             {
-                if (Array.IndexOf(TOKENS_SEPARATORS, _text[i]) > -1)
+                if (Array.IndexOf(TOKENS_SEPARATORS, _text[i]) > -1
+                    && ++currentToken == tokenNumber)
                 {
-                    if (++currentToken == tokenNumber) return i + 2;
+                    return i + 2;
                 }
             }
 
@@ -95,9 +104,10 @@ namespace Cadmus.General.Parts
         /// Get the bounds for the specified token.
         /// </summary>
         /// <param name="tokenNumber">token number (1-N)</param>
-        /// <returns>left bound (=index of 1st token char) and right bound (=index past the 
-        /// last token char) in a tuple, or null if no text</returns>
-        public Tuple<int,int> GetTokenBounds(int tokenNumber)
+        /// <returns>left bound (=index of 1st token char) and right bound
+        /// (=index past the last token char) in a tuple, or null if no text
+        /// </returns>
+        public Tuple<int,int>? GetTokenBounds(int tokenNumber)
         {
             if (string.IsNullOrEmpty(_text)) return null;
             int left = 0, right, n = 1;
@@ -114,7 +124,8 @@ namespace Cadmus.General.Parts
             if (n == tokenNumber)
             {
                 for (right = left;
-                    right < _text.Length && _text[right] != ' '; right++) ;
+                     right < _text.Length && _text[right] != ' ';
+                     right++);
             }
             else
             {
@@ -137,7 +148,7 @@ namespace Cadmus.General.Parts
         #endregion
 
         /// <summary>
-        /// Returns a <see cref="String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
         /// A <see cref="String" /> that represents this instance.

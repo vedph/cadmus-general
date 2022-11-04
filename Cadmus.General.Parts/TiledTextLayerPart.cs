@@ -4,7 +4,6 @@ using Fusi.Tools.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
 namespace Cadmus.General.Parts
@@ -53,14 +52,14 @@ namespace Cadmus.General.Parts
         /// <returns>The text, or null if location is invalid.</returns>
         /// <exception cref="ArgumentNullException">baseTextPart or location
         /// </exception>
-        public override string GetTextAt(IPart baseTextPart, string location)
+        public override string? GetTextAt(IPart baseTextPart, string location)
         {
             if (baseTextPart == null)
                 throw new ArgumentNullException(nameof(baseTextPart));
             if (location == null)
                 throw new ArgumentNullException(nameof(location));
 
-            if (!(baseTextPart is TiledTextPart textPart)) return null;
+            if (baseTextPart is not TiledTextPart textPart) return null;
 
             // parse
             TokenTextLocation loc = TokenTextLocation.Parse(location);
@@ -75,7 +74,7 @@ namespace Cadmus.General.Parts
                 // tokens range
                 StringBuilder sb = new();
 
-                int bRowIndex = loc.B.Y - 1;
+                int bRowIndex = loc.B!.Y - 1;
                 if (bRowIndex < aRowIndex || bRowIndex >= textPart.Rows.Count)
                     return null;
 
@@ -103,17 +102,17 @@ namespace Cadmus.General.Parts
                 tiles = textPart.Rows[aRowIndex].Tiles;
                 if (aTileIndex < 0 || aTileIndex >= tiles.Count)
                     return null;
-                sb.Append(string.Join(" ",
+                sb.AppendJoin(" ",
                     from t in tiles.Skip(aTileIndex)
-                    select GetTileText(t)));
+                    select GetTileText(t));
 
                 // mid-rows
                 for (int i = aRowIndex + 1; i < bRowIndex; i++)
                 {
                     sb.AppendLine();
-                    sb.Append(string.Join(" ",
+                    sb.AppendJoin(" ",
                         from t in textPart.Rows[i].Tiles
-                        select GetTileText(t)));
+                        select GetTileText(t));
                 }
 
                 // last row
@@ -121,9 +120,9 @@ namespace Cadmus.General.Parts
                 tiles = textPart.Rows[bRowIndex].Tiles;
                 if (bTileIndex < 0 || bTileIndex >= tiles.Count)
                     return null;
-                sb.Append(string.Join(" ",
+                sb.AppendJoin(" ",
                     from t in tiles.Take(bTileIndex + 1)
-                    select GetTileText(t)));
+                    select GetTileText(t));
 
                 return sb.ToString();
             }
@@ -147,7 +146,7 @@ namespace Cadmus.General.Parts
         /// can optionally be passed to this method for those parts requiring
         /// to access further data.</param>
         /// <returns>Pins.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             List<DataPin> pins = new();
             if (Fragments == null) return pins;
@@ -157,7 +156,7 @@ namespace Cadmus.General.Parts
             {
                 foreach (DataPin frPin in fr.GetDataPins(item))
                 {
-                    DataPin pin = CreateDataPin(frPin.Name, frPin.Value);
+                    DataPin pin = CreateDataPin(frPin.Name!, frPin.Value);
                     pins.Add(pin);
                 }
             }

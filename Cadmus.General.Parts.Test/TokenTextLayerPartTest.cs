@@ -310,7 +310,7 @@ namespace Cadmus.General.Parts.Test
             TokenTextPart textPart = GetTokenTextPart(3);
             TokenTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, "12.3");
+            string? text = layerPart.GetTextAt(textPart, "12.3");
 
             Assert.Null(text);
         }
@@ -327,7 +327,7 @@ namespace Cadmus.General.Parts.Test
             TokenTextPart textPart = GetTokenTextPart(2);
             TokenTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }
@@ -344,7 +344,7 @@ namespace Cadmus.General.Parts.Test
             TokenTextPart textPart = GetTokenTextPart(2);
             TokenTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }
@@ -360,7 +360,7 @@ namespace Cadmus.General.Parts.Test
             TokenTextPart textPart = GetTokenTextPart(3);
             TokenTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }
@@ -376,7 +376,7 @@ namespace Cadmus.General.Parts.Test
             TokenTextPart textPart = GetTokenTextPart(3);
             TokenTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }

@@ -21,7 +21,7 @@ namespace Cadmus.General.Parts
         /// to use this value to categorize or group comments according to some
         /// criteria.
         /// </summary>
-        public string Tag
+        public string? Tag
         {
             get { return _comment.Tag; }
             set { _comment.Tag = value; }
@@ -31,7 +31,7 @@ namespace Cadmus.General.Parts
         /// Gets or sets the text. The format of the text is chosen by the
         /// implementor (it might be plain text, Markdown, RTF, HTML, XML, etc).
         /// </summary>
-        public string Text
+        public string? Text
         {
             get { return _comment.Text; }
             set { _comment.Text = value; }
@@ -96,9 +96,9 @@ namespace Cadmus.General.Parts
         /// pins: <c>ref</c>=references (built with author and work,
         /// both filtered), <c>id</c>=external IDs, <c>cat</c>=categories,
         /// <c>key.{INDEXID}.{LANG}</c>=keywords.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
-            return _comment.GetDataPins(item, this, "");
+            return _comment.GetDataPins(this, "");
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Cadmus.General.Parts
         /// <returns>Data pins definitions.</returns>
         public override IList<DataPinDefinition> GetDataPinDefinitions()
         {
-            return _comment.GetDataPinDefinitions("");
+            return Comment.GetDataPinDefinitions("");
         }
 
         /// <summary>

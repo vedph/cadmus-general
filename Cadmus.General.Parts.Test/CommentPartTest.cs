@@ -3,7 +3,6 @@ using Xunit;
 using Cadmus.Core;
 using System.Collections.Generic;
 using System.Linq;
-using Cadmus.Bricks;
 using Cadmus.Refs.Bricks;
 using Cadmus.Seed.General.Parts;
 
@@ -24,7 +23,7 @@ namespace Cadmus.General.Parts.Test
                 Title = "Test Item",
                 SortKey = ""
             };
-            return (CommentPart)seeder.GetPart(item, null, null);
+            return (CommentPart)seeder.GetPart(item, null, null)!;
         }
 
         private static CommentPart GetEmptyPart()

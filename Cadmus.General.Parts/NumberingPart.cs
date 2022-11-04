@@ -19,7 +19,7 @@ namespace Cadmus.General.Parts
         /// of its siblings. This can be any alphanumeric arbitrary string
         /// (e.g. <c>A.1.II.</c>).
         /// </summary>
-        public string Number { get; set; }
+        public string? Number { get; set; }
 
         /// <summary>
         /// Gets or sets the ordinal number representing the position of the item
@@ -32,7 +32,7 @@ namespace Cadmus.General.Parts
         /// several different numberings to the same sequence of items, each
         /// representing a different numbering criterion.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Get all the key=value pairs exposed by the implementor.
@@ -41,7 +41,7 @@ namespace Cadmus.General.Parts
         /// can optionally be passed to this method for those parts requiring
         /// to access further data.</param>
         /// <returns>The pins: <c>ordinal</c>=tag + space + ordinal.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             return new[]
             {

@@ -37,7 +37,7 @@ namespace Cadmus.General.Parts
         /// to access further data.</param>
         /// <returns>pins: <c>tot-count</c> and a collection of pins with
         /// keys: <c>category</c> (filtered, with digits).</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
@@ -78,7 +78,9 @@ namespace Cadmus.General.Parts
         /// </returns>
         public override string ToString()
         {
-            return "[Categories] " + string.Join(", ", Categories?.OrderBy(s => s));
+            return "[Categories] " + (Categories?.Count > 0
+                ? string.Join(", ", Categories.OrderBy(s => s))
+                : "");
         }
     }
 }

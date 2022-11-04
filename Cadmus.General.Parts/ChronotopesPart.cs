@@ -35,7 +35,7 @@ namespace Cadmus.General.Parts
         /// to access further data.</param>
         /// <returns>The pins: <c>tot-count</c> and a collection of pins with
         /// these keys: <c>place</c>, <c>date-value</c>.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
@@ -46,9 +46,9 @@ namespace Cadmus.General.Parts
             {
                 foreach (var entry in Chronotopes)
                 {
-                    builder.AddValue("place", entry.Place.Value, filter: true,
+                    builder.AddValue("place", entry.Place?.Value, filter: true,
                         filterOptions: true);
-                    if (entry.Date != null)
+                    if (entry.Date is not null)
                         builder.AddValue("date-value", entry.Date.GetSortValue());
                 }
             }

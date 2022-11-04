@@ -25,9 +25,10 @@ namespace Cadmus.General.Parts
             Events = new List<HistoricalEvent>();
         }
 
-        private void AddChronotopePins(HistoricalEvent entry, DataPinBuilder builder)
+        private static void AddChronotopePins(HistoricalEvent entry,
+            DataPinBuilder builder)
         {
-            if (entry.Chronotope.Place?.Value != null)
+            if (entry.Chronotope?.Place?.Value != null)
             {
                 builder.AddValue("place",
                     entry.Chronotope.Place.Value);
@@ -36,7 +37,7 @@ namespace Cadmus.General.Parts
                     entry.Chronotope.Place.Value);
             }
 
-            if (entry.Chronotope.Date != null)
+            if (entry.Chronotope?.Date is not null)
             {
                 double sortValue =
                     entry.Chronotope.Date.GetSortValue();
@@ -49,7 +50,8 @@ namespace Cadmus.General.Parts
             }
         }
 
-        private void AddRelatedEntriesPins(HistoricalEvent entry, DataPinBuilder builder)
+        private static void AddRelatedEntriesPins(HistoricalEvent entry,
+            DataPinBuilder builder)
         {
             foreach (RelatedEntity entity in entry.RelatedEntities)
             {
@@ -67,7 +69,7 @@ namespace Cadmus.General.Parts
         /// <returns>The pins: <c>tot-count</c> and a collection of pins with
         /// these keys: <c>eid</c>, <c>type</c>, <c>place</c>, <c>date-value</c>.
         /// </returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new();
 

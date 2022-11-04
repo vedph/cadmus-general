@@ -127,7 +127,7 @@ namespace Cadmus.General.Parts.Test
             TiledTextPart textPart = GetTiledTextPart(3);
             TiledTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, "12.3");
+            string? text = layerPart.GetTextAt(textPart, "12.3");
 
             Assert.Null(text);
         }
@@ -144,7 +144,7 @@ namespace Cadmus.General.Parts.Test
             TiledTextPart textPart = GetTiledTextPart(2);
             TiledTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }
@@ -161,7 +161,7 @@ namespace Cadmus.General.Parts.Test
             TiledTextPart textPart = GetTiledTextPart(2);
             TiledTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }
@@ -177,7 +177,7 @@ namespace Cadmus.General.Parts.Test
             TiledTextPart textPart = GetTiledTextPart(3);
             TiledTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }
@@ -193,7 +193,7 @@ namespace Cadmus.General.Parts.Test
             TiledTextPart textPart = GetTiledTextPart(3);
             TiledTextLayerPart<CommentLayerFragment> layerPart = GetPart();
 
-            string text = layerPart.GetTextAt(textPart, location);
+            string? text = layerPart.GetTextAt(textPart, location);
 
             Assert.Equal(expectedText, text);
         }

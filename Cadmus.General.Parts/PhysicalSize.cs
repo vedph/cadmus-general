@@ -12,27 +12,27 @@ namespace Cadmus.General.Parts
         /// Gets or sets an optional tag used to categorize or group several
         /// sizes.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the width.
         /// </summary>
-        public PhysicalDimension W { get; set; }
+        public PhysicalDimension? W { get; set; }
 
         /// <summary>
         /// Gets or sets the height.
         /// </summary>
-        public PhysicalDimension H { get; set; }
+        public PhysicalDimension? H { get; set; }
 
         /// <summary>
         /// Gets or sets the depth.
         /// </summary>
-        public PhysicalDimension D { get; set; }
+        public PhysicalDimension? D { get; set; }
 
         /// <summary>
         /// Gets or sets an optional note.
         /// </summary>
-        public string Note {get; set; }
+        public string? Note {get; set; }
 
         /// <summary>
         /// Converts to string.
@@ -47,20 +47,20 @@ namespace Cadmus.General.Parts
             if (!string.IsNullOrEmpty(Tag))
                 sb.Append('[').Append(Tag).Append("] ");
 
-            if (W?.Value != 0) sb.Append(W.ToString());
+            if (W != null && W.Value != 0) sb.Append(W.ToString());
 
-            if (H?.Value != 0)
+            if (H != null && H.Value != 0)
             {
                 if (sb.Length > 0) sb.Append(" × ");
                 sb.Append(H.ToString());
             }
-            if (D?.Value != 0)
+            if (D != null && D.Value != 0)
             {
                 if (sb.Length > 0) sb.Append(" × ");
                 sb.Append(D.ToString());
             }
 
-            if (sb.Length > 0 && sb[sb.Length - 1] == ' ')
+            if (sb.Length > 0 && sb[^1] == ' ')
                 sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }

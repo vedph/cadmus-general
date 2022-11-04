@@ -1,5 +1,4 @@
-﻿using Cadmus.Bricks;
-using Cadmus.Core;
+﻿using Cadmus.Core;
 using Cadmus.Refs.Bricks;
 using Fusi.Antiquity.Chronology;
 using Fusi.Tools.Config;
@@ -19,7 +18,7 @@ namespace Cadmus.General.Parts
         /// <summary>
         /// Gets or sets the date.
         /// </summary>
-        public HistoricalDate Date { get; set; }
+        public HistoricalDate? Date { get; set; }
 
         /// <summary>
         /// Gets or sets the short documental references connected to this
@@ -45,7 +44,7 @@ namespace Cadmus.General.Parts
         /// <returns>Pins: <c>date-value</c> with the date sort value or 0;
         /// <c>hint</c> with the date's hint(s) when present (filtered, with digits).
         /// </returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
@@ -53,7 +52,7 @@ namespace Cadmus.General.Parts
             builder.AddValue("date-value",
                 (Date?.GetSortValue() ?? 0).ToString(CultureInfo.InvariantCulture));
 
-            if (Date != null)
+            if (Date is not null)
             {
                 switch (Date.GetDateType())
                 {
@@ -63,7 +62,7 @@ namespace Cadmus.General.Parts
                             builder.AddValue("hint", Date.A.Hint,
                                 filter: true, filterOptions: true);
                         }
-                        if (!string.IsNullOrEmpty(Date.B.Hint))
+                        if (!string.IsNullOrEmpty(Date.B?.Hint))
                         {
                             builder.AddValue("hint", Date.B.Hint,
                                 filter: true, filterOptions: true);

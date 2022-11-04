@@ -13,7 +13,7 @@ namespace Cadmus.Seed.General.Parts
     /// Seeder for <see cref="HistoricalDatePart"/>.
     /// Tag: <c>seed.it.vedph.historical-date</c>.
     /// </summary>
-    /// <seealso cref="Cadmus.Seed.PartSeederBase" />
+    /// <seealso cref="PartSeederBase" />
     [Tag("seed.it.vedph.historical-date")]
     public sealed class HistoricalDatePartSeeder : PartSeederBase
     {
@@ -96,8 +96,8 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));

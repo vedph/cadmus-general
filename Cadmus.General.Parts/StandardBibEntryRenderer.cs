@@ -14,10 +14,10 @@ namespace Cadmus.General.Parts
     {
         private const string SEP = " -- ";
 
-        private void AppendAuthors(IList<BibAuthor> authors, StringBuilder sb)
+        private static void AppendAuthors(IList<BibAuthor> authors,
+            StringBuilder sb)
         {
-            sb.Append(string.Join("; ",
-                from a in authors select a.ToString()));
+            sb.AppendJoin("; ", from a in authors select a.ToString());
             sb.Append(SEP);
         }
 
@@ -48,14 +48,14 @@ namespace Cadmus.General.Parts
                 sb.Append('(').Append(entry.Tag).Append(") ");
 
             // author(s) --
-            if (entry.Authors?.Length > 0) AppendAuthors(entry.Authors, sb);
+            if (entry.Authors?.Count > 0) AppendAuthors(entry.Authors, sb);
 
             // title --
             if (!string.IsNullOrEmpty(entry.Title))
                 sb.Append(entry.Title).Append(SEP);
 
             // contributors --
-            if (entry.Contributors?.Length > 0)
+            if (entry.Contributors?.Count > 0)
                 AppendAuthors(entry.Contributors, sb);
 
             // container,

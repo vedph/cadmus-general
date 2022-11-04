@@ -3,6 +3,7 @@ using Cadmus.Core;
 using Cadmus.General.Parts;
 using Fusi.Tools.Config;
 using System;
+using System.Collections.Generic;
 
 namespace Cadmus.Seed.General.Parts
 {
@@ -15,7 +16,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class ExtBibliographyPartSeeder : PartSeederBase,
         IConfigurable<ExtBibliographyPartSeederOptions>
     {
-        private ExtBibEntry[] _entries;
+        private IList<ExtBibEntry>? _entries;
 
         /// <summary>
         /// Configures the specified options.
@@ -35,8 +36,8 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -44,7 +45,7 @@ namespace Cadmus.Seed.General.Parts
             ExtBibliographyPart part = new();
             SetPartMetadata(part, roleId, item);
 
-            if (_entries?.Length > 0)
+            if (_entries?.Count > 0)
             {
                 part.Entries.AddRange(_entries);
             }
@@ -74,6 +75,6 @@ namespace Cadmus.Seed.General.Parts
         /// <summary>
         /// Gets or sets the entries.
         /// </summary>
-        public ExtBibEntry[] Entries { get; set; }
+        public IList<ExtBibEntry>? Entries { get; set; }
     }
 }

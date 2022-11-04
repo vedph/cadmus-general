@@ -3,6 +3,7 @@ using Cadmus.Core;
 using Cadmus.General.Parts;
 using Fusi.Tools.Config;
 using System;
+using System.Collections.Generic;
 
 namespace Cadmus.Seed.General.Parts
 {
@@ -15,7 +16,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class NotePartSeeder : PartSeederBase,
         IConfigurable<NotePartSeederOptions>
     {
-        private NotePartSeederOptions _options;
+        private NotePartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -35,8 +36,8 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -45,7 +46,7 @@ namespace Cadmus.Seed.General.Parts
 
             NotePart part = new Faker<NotePart>()
                 .RuleFor(p => p.Tag,
-                    f => _options?.Tags.Length > 0
+                    f => _options?.Tags?.Count > 0
                     ? f.PickRandom(_options.Tags) : null)
                 .RuleFor(p => p.Text, f => f.Lorem.Sentences())
                 .Generate();
@@ -65,6 +66,6 @@ namespace Cadmus.Seed.General.Parts
         /// Gets or sets the tags to pick from. If not set, tags will always
         /// be null.
         /// </summary>
-        public string[] Tags { get; set; }
+        public IList<string>? Tags { get; set; }
     }
 }

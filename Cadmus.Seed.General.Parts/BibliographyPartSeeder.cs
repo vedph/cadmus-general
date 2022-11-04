@@ -19,10 +19,10 @@ namespace Cadmus.Seed.General.Parts
         IConfigurable<BibliographyPartSeederOptions>
     {
         private readonly List<int> _numbers;
-        private readonly string[] _typeIds;
-        private readonly string[] _languages;
-        private string[] _authors;
-        private string[] _journals;
+        private readonly IList<string> _typeIds;
+        private readonly IList<string> _languages;
+        private IList<string> _authors;
+        private IList<string> _journals;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BibliographyPartSeeder"/>
@@ -32,9 +32,9 @@ namespace Cadmus.Seed.General.Parts
         {
             _numbers = Enumerable.Range(1, 10).ToList();
             _authors = (from n in _numbers
-                        select $"author{n}").ToArray();
+                        select $"author{n}").ToList();
             _journals = (from n in _numbers
-                         select $"journal{n}").ToArray();
+                         select $"journal{n}").ToList();
             _typeIds = new[]
             {
                 "book", "article-j", "article-b", "site"
@@ -70,9 +70,9 @@ namespace Cadmus.Seed.General.Parts
         public void Configure(BibliographyPartSeederOptions options)
         {
             _authors = options.Authors ??
-                (from n in _numbers select $"author{n}").ToArray();
+                (from n in _numbers select $"author{n}").ToList();
             _journals = options.Journals ??
-                (from n in _numbers select $"journal{n}").ToArray();
+                (from n in _numbers select $"journal{n}").ToList();
         }
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
@@ -105,7 +105,7 @@ namespace Cadmus.Seed.General.Parts
                     Tag = f.PickRandom(null, "alpha", "beta"),
                     Authors = (from a in Seed.SeedHelper.RandomPickOf(_authors,
                         Randomizer.Seed.Next(1, 5) == 1? 2:1)
-                              select ParseAuthor(a)).ToArray(),
+                              select ParseAuthor(a)).ToList(),
                     Title = f.Lorem.Sentence(3, 8),
                     Language = Seed.SeedHelper.RandomPickOneOf(_languages)
                 };
@@ -125,7 +125,7 @@ namespace Cadmus.Seed.General.Parts
                         entry.Contributors =
                             (from a in Seed.SeedHelper.RandomPickOf(_authors,
                                 Randomizer.Seed.Next(1, 5) == 1 ? 2 : 1)
-                            select ParseAuthor(a)).ToArray();
+                            select ParseAuthor(a)).ToList();
                         entry.Container = f.Lorem.Sentence();
                         break;
 
@@ -152,7 +152,7 @@ namespace Cadmus.Seed.General.Parts
                         Value = f.Lorem.Word()
                     });
                 }
-                if (keywords.Count > 0) entry.Keywords = keywords.ToArray();
+                if (keywords.Count > 0) entry.Keywords = keywords.ToList();
 
                 part.Entries.Add(entry);
             }
@@ -171,12 +171,12 @@ namespace Cadmus.Seed.General.Parts
         /// like "author1", "author2", etc. will be used. If specified, use
         /// format <c>last,first</c> for each name.
         /// </summary>
-        public string[] Authors { get; set; }
+        public IList<string>? Authors { get; set; }
 
         /// <summary>
         /// Gets or sets the journals to pick from. If not specified, names
         /// like "journal1", "journal2", etc. will be used.
         /// </summary>
-        public string[] Journals { get; set; }
+        public IList<string>? Journals { get; set; }
     }
 }

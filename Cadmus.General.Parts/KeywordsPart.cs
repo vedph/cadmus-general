@@ -63,7 +63,7 @@ namespace Cadmus.General.Parts
         /// form <c>keyword.LANG</c> where <c>LANG</c> is its language value,
         /// e.g. <c>keyword.eng</c> as name and <c>sample</c> as value.
         /// The pins are returned sorted by language and then by value.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             if (Keywords == null || Keywords.Count == 0)
                 return Enumerable.Empty<DataPin>();

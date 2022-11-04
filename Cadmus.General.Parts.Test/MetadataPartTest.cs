@@ -21,7 +21,7 @@ namespace Cadmus.General.Parts.Test
                 Title = "Test Item",
                 SortKey = ""
             };
-            return (MetadataPart)seeder.GetPart(item, null, null);
+            return (MetadataPart)seeder.GetPart(item, null, null)!;
         }
 
         private static MetadataPart GetEmptyPart()

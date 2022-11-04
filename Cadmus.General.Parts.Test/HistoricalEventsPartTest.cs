@@ -95,7 +95,7 @@ namespace Cadmus.General.Parts.Test
                                 Relation = "evenness",
                                 Id = "e" + n
                             }
-                        } : null
+                        } : new List<RelatedEntity>()
                 });
             }
 

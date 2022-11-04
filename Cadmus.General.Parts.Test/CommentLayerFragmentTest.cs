@@ -25,7 +25,7 @@ namespace Cadmus.General.Parts.Test
                 SortKey = ""
             };
             return (CommentLayerFragment)
-                seeder.GetFragment(item, "1.2", "hello world");
+                seeder.GetFragment(item, "1.2", "hello world")!;
         }
 
         [Fact]

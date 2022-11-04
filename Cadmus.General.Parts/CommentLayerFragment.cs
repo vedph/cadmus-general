@@ -29,6 +29,15 @@ namespace Cadmus.General.Parts
         public string Location { get; set; }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CommentLayerFragment"/>
+        /// class.
+        /// </summary>
+        public CommentLayerFragment()
+        {
+            Location = "";
+        }
+
+        /// <summary>
         /// Get all the key=value pairs exposed by the implementor.
         /// </summary>
         /// <param name="item">The optional item. The item with its parts
@@ -38,9 +47,9 @@ namespace Cadmus.General.Parts
         /// pins: <c>fr.ref</c>=references (built with author and work,
         /// both filtered), <c>fr.id</c>=external IDs, <c>fr.cat</c>=categories,
         /// <c>fr.key.{INDEXID}.{LANG}</c>=keywords.</returns>
-        public IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
-            return GetDataPins(item, null, PartBase.FR_PREFIX);
+            return GetDataPins(null, PartBase.FR_PREFIX);
         }
 
         /// <summary>

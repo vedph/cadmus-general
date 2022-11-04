@@ -10,19 +10,19 @@ namespace Cadmus.General.Parts
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets the last name.
         /// </summary>
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         /// <summary>
         /// Gets or sets the optional role identifier. This can represent the
         /// role of the author in the bibliographic record, e.g. "editor",
         /// "translator", "organization", etc.
         /// </summary>
-        public string RoleId { get; set; }
+        public string? RoleId { get; set; }
 
         /// <summary>
         /// Converts to string.

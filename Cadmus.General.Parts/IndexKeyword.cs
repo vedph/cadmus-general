@@ -16,18 +16,18 @@ namespace Cadmus.General.Parts
         /// Gets or sets the optional index identifier. This can be used when
         /// you are building more than a single index.
         /// </summary>
-        public string IndexId { get; set; }
+        public string? IndexId { get; set; }
 
         /// <summary>
         /// Gets or sets an optional short note for this keyword.
         /// </summary>
-        public string Note { get; set; }
+        public string? Note { get; set; }
 
         /// <summary>
         /// Gets or sets the optional tag for this keyword, representing any
         /// additional general purpose classification tag for the keyword.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Converts to string.

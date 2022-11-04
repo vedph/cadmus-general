@@ -18,13 +18,13 @@ namespace Cadmus.General.Parts
         /// to use this value to categorize or group comments according to some
         /// criteria.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the text. The format of the text is chosen by the
         /// implementor (it might be plain text, Markdown, RTF, HTML, XML, etc).
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Gets or sets the optional references related to this comment.
@@ -95,14 +95,11 @@ namespace Cadmus.General.Parts
         /// <summary>
         /// Gets the text.
         /// </summary>
-        public string GetText() => Text;
+        public string GetText() => Text ?? "";
 
         /// <summary>
         /// Get all the key=value pairs exposed by the implementor.
         /// </summary>
-        /// <param name="item">The optional item. The item with its parts
-        /// can optionally be passed to this method for those parts requiring
-        /// to access further data.</param>
         /// <param name="part">The optional part. This is used when building
         /// pins for a data part, rather than for a fragment.</param>
         /// <param name="prefix">The prefix to be added to pins.</param>
@@ -110,8 +107,12 @@ namespace Cadmus.General.Parts
         /// pins: <c>fr.ref</c>=references (built with author and work,
         /// both filtered), <c>fr.id</c>=external IDs, <c>fr.cat</c>=categories,
         /// <c>fr.key.{INDEXID}.{LANG}</c>=keywords.</returns>
-        public IEnumerable<DataPin> GetDataPins(IItem item, IPart part, string prefix)
+        /// <exception cref="ArgumentNullException">part or prefix</exception>
+        public IEnumerable<DataPin> GetDataPins(IPart? part, string prefix)
         {
+            if (prefix is null)
+                throw new ArgumentNullException(nameof(prefix));
+
             DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
 
@@ -128,7 +129,7 @@ namespace Cadmus.General.Parts
 
             // fr.id
             if (ExternalIds?.Count > 0)
-                builder.AddValues(prefix + "id", ExternalIds.Select(e => e.Value));
+                builder.AddValues(prefix + "id", ExternalIds.Select(e => e.Value!));
 
             // fr.cat
             if (Categories?.Count > 0)
@@ -171,7 +172,7 @@ namespace Cadmus.General.Parts
         /// </summary>
         /// <param name="prefix">The prefix to be added to pins.</param>
         /// <returns>Data pins definitions.</returns>
-        public IList<DataPinDefinition> GetDataPinDefinitions(string prefix)
+        public static IList<DataPinDefinition> GetDataPinDefinitions(string prefix)
         {
             return new List<DataPinDefinition>(new[]
             {

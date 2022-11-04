@@ -43,14 +43,14 @@ namespace Cadmus.General.Parts
         /// <returns>The text, or null if location is invalid.</returns>
         /// <exception cref="ArgumentNullException">baseTextPart or location
         /// </exception>
-        public override string GetTextAt(IPart baseTextPart, string location)
+        public override string? GetTextAt(IPart baseTextPart, string location)
         {
             if (baseTextPart == null)
                 throw new ArgumentNullException(nameof(baseTextPart));
             if (location == null)
                 throw new ArgumentNullException(nameof(location));
 
-            if (!(baseTextPart is TokenTextPart textPart)) return null;
+            if (baseTextPart is not TokenTextPart textPart) return null;
 
             // parse
             TokenTextLocation loc = TokenTextLocation.Parse(location);
@@ -65,7 +65,7 @@ namespace Cadmus.General.Parts
                 // tokens range
                 StringBuilder sb = new();
 
-                int bLineIndex = loc.B.Y - 1;
+                int bLineIndex = loc.B!.Y - 1;
                 if (bLineIndex < aLineIndex || bLineIndex >= textPart.Lines.Count)
                     return null;
 
@@ -90,7 +90,7 @@ namespace Cadmus.General.Parts
                 tokens = textPart.Lines[aLineIndex].GetTokens();
                 if (aTokenIndex < 0 || aTokenIndex >= tokens.Length)
                     return null;
-                sb.Append(string.Join(" ", tokens.Skip(aTokenIndex)));
+                sb.AppendJoin(" ", tokens.Skip(aTokenIndex));
 
                 // mid-lines
                 for (int i = aLineIndex + 1; i < bLineIndex; i++)
@@ -104,7 +104,7 @@ namespace Cadmus.General.Parts
                 tokens = textPart.Lines[bLineIndex].GetTokens();
                 if (bTokenIndex < 0 || bTokenIndex >= tokens.Length)
                     return null;
-                sb.Append(string.Join(" ", tokens.Take(bTokenIndex + 1)));
+                sb.AppendJoin(" ", tokens.Take(bTokenIndex + 1));
 
                 return sb.ToString();
             }
@@ -128,7 +128,7 @@ namespace Cadmus.General.Parts
         /// can optionally be passed to this method for those parts requiring
         /// to access further data.</param>
         /// <returns>Pins.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             List<DataPin> pins = new();
             if (Fragments == null) return pins;
@@ -138,7 +138,7 @@ namespace Cadmus.General.Parts
             {
                 foreach (DataPin frPin in fr.GetDataPins(item))
                 {
-                    DataPin pin = CreateDataPin(frPin.Name, frPin.Value);
+                    DataPin pin = CreateDataPin(frPin.Name!, frPin.Value);
                     pins.Add(pin);
                 }
             }

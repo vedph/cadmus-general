@@ -34,7 +34,7 @@ namespace Cadmus.General.Parts
         /// to access further data.</param>
         /// <returns>The pins: <c>tot-count</c> and a collection of pins
         /// directly derived from metadata.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new();
 

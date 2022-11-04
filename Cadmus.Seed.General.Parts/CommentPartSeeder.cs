@@ -16,7 +16,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class CommentPartSeeder : PartSeederBase,
         IConfigurable<CommentPartSeederOptions>
     {
-        private CommentPartSeederOptions _options;
+        private CommentPartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -26,14 +26,14 @@ namespace Cadmus.Seed.General.Parts
         {
             _options = options ?? new CommentPartSeederOptions();
 
-            if (_options.Languages == null || _options.Languages.Length == 0)
+            if (_options.Languages == null || _options.Languages.Count == 0)
             {
                 _options.Languages = new[]
                 {
                     "eng", "deu", "ita", "fra", "spa"
                 };
             }
-            if (_options.Categories == null || _options.Categories.Length == 0)
+            if (_options.Categories == null || _options.Categories.Count == 0)
             {
                 _options.Categories = new[]
                 {
@@ -50,7 +50,7 @@ namespace Cadmus.Seed.General.Parts
             {
                 keywords.Add(new Faker<IndexKeyword>()
                     .RuleFor(k => k.IndexId, f => f.PickRandom(null, "ixa", "ixb"))
-                    .RuleFor(k => k.Language, f => f.PickRandom(_options.Languages))
+                    .RuleFor(k => k.Language, f => f.PickRandom(_options!.Languages))
                     .RuleFor(k => k.Value, f => f.Lorem.Word())
                     .Generate());
             }
@@ -67,11 +67,12 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
+            if (item == null) throw new ArgumentNullException(nameof(item));
+
+            if (_options?.Categories == null) return null;
 
             CommentPart part = new Faker<CommentPart>()
                 .RuleFor(p => p.Tag, f => f.PickRandom("scholarly", "general"))
@@ -96,11 +97,11 @@ namespace Cadmus.Seed.General.Parts
         /// <summary>
         /// Gets or sets the categories to pick from.
         /// </summary>
-        public string[] Categories { get; set; }
+        public IList<string>? Categories { get; set; }
 
         /// <summary>
         /// Gets or sets the languages codes to pick from.
         /// </summary>
-        public string[] Languages { get; set; }
+        public IList<string>? Languages { get; set; }
     }
 }

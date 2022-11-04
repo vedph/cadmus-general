@@ -7,7 +7,7 @@ namespace Cadmus.General.Parts
     /// </summary>
     static internal class DataPinHelper
     {
-        private static StandardDataPinTextFilter _filter;
+        private static StandardDataPinTextFilter? _filter;
 
         /// <summary>
         /// Gets the default filter used for pins.

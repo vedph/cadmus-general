@@ -38,7 +38,7 @@ namespace Cadmus.General.Parts
         /// contributors; filtered last name only), <c>title</c> (filtered,
         /// with digits), <c>container</c> (filtered, with digits),
         /// <c>keyword.LANG</c> (keyword filtered with digits).</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             DataPinBuilder builder = new(
                 DataPinHelper.DefaultFilter);
@@ -59,13 +59,13 @@ namespace Cadmus.General.Parts
                         builder.Increase(entry.TypeId, false, "type-");
 
                     // author/contributor
-                    if (entry.Authors?.Length > 0)
+                    if (entry.Authors?.Count > 0)
                     {
                         builder.AddValues("author",
                             from a in entry.Authors
                             select a.LastName, prefix: null, filter: true);
                     }
-                    if (entry.Contributors?.Length > 0)
+                    if (entry.Contributors?.Count > 0)
                     {
                         builder.AddValues("author",
                             from a in entry.Contributors
@@ -87,7 +87,7 @@ namespace Cadmus.General.Parts
                     }
 
                     // keyword
-                    if (entry.Keywords?.Length > 0)
+                    if (entry.Keywords?.Count > 0)
                     {
                         var keysByLang = from k in entry.Keywords
                                          group k by k.Language
@@ -99,7 +99,8 @@ namespace Cadmus.General.Parts
                         {
                             var values = from k in g
                                          orderby k.Value
-                                         select builder.Filter.Apply(k.Value, true);
+                                         select builder.Filter?
+                                            .Apply(k.Value, true) ?? k.Value;
 
                             foreach (var value in values)
                                 builder.AddValue($"keyword.{g.Key}", value);

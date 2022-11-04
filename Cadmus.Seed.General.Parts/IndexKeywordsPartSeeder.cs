@@ -3,6 +3,7 @@ using Cadmus.Core;
 using Cadmus.General.Parts;
 using Fusi.Tools.Config;
 using System;
+using System.Collections.Generic;
 
 namespace Cadmus.Seed.General.Parts
 {
@@ -16,7 +17,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class IndexKeywordsPartSeeder : PartSeederBase,
         IConfigurable<IndexKeywordsPartSeederOptions>
     {
-        private IndexKeywordsPartSeederOptions _options;
+        private IndexKeywordsPartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -36,22 +37,22 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            if (_options?.Languages == null || _options.Languages.Length == 0)
+            if (_options?.Languages == null || _options.Languages.Count == 0)
                 return null;
 
             IndexKeywordsPart part = new();
             SetPartMetadata(part, roleId, item);
 
             int count = Randomizer.Seed.Next(1, 4);
-            bool hasIndexIds = _options.IndexIds?.Length > 0;
+            bool hasIndexIds = _options.IndexIds?.Count > 0;
             while (count > 0)
             {
                 IndexKeyword keyword = new Faker<IndexKeyword>()
@@ -78,11 +79,11 @@ namespace Cadmus.Seed.General.Parts
         /// Gets or sets the index IDs to pick from. You can use an empty
         /// string for the default index.
         /// </summary>
-        public string[] IndexIds { get; set; }
+        public IList<string>? IndexIds { get; set; }
 
         /// <summary>
         /// Gets or sets the languages codes to pick from.
         /// </summary>
-        public string[] Languages { get; set; }
+        public IList<string>? Languages { get; set; }
     }
 }

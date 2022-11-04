@@ -22,7 +22,7 @@ namespace Cadmus.General.Parts.Test
                 Title = "Test Item",
                 SortKey = ""
             };
-            return (ExternalIdsPart)seeder.GetPart(item, null, null);
+            return (ExternalIdsPart)seeder.GetPart(item, null, null)!;
         }
 
         private static ExternalIdsPart GetEmptyPart()

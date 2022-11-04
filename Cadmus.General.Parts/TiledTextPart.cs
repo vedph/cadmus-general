@@ -32,7 +32,7 @@ namespace Cadmus.General.Parts
         /// used to virtually connect several text parts belonging to a bigger
         /// unit.
         /// </summary>
-        public string Citation { get; set; }
+        public string? Citation { get; set; }
 
         /// <summary>
         /// Gets or sets the rows in this text.
@@ -58,7 +58,7 @@ namespace Cadmus.General.Parts
         /// to access further data.</param>
         /// <returns>The pins: <c>row-count</c>, <c>citation</c>=citation if any.
         /// </returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem item = null)
+        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
         {
             List<DataPin> pins = new()
             {

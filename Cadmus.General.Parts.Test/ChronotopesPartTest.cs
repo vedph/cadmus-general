@@ -23,7 +23,7 @@ namespace Cadmus.General.Parts.Test
                 Title = "Test Item",
                 SortKey = ""
             };
-            return (ChronotopesPart)seeder.GetPart(item, null, null);
+            return (ChronotopesPart)seeder.GetPart(item, null, null)!;
         }
 
         private static ChronotopesPart GetEmptyPart()

@@ -9,7 +9,7 @@
         /// Gets or sets an optional tag used to categorize or group several
         /// dimensions.
         /// </summary>
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the value.
@@ -19,7 +19,7 @@
         /// <summary>
         /// Gets or sets the measurement unit.
         /// </summary>
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
 
         /// <summary>
         /// Converts to string.

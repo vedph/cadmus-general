@@ -38,7 +38,7 @@ namespace Cadmus.General.Parts.Test
             Assert.Equal(part.RoleId, part2.RoleId);
             Assert.Equal(part.CreatorId, part2.CreatorId);
             Assert.Equal(part.UserId, part2.UserId);
-            Assert.Equal(part.Date.ToString(), part2.Date.ToString());
+            Assert.Equal(part.Date!.ToString(), part2.Date!.ToString());
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Cadmus.General.Parts.Test
             Assert.Equal(part.RoleId, pin.RoleId);
             Assert.Equal("date-value", pin.Name);
             Assert.Equal(
-                part.Date.GetSortValue().ToString(CultureInfo.InvariantCulture),
+                part.Date!.GetSortValue().ToString(CultureInfo.InvariantCulture),
                 pin.Value);
         }
     }

@@ -14,12 +14,12 @@ namespace Cadmus.Seed.General.Parts
     /// Seeder for <see cref="TokenTextLayerPart{TFragment}"/>.
     /// Tag: <c>seed.it.vedph.token-text-layer</c>.
     /// </summary>
-    /// <seealso cref="Cadmus.Seed.PartSeederBase" />
+    /// <seealso cref="PartSeederBase" />
     [Tag("seed.it.vedph.token-text-layer")]
     public sealed class TokenTextLayerPartSeeder : PartSeederBase,
         IConfigurable<TokenTextLayerPartSeederOptions>
     {
-        private TokenTextLayerPartSeederOptions _options;
+        private TokenTextLayerPartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -37,7 +37,7 @@ namespace Cadmus.Seed.General.Parts
         /// <param name="part">The part.</param>
         /// <param name="count">The count.</param>
         /// <returns>A list of tuples where 1=location, 2=base text.</returns>
-        private IList<Tuple<string, string>> PickLocAndTexts(
+        private static IList<Tuple<string, string>> PickLocAndTexts(
             TokenTextPart part, int count)
         {
             HashSet<Tuple<int, int>> usedCoords = new();
@@ -74,7 +74,7 @@ namespace Cadmus.Seed.General.Parts
         {
             if (string.IsNullOrEmpty(text)) return text;
             int i = text.LastIndexOf(':');
-            return i > -1 ? text.Substring(0, i) : text;
+            return i > -1 ? text[..i] : text;
         }
 
         /// <summary>
@@ -87,46 +87,45 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            if (_options == null || _options.MaxFragmentCount < 1) return null;
+            if (_options == null || _options.MaxFragmentCount < 1)
+                return null;
 
             // get the base text part; nothing to do if none
-            TokenTextPart textPart = item.Parts
+            TokenTextPart? textPart = item.Parts
                 .OfType<TokenTextPart>()
                 .FirstOrDefault();
             if (textPart == null) return null;
 
             // get the seeder; nothing to do if none
-            string frTypeId = StripColonSuffix(roleId);
-            IFragmentSeeder seeder =
+            string frTypeId = StripColonSuffix(roleId!);
+            IFragmentSeeder? seeder =
                 factory.GetFragmentSeeder("seed." + frTypeId);
             if (seeder == null) return null;
 
             // get the layer part for the specified fragment type
             Type constructedType = typeof(TokenTextLayerPart<>)
                 .MakeGenericType(seeder.GetFragmentType());
-            IPart part = (IPart)Activator.CreateInstance(constructedType);
+            IPart part = (IPart)Activator.CreateInstance(constructedType)!;
 
             // seed metadata
             SetPartMetadata(part, roleId, item);
 
             // seed by adding fragments
             int count = Randomizer.Seed.Next(1, _options.MaxFragmentCount);
-            IList<Tuple<string, string>> locAndTexts =
-                PickLocAndTexts(textPart, count);
 
             // must invoke AddFragment via reflection, as the closed type
             // is known only at runtime
-            foreach (var lt in locAndTexts)
+            foreach (var lt in PickLocAndTexts(textPart, count))
             {
-                ITextLayerFragment fr = seeder.GetFragment(
+                ITextLayerFragment? fr = seeder.GetFragment(
                     item, lt.Item1, lt.Item2);
                 if (fr != null)
                 {

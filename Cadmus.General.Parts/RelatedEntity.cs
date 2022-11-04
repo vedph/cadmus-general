@@ -8,12 +8,12 @@
         /// <summary>
         /// Gets or sets the type of relation connecting this entity to the event.
         /// </summary>
-        public string Relation { get; set; }
+        public string? Relation { get; set; }
 
         /// <summary>
         /// Gets or sets the entity ID.
         /// </summary>
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Converts to string.

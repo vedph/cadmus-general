@@ -3,6 +3,7 @@ using Cadmus.Core;
 using Cadmus.General.Parts;
 using Fusi.Tools.Config;
 using System;
+using System.Collections.Generic;
 
 namespace Cadmus.Seed.General.Parts
 {
@@ -16,7 +17,7 @@ namespace Cadmus.Seed.General.Parts
     public sealed class KeywordsPartSeeder : PartSeederBase,
         IConfigurable<KeywordsPartSeederOptions>
     {
-        private KeywordsPartSeederOptions _options;
+        private KeywordsPartSeederOptions? _options;
 
         /// <summary>
         /// Configures the object with the specified options.
@@ -36,15 +37,15 @@ namespace Cadmus.Seed.General.Parts
         /// for layer parts, which need to seed a set of fragments.</param>
         /// <returns>A new part.</returns>
         /// <exception cref="ArgumentNullException">item or factory</exception>
-        public override IPart GetPart(IItem item, string roleId,
-            PartSeederFactory factory)
+        public override IPart? GetPart(IItem item, string? roleId,
+            PartSeederFactory? factory)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
             if (factory == null)
                 throw new ArgumentNullException(nameof(factory));
 
-            if (_options?.Languages == null || _options.Languages.Length == 0)
+            if (_options?.Languages == null || _options.Languages.Count == 0)
                 return null;
 
             KeywordsPart part = new();
@@ -58,7 +59,7 @@ namespace Cadmus.Seed.General.Parts
                     .RuleFor(k => k.Value, f => f.Lorem.Word())
                     .Generate();
 
-                part.AddKeyword(keyword.Language, keyword.Value);
+                part.AddKeyword(keyword.Language!, keyword.Value!);
                 count--;
             }
 
@@ -74,6 +75,6 @@ namespace Cadmus.Seed.General.Parts
         /// <summary>
         /// Gets or sets the languages codes to pick from.
         /// </summary>
-        public string[] Languages { get; set; }
+        public IList<string>? Languages { get; set; }
     }
 }
