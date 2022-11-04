@@ -40,7 +40,7 @@ namespace Cadmus.Seed.General.Parts.Test
             seeder.SetSeedOptions(_seedOptions);
             seeder.Configure(new CommentPartSeederOptions());
 
-            ITextLayerFragment fragment = seeder.GetFragment(_item, "1.1", "alpha");
+            ITextLayerFragment? fragment = seeder.GetFragment(_item, "1.1", "alpha");
 
             Assert.NotNull(fragment);
 

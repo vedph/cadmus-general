@@ -31,7 +31,7 @@ namespace Cadmus.Seed.General.Parts.Test
             HistoricalDatePartSeeder seeder = new();
             seeder.SetSeedOptions(_seedOptions);
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.NotNull(part);
 

@@ -62,7 +62,7 @@ namespace Cadmus.Seed.General.Parts.Test
                 }
             });
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.NotNull(part);
 

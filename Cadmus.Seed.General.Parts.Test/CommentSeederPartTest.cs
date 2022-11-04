@@ -32,7 +32,7 @@ namespace Cadmus.Seed.General.Parts.Test
             seeder.SetSeedOptions(_seedOptions);
             seeder.Configure(new CommentPartSeederOptions());
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.NotNull(part);
 

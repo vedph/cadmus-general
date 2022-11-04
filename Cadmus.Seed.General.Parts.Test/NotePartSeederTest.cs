@@ -31,7 +31,7 @@ namespace Cadmus.Seed.General.Parts.Test
             NotePartSeeder seeder = new NotePartSeeder();
             seeder.SetSeedOptions(_seedOptions);
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.NotNull(part);
 
@@ -53,7 +53,7 @@ namespace Cadmus.Seed.General.Parts.Test
                 Tags = new[] { "alpha", "beta", "gamma" }
             });
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.NotNull(part);
 

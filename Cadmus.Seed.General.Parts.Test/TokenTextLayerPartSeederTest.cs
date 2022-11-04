@@ -31,7 +31,7 @@ namespace Cadmus.Seed.General.Parts.Test
             TokenTextLayerPartSeeder seeder = new();
             seeder.SetSeedOptions(_seedOptions);
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.Null(part);
         }
@@ -46,7 +46,7 @@ namespace Cadmus.Seed.General.Parts.Test
                 MaxFragmentCount = 0
             });
 
-            IPart part = seeder.GetPart(_item, null, _factory);
+            IPart? part = seeder.GetPart(_item, null, _factory);
 
             Assert.Null(part);
         }
@@ -61,7 +61,7 @@ namespace Cadmus.Seed.General.Parts.Test
                 MaxFragmentCount = 3
             });
 
-            IPart part = seeder.GetPart(_item, "fr.it.vedph.comment", _factory);
+            IPart? part = seeder.GetPart(_item, "fr.it.vedph.comment", _factory);
 
             Assert.Null(part);
         }
@@ -80,9 +80,9 @@ namespace Cadmus.Seed.General.Parts.Test
             IItem item = _factory.GetItemSeeder().GetItem(1, "facet");
             TokenTextPartSeeder textSeeder = new();
             textSeeder.SetSeedOptions(_seedOptions);
-            item.Parts.Add(textSeeder.GetPart(_item, null, _factory));
+            item.Parts.Add(textSeeder.GetPart(_item, null, _factory)!);
 
-            IPart part = seeder.GetPart(item, "fr.it.vedph.comment", _factory);
+            IPart? part = seeder.GetPart(item, "fr.it.vedph.comment", _factory);
 
             Assert.NotNull(part);
 

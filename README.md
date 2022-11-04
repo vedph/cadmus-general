@@ -269,6 +269,10 @@ ID: `fr.it.vedph.comment`
 
 ## History
 
+### 2.2.2
+
+- 2022-11-04: updated packages.
+
 ### 2.2.1
 
 - 2022-11-04: minor adjustments after nullability.
