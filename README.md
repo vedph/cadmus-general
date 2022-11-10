@@ -23,6 +23,7 @@
   - [Fragments](#fragments)
     - [CommentLayerFragment](#commentlayerfragment)
   - [History](#history)
+    - [3.0.0](#300)
     - [2.1.2](#212)
     - [2.1.1](#211)
     - [2.1.0](#210)
@@ -268,6 +269,10 @@ ID: `fr.it.vedph.comment`
 - keywords (`IndexKeyword[]`)
 
 ## History
+
+### 3.0.0
+
+- 2022-11-10: upgraded to NET 7.
 
 ### 2.2.2
 
