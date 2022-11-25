@@ -18,12 +18,17 @@
     - [NamesPart](#namespart)
     - [NotePart](#notepart)
     - [NumberingPart](#numberingpart)
+    - [PinLinksPart](#pinlinkspart)
     - [TiledTextLayerPart](#tiledtextlayerpart)
     - [TokenTextLayerPart](#tokentextlayerpart)
   - [Fragments](#fragments)
     - [CommentLayerFragment](#commentlayerfragment)
   - [History](#history)
+    - [3.0.2](#302)
     - [3.0.0](#300)
+    - [2.2.2](#222)
+    - [2.2.1](#221)
+    - [2.2.0](#220)
     - [2.1.2](#212)
     - [2.1.1](#211)
     - [2.1.0](#210)
@@ -240,6 +245,19 @@ ID: `it.vedph.numbering`
 - ordinal (`int`)
 - tag (`string`)
 
+### PinLinksPart
+
+ID: `it.vedph.pin-links`
+
+- links (`PinLink[]`):
+  - label\* (`string`)
+  - itemId\* (`string`)
+  - partId\* (`string`)
+  - partTypeId\* (`string`)
+  - roleId (`string`)
+  - name\* (`string`)
+  - value\* (`string`)
+
 ### TiledTextLayerPart
 
 ID: `it.vedph.tiled-text-layer`
@@ -270,7 +288,11 @@ ID: `fr.it.vedph.comment`
 
 ## History
 
-- 2022-11-25: fix to historical date seeder references.
+### 3.0.2
+
+- 2022-11-25:
+  - added `PinLinksPart`.
+  - fix to historical date seeder references.
 
 ### 3.0.0
 
