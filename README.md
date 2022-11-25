@@ -270,6 +270,8 @@ ID: `fr.it.vedph.comment`
 
 ## History
 
+- 2022-11-25: fix to historical date seeder references.
+
 ### 3.0.0
 
 - 2022-11-10: upgraded to NET 7.
