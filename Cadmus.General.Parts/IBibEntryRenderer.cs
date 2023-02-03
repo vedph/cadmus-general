@@ -1,15 +1,14 @@
-﻿namespace Cadmus.General.Parts
+﻿namespace Cadmus.General.Parts;
+
+/// <summary>
+/// Bibliographic entry renderer.
+/// </summary>
+public interface IBibEntryRenderer
 {
     /// <summary>
-    /// Bibliographic entry renderer.
+    /// Renders the specified entry.
     /// </summary>
-    public interface IBibEntryRenderer
-    {
-        /// <summary>
-        /// Renders the specified entry.
-        /// </summary>
-        /// <param name="entry">The entry.</param>
-        /// <returns>String.</returns>
-        string Render(BibEntry entry);
-    }
+    /// <param name="entry">The entry.</param>
+    /// <returns>String.</returns>
+    string Render(BibEntry entry);
 }

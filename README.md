@@ -39,6 +39,8 @@ This solution contains the Cadmus general parts library derived from `Cadmus.Par
 
 The library includes all the old parts with some additions. No part or fragment ID has been changed.
 
+👀 [Cadmus Page](https://myrmex.github.io/overview/cadmus/)
+
 ## Parts
 
 ### BibliographyPart

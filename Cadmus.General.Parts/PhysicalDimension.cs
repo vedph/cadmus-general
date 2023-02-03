@@ -1,35 +1,34 @@
-﻿namespace Cadmus.General.Parts
+﻿namespace Cadmus.General.Parts;
+
+/// <summary>
+/// A physical dimension used in <see cref="PhysicalSize"/>.
+/// </summary>
+public class PhysicalDimension
 {
     /// <summary>
-    /// A physical dimension used in <see cref="PhysicalSize"/>.
+    /// Gets or sets an optional tag used to categorize or group several
+    /// dimensions.
     /// </summary>
-    public class PhysicalDimension
+    public string? Tag { get; set; }
+
+    /// <summary>
+    /// Gets or sets the value.
+    /// </summary>
+    public float Value { get; set; }
+
+    /// <summary>
+    /// Gets or sets the measurement unit.
+    /// </summary>
+    public string? Unit { get; set; }
+
+    /// <summary>
+    /// Converts to string.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    public override string ToString()
     {
-        /// <summary>
-        /// Gets or sets an optional tag used to categorize or group several
-        /// dimensions.
-        /// </summary>
-        public string? Tag { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value.
-        /// </summary>
-        public float Value { get; set; }
-
-        /// <summary>
-        /// Gets or sets the measurement unit.
-        /// </summary>
-        public string? Unit { get; set; }
-
-        /// <summary>
-        /// Converts to string.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            return $"[{Tag}] {Value} {Unit}";
-        }
+        return $"[{Tag}] {Value} {Unit}";
     }
 }

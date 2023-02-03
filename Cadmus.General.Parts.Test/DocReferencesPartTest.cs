@@ -5,95 +5,94 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Cadmus.General.Parts.Test
+namespace Cadmus.General.Parts.Test;
+
+public sealed class DocReferencesPartTest
 {
-    public sealed class DocReferencesPartTest
+    private static DocReferencesPart GetPart(int count)
     {
-        private static DocReferencesPart GetPart(int count)
+        DocReferencesPart part = new()
         {
-            DocReferencesPart part = new()
+            ItemId = Guid.NewGuid().ToString(),
+            RoleId = "some-role",
+            CreatorId = "zeus",
+            UserId = "another",
+        };
+
+        for (int n = 1; n <= count; n++)
+        {
+            part.References.Add(new DocReference
             {
-                ItemId = Guid.NewGuid().ToString(),
-                RoleId = "some-role",
-                CreatorId = "zeus",
-                UserId = "another",
-            };
-
-            for (int n = 1; n <= count; n++)
-            {
-                part.References.Add(new DocReference
-                {
-                    Tag = "tag",
-                    Citation = n % 2 == 0? "Hes. th. 1.23" : "Hom. Il. 1.23",
-                    Note = "A note"
-                });
-            }
-
-            return part;
+                Tag = "tag",
+                Citation = n % 2 == 0? "Hes. th. 1.23" : "Hom. Il. 1.23",
+                Note = "A note"
+            });
         }
 
-        [Fact]
-        public void Part_Is_Serializable()
-        {
-            DocReferencesPart part = GetPart(2);
+        return part;
+    }
 
-            string json = TestHelper.SerializePart(part);
-            DocReferencesPart? part2 =
-                TestHelper.DeserializePart<DocReferencesPart>(json);
+    [Fact]
+    public void Part_Is_Serializable()
+    {
+        DocReferencesPart part = GetPart(2);
 
-            Assert.NotNull(part2);
-            Assert.Equal(part.Id, part2!.Id);
-            Assert.Equal(part.TypeId, part2.TypeId);
-            Assert.Equal(part.ItemId, part2.ItemId);
-            Assert.Equal(part.RoleId, part2.RoleId);
-            Assert.Equal(part.CreatorId, part2.CreatorId);
-            Assert.Equal(part.UserId, part2.UserId);
+        string json = TestHelper.SerializePart(part);
+        DocReferencesPart? part2 =
+            TestHelper.DeserializePart<DocReferencesPart>(json);
 
-            Assert.Equal(2, part.References.Count);
-            // TODO: details
-        }
+        Assert.NotNull(part2);
+        Assert.Equal(part.Id, part2!.Id);
+        Assert.Equal(part.TypeId, part2.TypeId);
+        Assert.Equal(part.ItemId, part2.ItemId);
+        Assert.Equal(part.RoleId, part2.RoleId);
+        Assert.Equal(part.CreatorId, part2.CreatorId);
+        Assert.Equal(part.UserId, part2.UserId);
 
-        [Fact]
-        public void GetDataPins_NoCitation_Ok()
-        {
-            DocReferencesPart part = GetPart(0);
+        Assert.Equal(2, part.References.Count);
+        // TODO: details
+    }
 
-            List<DataPin> pins = part.GetDataPins(null).ToList();
+    [Fact]
+    public void GetDataPins_NoCitation_Ok()
+    {
+        DocReferencesPart part = GetPart(0);
 
-            Assert.Single(pins);
-            DataPin pin = pins[0];
-            Assert.Equal("tot-count", pin.Name);
-            TestHelper.AssertPinIds(part, pin);
-            Assert.Equal("0", pin.Value);
-        }
+        List<DataPin> pins = part.GetDataPins(null).ToList();
 
-        [Fact]
-        public void GetDataPins_Dedications_Ok()
-        {
-            DocReferencesPart part = GetPart(3);
+        Assert.Single(pins);
+        DataPin pin = pins[0];
+        Assert.Equal("tot-count", pin.Name);
+        TestHelper.AssertPinIds(part, pin);
+        Assert.Equal("0", pin.Value);
+    }
 
-            List<DataPin> pins = part.GetDataPins(null).ToList();
+    [Fact]
+    public void GetDataPins_Dedications_Ok()
+    {
+        DocReferencesPart part = GetPart(3);
 
-            Assert.Equal(4, pins.Count);
+        List<DataPin> pins = part.GetDataPins(null).ToList();
 
-            DataPin? pin = pins.Find(p => p.Name == "tot-count");
-            Assert.NotNull(pin);
-            TestHelper.AssertPinIds(part, pin!);
-            Assert.Equal("3", pin?.Value);
+        Assert.Equal(4, pins.Count);
 
-            pin = pins.Find(p => p.Name == "citation" &&
-                p.Value == "Hom. Il. 1.23");
-            Assert.NotNull(pin);
-            TestHelper.AssertPinIds(part, pin!);
-            pin = pins.Find(p => p.Name == "citation" &&
-                p.Value == "Hes. th. 1.23");
-            Assert.NotNull(pin);
-            TestHelper.AssertPinIds(part, pin!);
+        DataPin? pin = pins.Find(p => p.Name == "tot-count");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+        Assert.Equal("3", pin?.Value);
 
-            pin = pins.Find(p => p.Name == "tag");
-            Assert.NotNull(pin);
-            TestHelper.AssertPinIds(part, pin!);
-            Assert.Equal("tag", pin?.Value);
-        }
+        pin = pins.Find(p => p.Name == "citation" &&
+            p.Value == "Hom. Il. 1.23");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+        pin = pins.Find(p => p.Name == "citation" &&
+            p.Value == "Hes. th. 1.23");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        pin = pins.Find(p => p.Name == "tag");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+        Assert.Equal("tag", pin?.Value);
     }
 }

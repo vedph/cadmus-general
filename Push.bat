@@ -8,3 +8,4 @@ set src=-Source https://api.nuget.org/v3/index.json
 %nu% push .\Cadmus.Seed.General.Parts\bin\Debug\*.nupkg %src%
 echo COMPLETED
 echo on
+pause

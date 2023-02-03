@@ -2,96 +2,95 @@
 using System.Linq;
 using System.Text;
 using Cadmus.Core;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 
-namespace Cadmus.General.Parts
+namespace Cadmus.General.Parts;
+
+/// <summary>
+/// Pin-based links part. This part is used to collect any number of
+/// pin-based dynamic lookup references, so that you can easily connect
+/// an item to one or more items via pins targeting any of its parts.
+/// <para>Tag: <c>it.vedph.pin-links</c>.</para>
+/// </summary>
+[Tag("it.vedph.pin-links")]
+public sealed class PinLinksPart : PartBase
 {
     /// <summary>
-    /// Pin-based links part. This part is used to collect any number of
-    /// pin-based dynamic lookup references, so that you can easily connect
-    /// an item to one or more items via pins targeting any of its parts.
-    /// <para>Tag: <c>it.vedph.pin-links</c>.</para>
+    /// Gets or sets the entries.
     /// </summary>
-    [Tag("it.vedph.pin-links")]
-    public sealed class PinLinksPart : PartBase
+    public List<PinLink> Links { get; set; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PinLinksPart"/> class.
+    /// </summary>
+    public PinLinksPart()
     {
-        /// <summary>
-        /// Gets or sets the entries.
-        /// </summary>
-        public List<PinLink> Links { get; set; }
+        Links = new List<PinLink>();
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PinLinksPart"/> class.
-        /// </summary>
-        public PinLinksPart()
+    /// <summary>
+    /// Get all the key=value pairs (pins) exposed by the implementor.
+    /// </summary>
+    /// <param name="item">The optional item. The item with its parts
+    /// can optionally be passed to this method for those parts requiring
+    /// to access further data.</param>
+    /// <returns>The pins: <c>tot-count</c> and a collection of pins with
+    /// these keys: <c>item-id</c> = target item ID.</returns>
+    public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
+    {
+        DataPinBuilder builder = new(new StandardDataPinTextFilter());
+
+        builder.Set("tot", Links?.Count ?? 0, false);
+
+        if (Links?.Count > 0)
+            builder.AddValues("item-id", Links.Select(l => l.ItemId)!);
+
+        return builder.Build(this);
+    }
+
+    /// <summary>
+    /// Gets the definitions of data pins used by the implementor.
+    /// </summary>
+    /// <returns>Data pins definitions.</returns>
+    public override IList<DataPinDefinition> GetDataPinDefinitions()
+    {
+        return new List<DataPinDefinition>(new[]
         {
-            Links = new List<PinLink>();
-        }
+            new DataPinDefinition(DataPinValueType.Integer,
+               "tot-count",
+               "The total count of entries."),
+            new DataPinDefinition(DataPinValueType.String,
+               "item-id",
+               "The target item IDs."),
+        });
+    }
 
-        /// <summary>
-        /// Get all the key=value pairs (pins) exposed by the implementor.
-        /// </summary>
-        /// <param name="item">The optional item. The item with its parts
-        /// can optionally be passed to this method for those parts requiring
-        /// to access further data.</param>
-        /// <returns>The pins: <c>tot-count</c> and a collection of pins with
-        /// these keys: <c>item-id</c> = target item ID.</returns>
-        public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
+    /// <summary>
+    /// Converts to string.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="string" /> that represents this instance.
+    /// </returns>
+    public override string ToString()
+    {
+        StringBuilder sb = new();
+
+        sb.Append("[PinLinks]");
+
+        if (Links?.Count > 0)
         {
-            DataPinBuilder builder = new(new StandardDataPinTextFilter());
-
-            builder.Set("tot", Links?.Count ?? 0, false);
-
-            if (Links?.Count > 0)
-                builder.AddValues("item-id", Links.Select(l => l.ItemId)!);
-
-            return builder.Build(this);
-        }
-
-        /// <summary>
-        /// Gets the definitions of data pins used by the implementor.
-        /// </summary>
-        /// <returns>Data pins definitions.</returns>
-        public override IList<DataPinDefinition> GetDataPinDefinitions()
-        {
-            return new List<DataPinDefinition>(new[]
+            sb.Append(' ');
+            int n = 0;
+            foreach (var entry in Links)
             {
-                new DataPinDefinition(DataPinValueType.Integer,
-                   "tot-count",
-                   "The total count of entries."),
-                new DataPinDefinition(DataPinValueType.String,
-                   "item-id",
-                   "The target item IDs."),
-            });
-        }
-
-        /// <summary>
-        /// Converts to string.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="string" /> that represents this instance.
-        /// </returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new();
-
-            sb.Append("[PinLinks]");
-
-            if (Links?.Count > 0)
-            {
-                sb.Append(' ');
-                int n = 0;
-                foreach (var entry in Links)
-                {
-                    if (++n > 3) break;
-                    if (n > 1) sb.Append("; ");
-                    sb.Append(entry);
-                }
-                if (Links.Count > 3)
-                    sb.Append("...(").Append(Links.Count).Append(')');
+                if (++n > 3) break;
+                if (n > 1) sb.Append("; ");
+                sb.Append(entry);
             }
-
-            return sb.ToString();
+            if (Links.Count > 3)
+                sb.Append("...(").Append(Links.Count).Append(')');
         }
+
+        return sb.ToString();
     }
 }
