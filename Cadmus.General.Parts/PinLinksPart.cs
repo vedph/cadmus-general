@@ -43,7 +43,18 @@ public sealed class PinLinksPart : PartBase
         builder.Set("tot", Links?.Count ?? 0, false);
 
         if (Links?.Count > 0)
-            builder.AddValues("item-id", Links.Select(l => l.ItemId)!);
+        {
+            foreach (PinLink link in Links
+                .Where(l => !string.IsNullOrEmpty(l.ItemId)))
+            {
+                builder.AddValue("item-id", link.ItemId);
+                if (!string.IsNullOrEmpty(link.Tag))
+                {
+                    builder.AddValue("tagged-item-id",
+                        $"{link.Tag} {link.ItemId}");
+                }
+            }
+        }
 
         return builder.Build(this);
     }
@@ -62,6 +73,9 @@ public sealed class PinLinksPart : PartBase
             new DataPinDefinition(DataPinValueType.String,
                "item-id",
                "The target item IDs."),
+            new DataPinDefinition(DataPinValueType.String,
+               "tagged-item-id",
+               "The target item IDs prefixed by tag and space."),
         });
     }
 

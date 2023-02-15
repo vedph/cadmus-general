@@ -259,6 +259,7 @@ ID: `it.vedph.pin-links`
   - roleId (`string`)
   - name\* (`string`)
   - value\* (`string`)
+  - tag (`string`)
 
 ### TiledTextLayerPart
 
@@ -289,6 +290,15 @@ ID: `fr.it.vedph.comment`
 - keywords (`IndexKeyword[]`)
 
 ## History
+
+### 4.0.2
+
+- 2023-02-15:
+  - added an optional `tag` to `PinLink`.
+
+### 4.0.1
+
+- refactored infrastructure.
 
 ### 3.0.2
 

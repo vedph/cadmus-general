@@ -43,6 +43,11 @@ public class PinLink
     public string? Value { get; set; }
 
     /// <summary>
+    /// Gets or sets an optional tag for this link.
+    /// </summary>
+    public string? Tag { get; set; }
+
+    /// <summary>
     /// Converts to string.
     /// </summary>
     /// <returns>
