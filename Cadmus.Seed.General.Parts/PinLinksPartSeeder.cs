@@ -15,7 +15,7 @@ namespace Cadmus.Seed.General.Parts;
 [Tag("seed.it.vedph.pin-links")]
 public sealed class PinLinksPartSeeder : PartSeederBase
 {
-    static private List<PinLink> GetLinks(int count)
+    static internal List<PinLink> GetLinks(int count)
     {
         List<PinLink> links = new(count);
         for (int n = 1; n <= count; n++)

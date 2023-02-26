@@ -23,7 +23,11 @@
     - [TokenTextLayerPart](#tokentextlayerpart)
   - [Fragments](#fragments)
     - [CommentLayerFragment](#commentlayerfragment)
+    - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
+    - [4.1.0](#410)
+    - [4.0.2](#402)
+    - [4.0.1](#401)
     - [3.0.2](#302)
     - [3.0.0](#300)
     - [2.2.2](#222)
@@ -288,6 +292,13 @@ ID: `fr.it.vedph.comment`
 - externalIds (`AssertedId[]`)
 - categories (`string[]`)
 - keywords (`IndexKeyword[]`)
+
+### PinLinksLayerFragment
+
+ID: `fr.it.vedph.pin-links`
+
+- location (`string`)
+- links (`PinLink[]`)
 
 ## History
 
