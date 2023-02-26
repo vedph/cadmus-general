@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Cadmus.Core;
+using Cadmus.Refs.Bricks;
 using Fusi.Tools.Configuration;
 
 namespace Cadmus.General.Parts;
@@ -28,25 +29,25 @@ public sealed class HistoricalEventsPart : PartBase
     private static void AddChronotopePins(HistoricalEvent entry,
         DataPinBuilder builder)
     {
-        if (entry.Chronotope?.Place?.Value != null)
+        foreach (AssertedChronotope c in entry.Chronotopes)
         {
-            builder.AddValue("place",
-                entry.Chronotope.Place.Value);
+            if (c.Place?.Value != null)
+            {
+                builder.AddValue("place", c.Place.Value);
 
-            builder.AddValue("hasPlace@" + entry.Eid,
-                entry.Chronotope.Place.Value);
-        }
+                builder.AddValue("hasPlace@" + entry.Eid,
+                    c.Place.Value);
+            }
 
-        if (entry.Chronotope?.Date is not null)
-        {
-            double sortValue =
-                entry.Chronotope.Date.GetSortValue();
-            builder.AddValue("date-value", sortValue);
+            if (c.Date is not null)
+            {
+                double sortValue = c.Date.GetSortValue();
+                builder.AddValue("date-value", sortValue);
 
-            builder.AddValue("hasDate@" + entry.Eid,
-                entry.Chronotope.Date.ToString());
-            builder.AddValue("hasDateValue@" + entry.Eid,
-                sortValue);
+                builder.AddValue("hasDate@" + entry.Eid, c.Date.ToString());
+                builder.AddValue("hasDateValue@" + entry.Eid,
+                    sortValue);
+            }
         }
     }
 
@@ -82,7 +83,7 @@ public sealed class HistoricalEventsPart : PartBase
                 builder.AddValue("eid", entry.Eid);
                 builder.AddValue("type", entry.Type);
 
-                if (entry.Chronotope != null)
+                if (entry.Chronotopes?.Count > 0)
                     AddChronotopePins(entry, builder);
 
                 // event's type

@@ -184,7 +184,7 @@ ID: `it.vedph.historical-events`
 - events (`HistoricalEvent[]`):
   - eid (`string`)
   - type (`string`)
-  - chronotope (`AssertedChronotope`)
+  - chronotopes (`AssertedChronotope[]`)
   - assertion (`Assertion`)
   - description (`string`)
   - relatedEntities (`RelatedEntity[]`):
@@ -290,6 +290,10 @@ ID: `fr.it.vedph.comment`
 - keywords (`IndexKeyword[]`)
 
 ## History
+
+### 4.1.0
+
+- 2023-02-26: many chronotopes per historical event.
 
 ### 4.0.2
 

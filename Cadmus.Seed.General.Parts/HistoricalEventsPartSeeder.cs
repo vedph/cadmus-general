@@ -41,7 +41,7 @@ public sealed class HistoricalEventsPartSeeder : PartSeederBase
             events.Add(new Faker<HistoricalEvent>()
                 .RuleFor(e => e.Eid, "events/" + Guid.NewGuid().ToString("N"))
                 .RuleFor(e => e.Type, even? "death" : "birth")
-                .RuleFor(e => e.Chronotope, SeedHelper.GetAssertedChronotopes(1)[0])
+                .RuleFor(e => e.Chronotopes, SeedHelper.GetAssertedChronotopes(1))
                 .RuleFor(e => e.Assertion, f => new Assertion
                 {
                     Tag = "tag",

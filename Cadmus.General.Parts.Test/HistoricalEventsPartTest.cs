@@ -83,10 +83,15 @@ public sealed class HistoricalEventsPartTest
             {
                 Eid = "n" + n,
                 Type = even ? "even" : "odd",
-                Chronotope = new AssertedChronotope
-                {
-                    Place = new AssertedPlace { Value = even ? "Even" : "Odd" },
-                    Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD")!)
+                Chronotopes = new List<AssertedChronotope>{
+                    new AssertedChronotope
+                    {
+                        Place = new AssertedPlace
+                        {
+                            Value = even ? "Even" : "Odd"
+                        },
+                        Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD")!)
+                    }
                 },
                 RelatedEntities = even
                     ? new List<RelatedEntity>{

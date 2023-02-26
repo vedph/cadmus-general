@@ -22,7 +22,7 @@ public class HistoricalEvent
     /// <summary>
     /// Gets or sets the chronotope.
     /// </summary>
-    public AssertedChronotope? Chronotope { get; set; }
+    public List<AssertedChronotope> Chronotopes { get; set; }
 
     /// <summary>
     /// Gets or sets the assertion related to this event.
@@ -49,6 +49,7 @@ public class HistoricalEvent
     /// </summary>
     public HistoricalEvent()
     {
+        Chronotopes = new List<AssertedChronotope>();
         RelatedEntities = new List<RelatedEntity>();
     }
 
@@ -65,8 +66,8 @@ public class HistoricalEvent
         if (!string.IsNullOrEmpty(Eid)) sb.Append('#').Append(Eid);
         if (!string.IsNullOrEmpty(Type))
             sb.Append(" [").Append(Type).Append(']');
-        if (Chronotope != null)
-            sb.Append(": ").Append(Chronotope);
+        if (Chronotopes?.Count > 0)
+            sb.Append(": ").AppendJoin("; ", Chronotopes);
 
         return sb.ToString();
     }
