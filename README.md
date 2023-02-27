@@ -188,6 +188,7 @@ ID: `it.vedph.historical-events`
 - events (`HistoricalEvent[]`):
   - eid (`string`)
   - type (`string`)
+  - tag (`string`)
   - chronotopes (`AssertedChronotope[]`)
   - assertion (`Assertion`)
   - description (`string`)
@@ -301,6 +302,10 @@ ID: `fr.it.vedph.pin-links`
 - links (`PinLink[]`)
 
 ## History
+
+### 4.1.1
+
+- 2023-02-27: added an optional `tag` to historical event.
 
 ### 4.1.0
 

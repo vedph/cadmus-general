@@ -35,8 +35,11 @@ public sealed class HistoricalEventsPart : PartBase
             {
                 builder.AddValue("place", c.Place.Value);
 
-                builder.AddValue("hasPlace@" + entry.Eid,
-                    c.Place.Value);
+                if (entry.Eid != null)
+                {
+                    builder.AddValue("hasPlace@" + entry.Eid,
+                        c.Place.Value);
+                }
             }
 
             if (c.Date is not null)
@@ -44,9 +47,12 @@ public sealed class HistoricalEventsPart : PartBase
                 double sortValue = c.Date.GetSortValue();
                 builder.AddValue("date-value", sortValue);
 
-                builder.AddValue("hasDate@" + entry.Eid, c.Date.ToString());
-                builder.AddValue("hasDateValue@" + entry.Eid,
-                    sortValue);
+                if (entry.Eid != null)
+                {
+                    builder.AddValue("hasDate@" + entry.Eid, c.Date.ToString());
+                    builder.AddValue("hasDateValue@" + entry.Eid,
+                        sortValue);
+                }
             }
         }
     }
@@ -87,7 +93,14 @@ public sealed class HistoricalEventsPart : PartBase
                     AddChronotopePins(entry, builder);
 
                 // event's type
-                builder.AddValue("type@" + entry.Eid, entry.Type);
+                if (entry.Eid != null)
+                {
+                    if (!string.IsNullOrEmpty(entry.Type))
+                        builder.AddValue("type@" + entry.Eid, entry.Type);
+                    if (!string.IsNullOrEmpty(entry.Tag))
+                        builder.AddValue("tag@" + entry.Eid, entry.Tag);
+                }
+
                 // related entries
                 if (entry.RelatedEntities?.Count > 0)
                     AddRelatedEntriesPins(entry, builder);
@@ -125,6 +138,14 @@ public sealed class HistoricalEventsPart : PartBase
                "The events date values.",
                "M"),
             // semantic
+            new DataPinDefinition(DataPinValueType.String,
+               "type@EID",
+               "The event's type.",
+               "M"),
+            new DataPinDefinition(DataPinValueType.String,
+               "tag@EID",
+               "The event's tag.",
+               "M"),
             new DataPinDefinition(DataPinValueType.String,
                "hasPlace@EID",
                "The event's place.",

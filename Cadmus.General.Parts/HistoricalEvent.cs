@@ -20,6 +20,12 @@ public class HistoricalEvent
     public string? Type { get; set; }
 
     /// <summary>
+    /// Gets or sets an optional tag used to classify or group the event in
+    /// some way.
+    /// </summary>
+    public string? Tag { get; set; }
+
+    /// <summary>
     /// Gets or sets the chronotope.
     /// </summary>
     public List<AssertedChronotope> Chronotopes { get; set; }
