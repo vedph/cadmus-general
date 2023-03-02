@@ -27,9 +27,9 @@ public class GalleryImageAnnotation
     public string Selector { get; set; }
 
     /// <summary>
-    /// Gets or sets an optional note in the annotation's body.
+    /// Gets or sets an optional set of notes in the annotation's body.
     /// </summary>
-    public string? Note { get; set; }
+    public List<string>? Notes { get; set; }
 
     /// <summary>
     /// Gets or sets an optional set of tags in the annotation's body.
@@ -44,6 +44,7 @@ public class GalleryImageAnnotation
     {
         Id = "#" + Guid.NewGuid().ToString();
         Selector = "";
+        Notes = new List<string>();
         Tags = new List<string>();
     }
 

@@ -26,6 +26,7 @@
     - [CommentLayerFragment](#commentlayerfragment)
     - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
+    - [4.1.3](#413)
     - [4.1.2](#412)
     - [4.1.1](#411)
     - [4.1.0](#410)
@@ -320,6 +321,12 @@ ID: `fr.it.vedph.pin-links`
 - links (`PinLink[]`)
 
 ## History
+
+### 4.1.4
+
+- 2023-02-03:
+  - fixed missing target in gallery image annotations seeder.
+  - multiple notes per annotation.
 
 ### 4.1.2
 

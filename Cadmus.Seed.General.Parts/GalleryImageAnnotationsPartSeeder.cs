@@ -3,7 +3,6 @@ using Cadmus.Core;
 using Cadmus.General.Parts;
 using Fusi.Tools.Configuration;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -19,21 +18,35 @@ public sealed class GalleryImageAnnotationsPartSeeder : PartSeederBase
 {
     private static int _nr = 0;
 
+    private static string BuildUriPrefix(int width, int height) =>
+        $"https://loremflickr.com/{width}/{height}?lock=";
+
     private static List<GalleryImageAnnotation> GetAnnotations(int count, Faker f)
     {
+        // annotations are built according to the brick's MockGalleryService at
+        // https://github.com/vedph/cadmus-bricks-shell/blob/master/projects/myrmidon/cadmus-img-gallery/src/lib/services/mock-gallery.service.ts
+
         List<GalleryImageAnnotation> annotations = new(count);
         for (int i = 0; i < count; i++)
         {
             int n = 0;
             if (f.Random.Bool(0.3F)) n = Interlocked.Increment(ref _nr);
 
+            string imageId = $"{_nr:00000}";
             annotations.Add(new GalleryImageAnnotation
             {
                 Id = "#" + Guid.NewGuid().ToString(),
-                Selector = $"xywh=pixel:{f.Random.Number(0, 100)}," +
-                    $"{f.Random.Number(0, 100)},{f.Random.Number(10, 100)}," +
-                    $"{f.Random.Number(10, 100)}",
-                Note = f.Lorem.Sentence(),
+                Target = new GalleryImage
+                {
+                    Id = imageId,
+                    Title = $"image #{_nr:00000}",
+                    Uri = BuildUriPrefix(300, 400) + imageId
+                    // we do not care about description here
+                },
+                Selector = $"xywh=pixel:{f.Random.Number(5, 100)}," +
+                    $"{f.Random.Number(5, 100)},{f.Random.Number(20, 100)}," +
+                    $"{f.Random.Number(20, 100)}",
+                Notes = new List<string> { f.Lorem.Sentence() },
                 Tags = n > 0? new List<string> { $"eid_img-anno-{n}"} : null
             });
         }
