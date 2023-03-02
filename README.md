@@ -9,6 +9,7 @@
     - [DocReferencesPart](#docreferencespart)
     - [ExtBibliographyPart](#extbibliographypart)
     - [ExternalIdsPart](#externalidspart)
+    - [GalleryImageAnnotationsPart](#galleryimageannotationspart)
     - [HierarchyPart](#hierarchypart)
     - [HistoricalDatePart](#historicaldatepart)
     - [HistoricalEventsPart](#historicaleventspart)
@@ -25,6 +26,8 @@
     - [CommentLayerFragment](#commentlayerfragment)
     - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
+    - [4.1.2](#412)
+    - [4.1.1](#411)
     - [4.1.0](#410)
     - [4.0.2](#402)
     - [4.0.1](#401)
@@ -153,6 +156,21 @@ ID: `it.vedph.external-ids`
     - rank\* (`string`)
     - note (`string`)
     - references (`DocReference[]`)
+
+### GalleryImageAnnotationsPart
+
+ID: `it.vedph.gallery-image-annotations`
+
+- annotations (`GalleryImageAnnotation[]`):
+  - id\* (`string`)
+  - target\* (`GalleryImage`):
+    - id\* (`string`)
+    - uri\* (`string`)
+    - title\* (`string`)
+    - description (`string`)
+  - selector\* (`string`)
+  - note (`string`)
+  - tags (`string[]`)
 
 ### HierarchyPart
 
@@ -302,6 +320,10 @@ ID: `fr.it.vedph.pin-links`
 - links (`PinLink[]`)
 
 ## History
+
+### 4.1.2
+
+- 2023-02-03: added `GalleryImageAnnotationsPart`.
 
 ### 4.1.1
 
