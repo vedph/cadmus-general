@@ -9,7 +9,6 @@
     - [DocReferencesPart](#docreferencespart)
     - [ExtBibliographyPart](#extbibliographypart)
     - [ExternalIdsPart](#externalidspart)
-    - [GalleryImageAnnotationsPart](#galleryimageannotationspart)
     - [HierarchyPart](#hierarchypart)
     - [HistoricalDatePart](#historicaldatepart)
     - [HistoricalEventsPart](#historicaleventspart)
@@ -157,21 +156,6 @@ ID: `it.vedph.external-ids`
     - rank\* (`string`)
     - note (`string`)
     - references (`DocReference[]`)
-
-### GalleryImageAnnotationsPart
-
-ID: `it.vedph.gallery-image-annotations`
-
-- annotations (`GalleryImageAnnotation[]`):
-  - id\* (`string`)
-  - target\* (`GalleryImage`):
-    - id\* (`string`)
-    - uri\* (`string`)
-    - title\* (`string`)
-    - description (`string`)
-  - selector\* (`string`)
-  - note (`string`)
-  - tags (`string[]`)
 
 ### HierarchyPart
 
@@ -321,6 +305,10 @@ ID: `fr.it.vedph.pin-links`
 - links (`PinLink[]`)
 
 ## History
+
+### 4.2.0
+
+- 2023-03-11: moved `GalleryImageAnnotationsPart` to its own library under Cadmus imaging.
 
 ### 4.1.4
 
