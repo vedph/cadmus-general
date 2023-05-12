@@ -25,7 +25,9 @@
     - [CommentLayerFragment](#commentlayerfragment)
     - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
-    - [4.1.3](#413)
+    - [4.2.1](#421)
+    - [4.2.0](#420)
+    - [4.1.4](#414)
     - [4.1.2](#412)
     - [4.1.1](#411)
     - [4.1.0](#410)
@@ -305,6 +307,10 @@ ID: `fr.it.vedph.pin-links`
 - links (`PinLink[]`)
 
 ## History
+
+### 4.2.1
+
+- 2023-05-12: updated packages.
 
 ### 4.2.0
 
