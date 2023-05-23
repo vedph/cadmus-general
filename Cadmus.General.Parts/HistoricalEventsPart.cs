@@ -62,8 +62,9 @@ public sealed class HistoricalEventsPart : PartBase
     {
         foreach (RelatedEntity entity in entry.RelatedEntities)
         {
-            builder.AddValue("eid2@" + entry.Eid, entity.Id);
-            builder.AddValue($"rel@{entry.Eid}@{entity.Id}", entity.Relation);
+            builder.AddValue("eid2@" + entry.Eid, entity.Id?.Target?.Gid);
+            builder.AddValue($"rel@{entry.Eid}@{entity.Id?.Target?.Gid}",
+                entity.Relation);
         }
     }
 

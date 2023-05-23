@@ -90,7 +90,7 @@ public sealed class CommentLayerFragmentSeeder : FragmentSeederBase,
             .RuleFor(p => p.Tag, f => f.PickRandom("scholarly", "general"))
             .RuleFor(p => p.Text, f => f.Lorem.Sentence())
             .RuleFor(p => p.References, SeedHelper.GetDocReferences(1, 3))
-            .RuleFor(p => p.ExternalIds, SeedHelper.GetAssertedIds(1, 3))
+            .RuleFor(p => p.Links, SeedHelper.GetAssertedCompositeIds(1, 3))
             .RuleFor(p => p.Categories, f => new List<string>(
                 new[] { f.PickRandom(_options!.Categories) }))
             .RuleFor(p => p.Keywords, f => GetKeywords(f.Random.Number(1, 3)))

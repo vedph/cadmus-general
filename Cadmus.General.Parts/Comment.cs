@@ -32,9 +32,9 @@ public class Comment : IHasText
     public List<DocReference> References { get; set; }
 
     /// <summary>
-    /// Gets or sets the optional external IDs related to this comment.
+    /// Gets or sets the optional links associated to this comment.
     /// </summary>
-    public List<AssertedId> ExternalIds { get; set; }
+    public List<AssertedCompositeId> Links { get; set; }
 
     /// <summary>
     /// Gets or sets the optional categories.
@@ -53,7 +53,7 @@ public class Comment : IHasText
     public Comment()
     {
         References = new List<DocReference>();
-        ExternalIds = new List<AssertedId>();
+        Links = new List<AssertedCompositeId>();
         Categories = new List<string>();
         Keywords = new List<IndexKeyword>();
     }
@@ -82,8 +82,8 @@ public class Comment : IHasText
 
         if (References?.Count > 0)
             sb.Append(" [R=").Append(References.Count).Append(']');
-        if (ExternalIds?.Count > 0)
-            sb.Append(" [X=").Append(ExternalIds.Count).Append(']');
+        if (Links?.Count > 0)
+            sb.Append(" [X=").Append(Links.Count).Append(']');
         if (Categories?.Count > 0)
             sb.Append(" [C=").Append(Categories.Count).Append(']');
         if (Keywords?.Count > 0)
@@ -127,9 +127,12 @@ public class Comment : IHasText
                 filterOptions: true);
         }
 
-        // fr.id
-        if (ExternalIds?.Count > 0)
-            builder.AddValues(prefix + "id", ExternalIds.Select(e => e.Value!));
+        // fr.id (from link target GID)
+        if (Links?.Count > 0)
+        {
+            builder.AddValues(prefix + "id",
+                Links.Where(e => e.Target?.Gid != null).Select(e => e.Target!.Gid!));
+        }
 
         // fr.cat
         if (Categories?.Count > 0)

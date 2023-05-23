@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using Cadmus.Core;
+using Cadmus.Refs.Bricks;
 using Fusi.Tools.Configuration;
 
 namespace Cadmus.General.Parts;
@@ -18,14 +19,14 @@ public sealed class PinLinksPart : PartBase
     /// <summary>
     /// Gets or sets the entries.
     /// </summary>
-    public List<PinLink> Links { get; set; }
+    public List<AssertedCompositeId> Links { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PinLinksPart"/> class.
     /// </summary>
     public PinLinksPart()
     {
-        Links = new List<PinLink>();
+        Links = new List<AssertedCompositeId>();
     }
 
     /// <summary>
@@ -44,15 +45,18 @@ public sealed class PinLinksPart : PartBase
 
         if (Links?.Count > 0)
         {
-            foreach (PinLink link in Links
-                .Where(l => !string.IsNullOrEmpty(l.ItemId)))
+            foreach (PinTarget? target in Links.Where(l => l.Target != null)
+                .Select(l => l.Target))
             {
-                builder.AddValue("item-id", link.ItemId);
-                if (!string.IsNullOrEmpty(link.Tag))
-                {
-                    builder.AddValue("tagged-item-id",
-                        $"{link.Tag} {link.ItemId}");
-                }
+                builder.AddValue("gid", target?.Gid);
+                builder.AddValue("label",
+                    target?.Label, filter: true, filterOptions: true);
+                builder.AddValue("item-id", target?.ItemId);
+                //if (!string.IsNullOrEmpty(link.Tag))
+                //{
+                //    builder.AddValue("tagged-item-id",
+                //        $"{link.Tag} {link.ItemId}");
+                //}
             }
         }
 
@@ -71,11 +75,21 @@ public sealed class PinLinksPart : PartBase
                "tot-count",
                "The total count of entries."),
             new DataPinDefinition(DataPinValueType.String,
-               "item-id",
-               "The target item IDs."),
+               "gid",
+               "The target global ID.",
+               "M"),
             new DataPinDefinition(DataPinValueType.String,
-               "tagged-item-id",
-               "The target item IDs prefixed by tag and space."),
+               "label",
+               "The target label.",
+               "MF"),
+            new DataPinDefinition(DataPinValueType.String,
+               "item-id",
+               "The target item IDs.",
+               "M"),
+            //new DataPinDefinition(DataPinValueType.String,
+            //   "tagged-item-id",
+            //   "The target item IDs prefixed by tag and space.",
+            //   "M")
         });
     }
 

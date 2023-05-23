@@ -1,4 +1,6 @@
-﻿namespace Cadmus.General.Parts;
+﻿using Cadmus.Refs.Bricks;
+
+namespace Cadmus.General.Parts;
 
 /// <summary>
 /// Any entity related to an <see cref="HistoricalEvent"/>.
@@ -13,7 +15,7 @@ public class RelatedEntity
     /// <summary>
     /// Gets or sets the entity ID.
     /// </summary>
-    public string? Id { get; set; }
+    public AssertedCompositeId? Id { get; set; }
 
     /// <summary>
     /// Converts to string.

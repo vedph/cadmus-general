@@ -25,6 +25,9 @@
     - [CommentLayerFragment](#commentlayerfragment)
     - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
+    - [5.0.2](#502)
+    - [5.0.1](#501)
+    - [5.0.0](#500)
     - [4.2.1](#421)
     - [4.2.0](#420)
     - [4.1.4](#414)
@@ -120,9 +123,22 @@ ID: `it.vedph.comment`
 - tag (`string`)
 - text (`string`)
 - references (`DocReference[]`)
-- externalIds (`AssertedId[]`)
+- links (`AssertedCompositeId[]`):
+  - target (`PinTarget`):
+    - gid\* (`string`)
+    - label\* (`string`)
+    - itemId (`string`)
+    - partId (`string`)
+    - partTypeId (`string`)
+    - roleId (`string`)
+    - name (`string`)
+    - value (`string`)
+  - scope (`string`)
+  - assertion (`Assertion`)
 - categories (`string[]`)
 - keywords (`IndexKeyword[]`)
+
+>⚠️ Note: in versions before 5, `links` was `externalIds` of type `AssertedId[]`.
 
 ### DocReferencesPart
 
@@ -199,8 +215,10 @@ ID: `it.vedph.historical-events`
   - description (`string`)
   - relatedEntities (`RelatedEntity[]`):
     - relation (`string`)
-    - id (`string`)
+    - id (`AssertedCompositeId`)
   - note (`string`)
+
+>⚠️ Note: in versions before 5, `id` was of type `string`.
 
 ### IndexKeywordsPart
 
@@ -261,15 +279,12 @@ ID: `it.vedph.numbering`
 
 ID: `it.vedph.pin-links`
 
-- links (`PinLink[]`):
-  - label\* (`string`)
-  - itemId\* (`string`)
-  - partId\* (`string`)
-  - partTypeId\* (`string`)
-  - roleId (`string`)
-  - name\* (`string`)
-  - value\* (`string`)
+- links (`AssertedCompositeId[]`)
+  - scope (`string`)
   - tag (`string`)
+  - assertion (`Assertion`)
+
+>⚠️ Note: in versions before 5, `links` was of type `AssertedId[]`.
 
 ### TiledTextLayerPart
 
@@ -295,18 +310,37 @@ ID: `fr.it.vedph.comment`
 - tag (`string`)
 - text (`string`)
 - references (`DocReference[]`)
-- externalIds (`AssertedId[]`)
+- links (`AssertedCompositeId[]`)
 - categories (`string[]`)
 - keywords (`IndexKeyword[]`)
+
+>⚠️ Note: in versions before 5, `links` was `externalIds` of type `AssertedId[]`.
 
 ### PinLinksLayerFragment
 
 ID: `fr.it.vedph.pin-links`
 
 - location (`string`)
-- links (`PinLink[]`)
+- links (`AssertedCompositeId[]`)
+
+>⚠️ Note: in versions before 5, `links` was of type `AssertedId[]`.
 
 ## History
+
+### 5.0.2
+
+- 2023-05-22: breaking changes:
+  - refactored comment in comments part and fragment: `ExternalIds` replaced with `Links`, a list of `AssertedCompositeId` (from bricks).
+
+### 5.0.1
+
+- 2023-05-22: breaking changes:
+  - refactored related entity in events part: relation ID is now of type `AssertedCompositeId` (from bricks).
+
+### 5.0.0
+
+- 2023-05-22: breaking changes:
+  - refactored pin links part and pin links fragment: links are now of type `AssertedCompositeId` (from bricks).
 
 ### 4.2.1
 

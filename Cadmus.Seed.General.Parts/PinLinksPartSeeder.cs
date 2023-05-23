@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using Cadmus.Core;
 using Cadmus.General.Parts;
+using Cadmus.Refs.Bricks;
 using Fusi.Tools.Configuration;
 using System;
 using System.Collections.Generic;
@@ -15,18 +16,18 @@ namespace Cadmus.Seed.General.Parts;
 [Tag("seed.it.vedph.pin-links")]
 public sealed class PinLinksPartSeeder : PartSeederBase
 {
-    static internal List<PinLink> GetLinks(int count)
+    static internal List<AssertedCompositeId> GetLinks(int count)
     {
-        List<PinLink> links = new(count);
+        List<AssertedCompositeId> links = new(count);
         for (int n = 1; n <= count; n++)
         {
-            links.Add(new PinLink
+            links.Add(new AssertedCompositeId
             {
-                Label = $"Mock item #{n}",
-                ItemId = Guid.NewGuid().ToString(),
-                PartId= Guid.NewGuid().ToString(),
-                Name = "fake",
-                Value = $"{n}"
+                Target = new PinTarget
+                {
+                    Gid = $"http://some-resources/{n}",
+                    Label = $"Mock resource #{n}"
+                }
             });
         }
         return links;

@@ -52,7 +52,7 @@ public sealed class CommentLayerFragmentTest
         Assert.Equal(fr.Tag, fr2.Tag);
         Assert.Equal(fr.Text, fr2.Text);
         Assert.Equal(fr.References.Count, fr2.References.Count);
-        Assert.Equal(fr.ExternalIds.Count, fr2.ExternalIds.Count);
+        Assert.Equal(fr.Links.Count, fr2.Links.Count);
         Assert.Equal(fr.Categories.Count, fr2.Categories.Count);
         Assert.Equal(fr.Keywords.Count, fr2.Keywords.Count);
     }
@@ -72,7 +72,14 @@ public sealed class CommentLayerFragmentTest
             {
                 Citation = $"w{n}"
             });
-            fr.ExternalIds.Add(new AssertedId { Value = $"i{n}" });
+            fr.Links.Add(new AssertedCompositeId
+            {
+                Target = new PinTarget
+                {
+                    Gid = $"i{n}",
+                    Label = $"i{n}"
+                }
+            });
             fr.Categories.Add($"c{n}");
             fr.Keywords.Add(new IndexKeyword
             {

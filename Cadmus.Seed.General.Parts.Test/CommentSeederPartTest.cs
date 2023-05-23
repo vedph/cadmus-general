@@ -41,7 +41,7 @@ public sealed class CommentPartSeederTest
 
         TestHelper.AssertPartMetadata(cp!);
         Assert.NotEmpty(cp!.References);
-        Assert.NotEmpty(cp!.ExternalIds);
+        Assert.NotEmpty(cp!.Links);
         Assert.NotEmpty(cp!.Categories);
         Assert.NotEmpty(cp!.Keywords);
     }

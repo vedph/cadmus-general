@@ -61,6 +61,32 @@ internal static class SeedHelper
     }
 
     /// <summary>
+    /// Gets a list of asserted composite IDs.
+    /// </summary>
+    /// <param name="min">The min number of IDs to get.</param>
+    /// <param name="max">The max number of IDs to get.</param>
+    /// <returns>IDs.</returns>
+    public static List<AssertedCompositeId> GetAssertedCompositeIds(
+        int min, int max)
+    {
+        List<AssertedCompositeId> ids = new();
+
+        for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
+        {
+            ids.Add(new AssertedCompositeId
+            {
+                Target = new PinTarget
+                {
+                    Gid = $"http://www.resources.org/n{n}",
+                    Label = $"res:n{n}"
+                }
+            });
+        }
+
+        return ids;
+    }
+
+    /// <summary>
     /// Gets a list of asserted chronotopes.
     /// </summary>
     /// <param name="count">The count.</param>

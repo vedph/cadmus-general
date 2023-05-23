@@ -76,7 +76,10 @@ public sealed class CommentPartTest
             {
                 Citation = $"w{n}"
             });
-            part.ExternalIds.Add(new AssertedId { Value = $"i{n}" });
+            part.Links.Add(new AssertedCompositeId
+            {
+                Target = new PinTarget { Gid = $"i{n}", Label = $"i{n}" }
+            });
             part.Categories.Add($"c{n}");
             part.Keywords.Add(new IndexKeyword
             {

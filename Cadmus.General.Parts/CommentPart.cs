@@ -49,10 +49,10 @@ public sealed class CommentPart : PartBase, IHasText
     /// <summary>
     /// Gets or sets the optional external IDs related to this comment.
     /// </summary>
-    public List<AssertedId> ExternalIds
+    public List<AssertedCompositeId> Links
     {
-        get { return _comment.ExternalIds; }
-        set { _comment.ExternalIds = value; }
+        get { return _comment.Links; }
+        set { _comment.Links = value; }
     }
 
     /// <summary>

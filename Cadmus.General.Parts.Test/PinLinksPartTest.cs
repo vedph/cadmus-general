@@ -1,4 +1,5 @@
 ﻿using Cadmus.Core;
+using Cadmus.Refs.Bricks;
 using Cadmus.Seed.General.Parts;
 using System;
 using System.Collections.Generic;
@@ -76,28 +77,45 @@ public sealed class PinLinksPartTest
 
         for (int n = 1; n <= 3; n++)
         {
-            part.Links.Add(new PinLink
+            part.Links.Add(new AssertedCompositeId
             {
-                Label = $"Link #{n}",
-                ItemId = $"i{n}",
-                PartId = $"p{n}",
-                RoleId = $"r{n}",
-                Name = "a",
-                Value = $"{n}"
+                Target = new PinTarget
+                {
+                    Gid = $"x{n}",
+                    Label = $"Link #{n}.",
+                    ItemId = $"i{n}",
+                    PartId = $"p{n}",
+                    RoleId = $"r{n}",
+                    Name = "a",
+                    Value = "eid"
+                }
             });
         }
 
         List<DataPin> pins = part.GetDataPins(null).ToList();
 
-        Assert.Equal(4, pins.Count);
+        Assert.Equal(1 + 3 * 3, pins.Count);
 
         DataPin? pin = pins.Find(p => p.Name == "tot-count");
         Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
+        TestHelper.AssertPinIds(part, pin);
         Assert.Equal("3", pin!.Value);
 
         for (int n = 1; n <= 3; n++)
         {
+            // gid
+            pin = pins.Find(p => p.Name == "gid" &&
+                p.Value == $"x{n}");
+            Assert.NotNull(pin);
+            TestHelper.AssertPinIds(part, pin);
+
+            // label
+            pin = pins.Find(p => p.Name == "label" &&
+                p.Value == $"link {n}");
+            Assert.NotNull(pin);
+            TestHelper.AssertPinIds(part, pin);
+
+            // item-id
             pin = pins.Find(p => p.Name == "item-id" && p.Value == $"i{n}");
             Assert.NotNull(pin);
             TestHelper.AssertPinIds(part, pin!);

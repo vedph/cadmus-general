@@ -25,7 +25,14 @@ public sealed class HistoricalEventsPartSeeder : PartSeederBase
             entities.Add(new RelatedEntity
             {
                 Relation = relation,
-                Id = prefix + Guid.NewGuid().ToString("N")
+                Id = new AssertedCompositeId
+                {
+                    Target = new PinTarget
+                    {
+                        Gid = $"{prefix}{Guid.NewGuid()}/{n}",
+                        Label = $"{prefix}{n}"
+                    }
+                }
             });
         }
         return entities;

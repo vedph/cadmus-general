@@ -51,7 +51,7 @@ public sealed class CommentLayerFragmentSeederTest
         Assert.NotNull(fr.Tag);
         Assert.NotNull(fr.Text);
         Assert.NotEmpty(fr.References);
-        Assert.NotEmpty(fr.ExternalIds);
+        Assert.NotEmpty(fr.Links);
         Assert.NotEmpty(fr.Categories);
         Assert.NotEmpty(fr.Keywords);
     }

@@ -94,11 +94,19 @@ public sealed class HistoricalEventsPartTest
                     }
                 },
                 RelatedEntities = even
-                    ? new List<RelatedEntity>{
+                    ? new List<RelatedEntity>
+                    {
                         new RelatedEntity
                         {
                             Relation = "evenness",
-                            Id = "e" + n
+                            Id = new AssertedCompositeId
+                            {
+                                Target = new PinTarget
+                                {
+                                    Gid = $"e{n}",
+                                    Label = $"e{n}"
+                                },
+                            }
                         }
                     } : new List<RelatedEntity>()
             });

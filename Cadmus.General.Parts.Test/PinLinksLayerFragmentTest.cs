@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Xunit;
 using Cadmus.Seed.General.Parts;
+using Cadmus.Refs.Bricks;
 
 namespace Cadmus.General.Parts.Test;
 
@@ -52,26 +53,40 @@ public sealed class PinLinksLayerFragmentTest
     public void GetDataPins_Ok()
     {
         PinLinksLayerFragment fragment = GetEmptyFragment();
-        fragment.Links.Add(new PinLink
+        fragment.Links.Add(new AssertedCompositeId
         {
-            ItemId = "item-id",
-            PartId = "part-id",
-            Label = "label",
-            PartTypeId = "part-type-id",
-            RoleId = "role-id",
-            Tag = "tag",
-            Name = "name",
-            Value = "value",
+            Target = new PinTarget
+            {
+                Gid = "some-id",
+                ItemId = "item-id",
+                PartId = "part-id",
+                Label = "The label 1.",
+                PartTypeId = "part-type-id",
+                RoleId = "role-id",
+                // Tag = "tag",
+                Name = "name",
+                Value = "value",
+            }
         });
 
         List<DataPin> pins = fragment.GetDataPins(null).ToList();
 
-        Assert.Equal(3, pins.Count);
+        Assert.Equal(4, pins.Count);
 
         // fr-tot-count
         DataPin? pin = pins.Find(p => p.Name == PartBase.FR_PREFIX + "tot-count");
         Assert.NotNull(pin);
         Assert.Equal("1", pin.Value);
+
+        // gid
+        pin = pins.Find(p => p.Name == PartBase.FR_PREFIX + "gid" &&
+            p.Value == "some-id");
+        Assert.NotNull(pin);
+
+        // label
+        pin = pins.Find(p => p.Name == PartBase.FR_PREFIX + "label" &&
+            p.Value == "the label 1");
+        Assert.NotNull(pin);
 
         // item-id
         pin = pins.Find(p => p.Name == PartBase.FR_PREFIX + "item-id" &&
@@ -79,8 +94,8 @@ public sealed class PinLinksLayerFragmentTest
         Assert.NotNull(pin);
 
         // tagged-item-id
-        pin = pins.Find(p => p.Name == PartBase.FR_PREFIX + "tagged-item-id" &&
-            p.Value == "tag item-id");
-        Assert.NotNull(pin);
+        //pin = pins.Find(p => p.Name == PartBase.FR_PREFIX + "tagged-item-id" &&
+        //    p.Value == "tag item-id");
+        //Assert.NotNull(pin);
     }
 }

@@ -4,6 +4,7 @@ using Cadmus.Core.Layers;
 using Cadmus.Core;
 using Fusi.Tools.Configuration;
 using System.Linq;
+using Cadmus.Refs.Bricks;
 
 namespace Cadmus.General.Parts;
 
@@ -30,7 +31,7 @@ public sealed class PinLinksLayerFragment : ITextLayerFragment
     /// <summary>
     /// Gets or sets the entries.
     /// </summary>
-    public List<PinLink> Links { get; set; }
+    public List<AssertedCompositeId> Links { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PinLinksLayerFragment"/>
@@ -39,7 +40,7 @@ public sealed class PinLinksLayerFragment : ITextLayerFragment
     public PinLinksLayerFragment()
     {
         Location = "";
-        Links = new List<PinLink>();
+        Links = new List<AssertedCompositeId>();
     }
 
     /// <summary>
@@ -57,15 +58,18 @@ public sealed class PinLinksLayerFragment : ITextLayerFragment
 
         if (Links?.Count > 0)
         {
-            foreach (PinLink link in Links
-                .Where(l => !string.IsNullOrEmpty(l.ItemId)))
+            foreach (PinTarget? target in Links.Where(l => l.Target != null)
+                .Select(l => l.Target))
             {
-                builder.AddValue(PartBase.FR_PREFIX + "item-id", link.ItemId);
-                if (!string.IsNullOrEmpty(link.Tag))
-                {
-                    builder.AddValue(PartBase.FR_PREFIX + "tagged-item-id",
-                        $"{link.Tag} {link.ItemId}");
-                }
+                builder.AddValue(PartBase.FR_PREFIX + "gid", target?.Gid);
+                builder.AddValue(PartBase.FR_PREFIX + "label",
+                    target?.Label, filter: true, filterOptions: true);
+                builder.AddValue(PartBase.FR_PREFIX + "item-id", target?.ItemId);
+                //if (!string.IsNullOrEmpty(link.Tag))
+                //{
+                //    builder.AddValue(PartBase.FR_PREFIX + "tagged-item-id",
+                //        $"{link.Tag} {link.ItemId}");
+                //}
             }
         }
 
@@ -84,11 +88,20 @@ public sealed class PinLinksLayerFragment : ITextLayerFragment
                PartBase.FR_PREFIX + "tot-count",
                "The total count of entries."),
             new DataPinDefinition(DataPinValueType.String,
-               PartBase.FR_PREFIX + "item-id",
-               "The target item IDs."),
+               PartBase.FR_PREFIX + "gid",
+               "The target global ID.",
+               "M"),
             new DataPinDefinition(DataPinValueType.String,
-               PartBase.FR_PREFIX + "tagged-item-id",
-               "The target item IDs prefixed by tag and space."),
+               PartBase.FR_PREFIX + "label",
+               "The target label.",
+               "MF"),
+            new DataPinDefinition(DataPinValueType.String,
+               PartBase.FR_PREFIX + "item-id",
+               "The target item IDs.",
+               "M"),
+            //new DataPinDefinition(DataPinValueType.String,
+            //   PartBase.FR_PREFIX + "tagged-item-id",
+            //   "The target item IDs prefixed by tag and space."),
         });
     }
 
