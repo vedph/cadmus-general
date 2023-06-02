@@ -284,7 +284,7 @@ ID: `it.vedph.pin-links`
   - tag (`string`)
   - assertion (`Assertion`)
 
->⚠️ Note: in versions before 5, `links` was of type `AssertedId[]`.
+>⚠ Note: in versions before 5, `links` was of type `AssertedId[]`.
 
 ### TiledTextLayerPart
 
@@ -314,7 +314,7 @@ ID: `fr.it.vedph.comment`
 - categories (`string[]`)
 - keywords (`IndexKeyword[]`)
 
->⚠️ Note: in versions before 5, `links` was `externalIds` of type `AssertedId[]`.
+>⚠ Note: in versions before 5, `links` was `externalIds` of type `AssertedId[]`.
 
 ### PinLinksLayerFragment
 
@@ -323,9 +323,13 @@ ID: `fr.it.vedph.pin-links`
 - location (`string`)
 - links (`AssertedCompositeId[]`)
 
->⚠️ Note: in versions before 5, `links` was of type `AssertedId[]`.
+>⚠ Note: in versions before 5, `links` was of type `AssertedId[]`.
 
 ## History
+
+### 5.0.3
+
+- 2023-06-02: updated packages.
 
 ### 5.0.2
 
