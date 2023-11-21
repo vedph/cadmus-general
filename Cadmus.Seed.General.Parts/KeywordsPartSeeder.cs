@@ -40,10 +40,8 @@ public sealed class KeywordsPartSeeder : PartSeederBase,
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null)
-            throw new ArgumentNullException(nameof(item));
-        if (factory == null)
-            throw new ArgumentNullException(nameof(factory));
+        ArgumentNullException.ThrowIfNull(item);
+        ArgumentNullException.ThrowIfNull(factory);
 
         if (_options?.Languages == null || _options.Languages.Count == 0)
             return null;

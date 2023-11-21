@@ -39,8 +39,8 @@ public sealed class KeywordsPart : PartBase
     /// <exception cref="ArgumentNullException">language or value</exception>
     public void AddKeyword(string language, string value)
     {
-        if (language == null) throw new ArgumentNullException(nameof(language));
-        if (value == null) throw new ArgumentNullException(nameof(value));
+        ArgumentNullException.ThrowIfNull(language);
+        ArgumentNullException.ThrowIfNull(value);
 
         if (Keywords.Find(k => k.Language == language &&
                                k.Value == value) == null)

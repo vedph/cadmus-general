@@ -53,8 +53,7 @@ public sealed class NamesPartSeeder : PartSeederBase
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null)
-            throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         NamesPart part = new Faker<NamesPart>()
            .RuleFor(p => p.Names, f => GetNames(f.Random.Number(1, 3)))

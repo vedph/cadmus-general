@@ -36,7 +36,7 @@ public sealed class StandardBibEntryRenderer : IBibEntryRenderer
     /// <exception cref="ArgumentNullException">entry</exception>
     public string Render(BibEntry entry)
     {
-        if (entry == null) throw new ArgumentNullException(nameof(entry));
+        ArgumentNullException.ThrowIfNull(entry);
 
         StringBuilder sb = new();
 

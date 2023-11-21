@@ -202,8 +202,7 @@ public sealed class TokenTextPart : PartBase, IHasText
         bool wholeToken = false,
         string begMarker = "[", string endMarker = "]")
     {
-        if (location == null)
-            throw new ArgumentNullException(nameof(location));
+        ArgumentNullException.ThrowIfNull(location);
 
         if (Lines == null) return "";
 

@@ -26,8 +26,7 @@ public sealed class ChronotopesPartSeeder : PartSeederBase
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null)
-            throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         ChronotopesPart part = new Faker<ChronotopesPart>()
            .RuleFor(p => p.Chronotopes,

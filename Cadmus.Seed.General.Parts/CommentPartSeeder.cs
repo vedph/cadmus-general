@@ -70,7 +70,7 @@ public sealed class CommentPartSeeder : PartSeederBase,
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null) throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         if (_options?.Categories == null) return null;
 

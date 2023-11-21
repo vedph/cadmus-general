@@ -54,10 +54,8 @@ public sealed class TiledTextLayerPart<TFragment> : YXLayerPartBase<TFragment>
     /// </exception>
     public override string? GetTextAt(IPart baseTextPart, string location)
     {
-        if (baseTextPart == null)
-            throw new ArgumentNullException(nameof(baseTextPart));
-        if (location == null)
-            throw new ArgumentNullException(nameof(location));
+        ArgumentNullException.ThrowIfNull(baseTextPart);
+        ArgumentNullException.ThrowIfNull(location);
 
         if (baseTextPart is not TiledTextPart textPart) return null;
 

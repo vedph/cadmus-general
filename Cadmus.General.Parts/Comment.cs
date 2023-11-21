@@ -110,8 +110,7 @@ public class Comment : IHasText
     /// <exception cref="ArgumentNullException">part or prefix</exception>
     public IEnumerable<DataPin> GetDataPins(IPart? part, string prefix)
     {
-        if (prefix is null)
-            throw new ArgumentNullException(nameof(prefix));
+        ArgumentNullException.ThrowIfNull(prefix);
 
         DataPinBuilder builder = new(
             DataPinHelper.DefaultFilter);

@@ -74,8 +74,7 @@ public sealed class MetadataPartSeeder : PartSeederBase
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null)
-            throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         MetadataPart part = new Faker<MetadataPart>()
            .RuleFor(p => p.Metadata, f => GetMetadata(f.Random.Number(1, 3)))

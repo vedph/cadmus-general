@@ -46,7 +46,7 @@ public sealed class ExternalIdsPartSeeder : PartSeederBase
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null) throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         ExternalIdsPart part = new Faker<ExternalIdsPart>()
            .RuleFor(p => p.Ids, GetIds(1, 3))

@@ -39,7 +39,7 @@ public sealed class IndexKeywordsPart : PartBase
     /// <exception cref="ArgumentNullException">keyword</exception>
     public void AddKeyword(IndexKeyword keyword)
     {
-        if (keyword == null) throw new ArgumentNullException(nameof(keyword));
+        ArgumentNullException.ThrowIfNull(keyword);
 
         Keywords.RemoveAll(k => k.IndexId == keyword.IndexId
                            && k.Language == keyword.Language

@@ -39,8 +39,7 @@ public sealed class ExtBibliographyPartSeeder : PartSeederBase,
     public override IPart GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null)
-            throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         ExtBibliographyPart part = new();
         SetPartMetadata(part, roleId, item);
