@@ -25,6 +25,7 @@
     - [CommentLayerFragment](#commentlayerfragment)
     - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
+    - [6.0.3](#603)
     - [6.0.2](#602)
     - [6.0.1](#601)
     - [5.0.5](#505)
@@ -331,6 +332,10 @@ ID: `fr.it.vedph.pin-links`
 >⚠ Note: in versions before 5, `links` was of type `AssertedId[]`.
 
 ## History
+
+### 6.0.3
+
+- 2024-01-28: added reference to material bricks in `Cadmus.General.Parts` so that `PhysicalSize` can be used from there.
 
 ### 6.0.2
 
