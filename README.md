@@ -25,6 +25,7 @@
     - [CommentLayerFragment](#commentlayerfragment)
     - [PinLinksLayerFragment](#pinlinkslayerfragment)
   - [History](#history)
+    - [6.0.4](#604)
     - [6.0.3](#603)
     - [6.0.2](#602)
     - [6.0.1](#601)
@@ -332,6 +333,10 @@ ID: `fr.it.vedph.pin-links`
 >⚠ Note: in versions before 5, `links` was of type `AssertedId[]`.
 
 ## History
+
+### 6.0.4
+
+- 2024-01-31: updated packages.
 
 ### 6.0.3
 
