@@ -22,12 +22,17 @@ General-purpose parts for Cadmus projects.
   - [tiled text layer](docs/tiled-text-layer.md)
   - [token text layer](docs/token-text-layer.md)
 - fragments:
+  - [chronology](docs/fr.chronology.md)
   - [comment](docs/fr.comment.md)
   - [pin-links](docs/fr.pin-links.md)
 
 ## History
 
-- 2024-02-01: updated documentation.
+### 6.1.0
+
+- 2024-02-01:
+  - documentation.
+  - moved `ChronologyLayerFragment` here from `Cadmus.Philology.Parts`. This was required to synch with the corresponding UI libraries.
 
 ### 6.0.4
 
