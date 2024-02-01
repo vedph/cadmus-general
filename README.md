@@ -19,7 +19,9 @@ General-purpose parts for Cadmus projects.
   - [names](docs/names.md)
   - [note](docs/note.md)
   - [pin-links](docs/pin-links.md)
+  - [tiled text](docs/tiled-text.md)
   - [tiled text layer](docs/tiled-text-layer.md)
+  - [token text](docs/token-text.md)
   - [token text layer](docs/token-text-layer.md)
 - fragments:
   - [chronology](docs/fr.chronology.md)
