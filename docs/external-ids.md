@@ -7,6 +7,7 @@ External identifiers.
 - ids (`AssertedId[]`):
   - tag (`string` 📚 `external-id-tags`)
   - value\* (`string`)
+  - label (`string`)
   - scope (`string` 📚 `external-id-scopes`)
   - assertion (`Assertion`):
     - tag (`string` 📚 `assertion-tags`)
