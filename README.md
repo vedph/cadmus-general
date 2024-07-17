@@ -9,6 +9,7 @@ General-purpose parts for Cadmus projects.
   - [categories](docs/categories.md)
   - [chronotopes](docs/chronotopes.md)
   - [comment](docs/comment.md)
+  - [decorated counts](docs/decorated-counts.md)]
   - [documental references](docs/doc-references.md)
   - [external bibliography](docs/ext-bibliography.md)
   - [external IDs](docs/external-ids.md)
@@ -18,6 +19,8 @@ General-purpose parts for Cadmus projects.
   - [metadata](docs/metadata.md)
   - [names](docs/names.md)
   - [note](docs/note.md)
+  - [physical measurements](docs/physical-measurements.md)
+  - [physical states](docs/physical-states.md)
   - [pin-links](docs/pin-links.md)
   - [tiled text](docs/tiled-text.md)
   - [tiled text layer](docs/tiled-text-layer.md)
@@ -29,6 +32,11 @@ General-purpose parts for Cadmus projects.
   - [pin-links](docs/fr.pin-links.md)
 
 ## History
+
+### 6.1.1
+
+- 2024-07-17:
+  - added `DecoratedCountsPart`, `PhysicalMeasurementsPart`, `PhysicalStatesPart`.
 
 ### 6.1.0
 
