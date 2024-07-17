@@ -9,7 +9,7 @@ General-purpose parts for Cadmus projects.
   - [categories](docs/categories.md)
   - [chronotopes](docs/chronotopes.md)
   - [comment](docs/comment.md)
-  - [decorated counts](docs/decorated-counts.md)]
+  - [decorated counts](docs/decorated-counts.md)
   - [documental references](docs/doc-references.md)
   - [external bibliography](docs/ext-bibliography.md)
   - [external IDs](docs/external-ids.md)
