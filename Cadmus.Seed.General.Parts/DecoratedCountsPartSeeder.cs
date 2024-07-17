@@ -10,10 +10,10 @@ namespace Cadmus.Seed.General.Parts;
 
 /// <summary>
 /// Seeder for <see cref="DecoratedCountsPart"/>.
-/// Tag: <c>seed.it.vedph.general.decorated-counts</c>.
+/// Tag: <c>seed.it.vedph.decorated-counts</c>.
 /// </summary>
 /// <seealso cref="PartSeederBase" />
-[Tag("seed.it.vedph.general.decorated-counts")]
+[Tag("seed.it.vedph.decorated-counts")]
 public sealed class DecoratedCountsPartSeeder : PartSeederBase
 {
     private static List<DecoratedCount> GetCounts(int count, Faker f)

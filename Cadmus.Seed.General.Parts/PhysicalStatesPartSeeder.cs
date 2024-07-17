@@ -10,10 +10,10 @@ namespace Cadmus.Seed.General.Parts;
 
 /// <summary>
 /// Seeder for <see cref="PhysicalStatesPart"/>.
-/// Tag: <c>seed.it.vedph.general.physical-states</c>.
+/// Tag: <c>seed.it.vedph.physical-states</c>.
 /// </summary>
 /// <seealso cref="PartSeederBase" />
-[Tag("seed.it.vedph.general.physical-states")]
+[Tag("seed.it.vedph.physical-states")]
 public sealed class PhysicalStatesPartSeeder : PartSeederBase
 {
     private static List<PhysicalState> GetPhysicalStates(int count, Faker f)

@@ -33,7 +33,7 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
-### 6.1.1
+### 6.1.2
 
 - 2024-07-17:
   - added `DecoratedCountsPart`, `PhysicalMeasurementsPart`, `PhysicalStatesPart`.

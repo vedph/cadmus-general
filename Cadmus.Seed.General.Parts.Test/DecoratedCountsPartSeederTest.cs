@@ -22,7 +22,7 @@ public sealed class DecoratedCountsPartSeederTest
         Type t = typeof(DecoratedCountsPartSeeder);
         TagAttribute? attr = t.GetTypeInfo().GetCustomAttribute<TagAttribute>();
         Assert.NotNull(attr);
-        Assert.Equal("seed.it.vedph.general.decorated-counts", attr!.Tag);
+        Assert.Equal("seed.it.vedph.decorated-counts", attr!.Tag);
     }
 
     [Fact]

@@ -9,9 +9,9 @@ namespace Cadmus.General.Parts;
 
 /// <summary>
 /// Decorated counts part. This contains a set of counts.
-/// <para>Tag: <c>it.vedph.general.decorated-counts</c>.</para>
+/// <para>Tag: <c>it.vedph.decorated-counts</c>.</para>
 /// </summary>
-[Tag("it.vedph.general.decorated-counts")]
+[Tag("it.vedph.decorated-counts")]
 public sealed class DecoratedCountsPart : PartBase
 {
     /// <summary>

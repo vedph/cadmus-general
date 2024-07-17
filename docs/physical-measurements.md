@@ -2,7 +2,7 @@
 
 A list of physical measurements.
 
-🔑 `it.vedph.general.physical-measurements`
+🔑 `it.vedph.physical-measurements`
 
 - measurements (`PhysicalMeasurement[]`):
   - name\* (`string` 📚 `physical-size-set-names`)

@@ -9,9 +9,9 @@ namespace Cadmus.General.Parts;
 
 /// <summary>
 /// Physical measurements part.
-/// <para>Tag: <c>it.vedph.general.physical-measurements</c>.</para>
+/// <para>Tag: <c>it.vedph.physical-measurements</c>.</para>
 /// </summary>
-[Tag("it.vedph.general.physical-measurements")]
+[Tag("it.vedph.physical-measurements")]
 public sealed class PhysicalMeasurementsPart : PartBase
 {
     /// <summary>

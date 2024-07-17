@@ -1,6 +1,6 @@
 # Physical States
 
-🔑 `it.vedph.general.physical-states`
+🔑 `it.vedph.physical-states`
 
 A list of physical preservation states for some object.
 

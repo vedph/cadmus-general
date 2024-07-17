@@ -8,9 +8,9 @@ namespace Cadmus.General.Parts;
 
 /// <summary>
 /// A set of physical preservation states.
-/// <para>Tag: <c>it.vedph.general.physical-states</c>.</para>
+/// <para>Tag: <c>it.vedph.physical-states</c>.</para>
 /// </summary>
-[Tag("it.vedph.general.physical-states")]
+[Tag("it.vedph.physical-states")]
 public sealed class PhysicalStatesPart : PartBase
 {
     /// <summary>

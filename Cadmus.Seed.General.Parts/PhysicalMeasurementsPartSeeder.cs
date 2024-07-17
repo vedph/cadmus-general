@@ -10,10 +10,10 @@ namespace Cadmus.Seed.General.Parts;
 
 /// <summary>
 /// Seeder for <see cref="DecoratedCountsPart"/>.
-/// Tag: <c>seed.it.vedph.general.physical-measurements</c>.
+/// Tag: <c>seed.it.vedph.physical-measurements</c>.
 /// </summary>
 /// <seealso cref="PartSeederBase" />
-[Tag("seed.it.vedph.general.physical-measurements")]
+[Tag("seed.it.vedph.physical-measurements")]
 public sealed class PhysicalMeasurementsPartSeeder : PartSeederBase
 {
     private static List<PhysicalMeasurement> GetMeasurements(int count, Faker f)

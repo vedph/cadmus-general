@@ -22,7 +22,7 @@ public sealed class PhysicalStatesPartSeederTest
         Type t = typeof(PhysicalStatesPartSeeder);
         TagAttribute? attr = t.GetTypeInfo().GetCustomAttribute<TagAttribute>();
         Assert.NotNull(attr);
-        Assert.Equal("seed.it.vedph.general.physical-states", attr!.Tag);
+        Assert.Equal("seed.it.vedph.physical-states", attr!.Tag);
     }
 
     [Fact]

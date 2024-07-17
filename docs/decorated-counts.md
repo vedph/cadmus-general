@@ -2,7 +2,7 @@
 
 A list of counts, each with the ID of the entity being counted.
 
-🔑 `it.vedph.general.decorated-counts`
+🔑 `it.vedph.decorated-counts`
 
 - counts (`DecoratedCount[]`):
   - id\* (`string` 📚 `decorated-count-ids`)
