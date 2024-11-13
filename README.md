@@ -34,6 +34,10 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
+### 7.0.0
+
+- 2024-11-13: ⚠️ upgraded to .NET 9.
+
 ### 6.1.4
 
 - 2024-10-30: added `DistrictLocationPart` (from `GrfLocalizationPart`).
