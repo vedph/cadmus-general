@@ -34,6 +34,8 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
+- 2024-11-20: updated test packages.
+
 ### 7.0.0
 
 - 2024-11-13: ⚠️ upgraded to .NET 9.
