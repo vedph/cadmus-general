@@ -4,7 +4,7 @@ Data pin based links. This part is used to collect any number of pin-based dynam
 
 🔑 `it.vedph.pin-links`
 
-- links (`AssertedCompositeId[]`):
+- links (🧱 [AssertedCompositeId[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/asserted-composite-id.md)):
   - target (`PinTarget`):
     - gid\* (`string`)
     - label\* (`string`)
@@ -16,9 +16,9 @@ Data pin based links. This part is used to collect any number of pin-based dynam
     - value (`string`)
   - scope (`string` 📚 `comment-id-scopes`)
   - tag (`string` 📚 `comment-id-tags`)
-  - assertion (`Assertion`):
+  - assertion (🧱 [Assertion](https://github.com/vedph/cadmus-bricks/blob/master/docs/assertion.md)):
     - tag (`string` 📚 `assertion-tags`)
     - rank (`short`)
-    - references (`DocReference[]`)
+    - references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md))
 
 >⚠ Note: in versions before 5, `links` was of type `AssertedId[]`.
