@@ -1,14 +1,14 @@
 # District Location
 
-A district based hierarchical location.
+A district-based hierarchical location.
 
 🔑 `it.vedph.district-location`
 
 - DistrictLocationPart (🔑 `it.vedph.district-location`):
-  - place\* (🧱 `ProperName`):
+  - place\* (🧱 [ProperName](https://github.com/vedph/cadmus-bricks/blob/master/docs/proper-name.md)):
     - language (`string`, 📚 `district-name-languages`)
     - tag (`string`)
-    - pieces (`ProperNamePiece[]`, 📚 `district-name-piece-types`, providing 3 levels: area, sestriere, location):
+    - pieces (🧱 [ProperNamePiece[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/proper-name-piece.md), 📚 `district-name-piece-types`, providing 3 levels: area, sestriere, location):
       - type\* (`string`)
       - value\* (`string`)
   - note (`string` 5000)

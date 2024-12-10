@@ -6,12 +6,12 @@ A general purpose free-text comment with some attached metadata.
 
 - tag (`string` 📚 `comment-tags`)
 - text* (`string`, MD)
-- references (`DocReference[]`):
+- references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md)):
   - type (`string` 📚 `doc-reference-types`)
   - tag (`string` 📚 `doc-reference-tags`)
   - citation (`string`)
   - note (`string`)
-- links (`AssertedCompositeId[]`):
+- links (🧱 [AssertedCompositeId[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/asserted-composite-id.md)):
   - target (`PinTarget`):
     - gid\* (`string`)
     - label\* (`string`)
@@ -23,12 +23,12 @@ A general purpose free-text comment with some attached metadata.
     - value (`string`)
   - scope (`string` 📚 `comment-id-scopes`)
   - tag (`string` 📚 `comment-id-tags`)
-  - assertion (`Assertion`):
+  - assertion (🧱 [Assertion](https://github.com/vedph/cadmus-bricks/blob/master/docs/assertion.md)):
     - tag (`string` 📚 `assertion-tags`)
     - rank (`short`)
-    - references (`DocReference[]`)
+    - references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md))
 - categories (`string[]` 📚 `comment-categories`)
-- keywords (`IndexKeyword[]`):
+- keywords ([IndexKeyword[]](index-keywords.md)):
   - language* (`string` 📚 `languages`)
   - value* (`string`)
   - indexId (`string` 📚 `keyword-indexes`)
