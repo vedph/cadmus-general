@@ -22,7 +22,7 @@ public sealed class HistoricalDatePart : PartBase
 
     /// <summary>
     /// Gets or sets the short documental references connected to this
-    /// datation.
+    /// date.
     /// </summary>
     public List<DocReference> References { get; set; }
 
@@ -32,7 +32,7 @@ public sealed class HistoricalDatePart : PartBase
     /// </summary>
     public HistoricalDatePart()
     {
-        References = new List<DocReference>();
+        References = [];
     }
 
     /// <summary>
@@ -46,8 +46,7 @@ public sealed class HistoricalDatePart : PartBase
     /// </returns>
     public override IEnumerable<DataPin> GetDataPins(IItem? item = null)
     {
-        DataPinBuilder builder = new(
-            DataPinHelper.DefaultFilter);
+        DataPinBuilder builder = new(DataPinHelper.DefaultFilter);
 
         builder.AddValue("date-value",
             (Date?.GetSortValue() ?? 0).ToString(CultureInfo.InvariantCulture));
@@ -87,16 +86,17 @@ public sealed class HistoricalDatePart : PartBase
     /// <returns>Data pins definitions.</returns>
     public override IList<DataPinDefinition> GetDataPinDefinitions()
     {
-        return new List<DataPinDefinition>(new[]
-        {
+        return
+        [
             new DataPinDefinition(DataPinValueType.Decimal,
-                "date-value",
-                "The sortable date value (0 if undefined)."),
+                    "date-value",
+                    "The sortable date value (0 if undefined)."),
             new DataPinDefinition(DataPinValueType.String,
                 "hint",
                 "The list of date's hints, if any.",
                 "Mf")
-        });
+,
+        ];
     }
 
     /// <summary>

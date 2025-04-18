@@ -34,9 +34,15 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
+### 7.0.4
+
+- 2025-04-18:
+  - added `AssertedHistoricalDatesPart` for a set of asserted historical dates.
+  - updated packages.
+
 ### 7.0.3
 
-- 2024-02-14: updated packages.
+- 2025-02-14: updated packages.
 
 ### 7.0.2
 

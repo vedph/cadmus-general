@@ -15,7 +15,7 @@ namespace Cadmus.Seed.General.Parts;
 [Tag("seed.it.vedph.historical-date")]
 public sealed class HistoricalDatePartSeeder : PartSeederBase
 {
-    private static Datation GetRandomDatation()
+    internal static Datation GetRandomDatation()
     {
         if (Randomizer.Seed.Next(0, 5) == 0)
         {
@@ -73,7 +73,6 @@ public sealed class HistoricalDatePartSeeder : PartSeederBase
         PartSeederFactory? factory)
     {
         ArgumentNullException.ThrowIfNull(item);
-        ArgumentNullException.ThrowIfNull(factory);
 
         HistoricalDatePart part = new();
         SetPartMetadata(part, roleId, item);

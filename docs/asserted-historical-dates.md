@@ -1,12 +1,13 @@
-# Historical Date
+# Asserted Historical Dates
 
-Historical date, representing either a point or an interval with 1 or 2 points defined on the timeline.
+Asserted historical dates, each representing either a point or an interval with 1 or 2 points defined on the timeline. Every date also has optional tag, assertion, and document references.
 
 >For this model you can refer to this [conceptual overview](https://cadmus.fusi-soft.com/docs/data-architecture).
 
-🔑 `it.vedph.historical-date`
+🔑 `it.vedph.asserted-historical-dates`
 
-- date (🧱 [HistoricalDate](https://github.com/vedph/cadmus-bricks/blob/master/docs/historical-date.md)):
+- dates (`AssertedDate`):
+  - tag (`string` 📚 `asserted-historical-date-tags`)
   - a* (🧱 [Datation](https://github.com/vedph/cadmus-bricks/blob/master/docs/datation.md)):
     - value* (`int`): the numeric value of the point. Its interpretation depends on other points properties: it may represent a year or a century, or a span between two consecutive Gregorian years.
     - isCentury (`boolean`): true if value is a century number; false if it's a Gregorian year.
@@ -17,8 +18,11 @@ Historical date, representing either a point or an interval with 1 or 2 points d
     - isDubious (`boolean`): true if the point is dubious ("perhaphs").
     - hint (`string`): a short textual hint used to better explain or motivate the datation point.
   - b (🧱 [Datation](https://github.com/vedph/cadmus-bricks/blob/master/docs/datation.md))
-- references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md)):
-  - type (`string` 📚 `doc-reference-types`)
-  - tag (`string` 📚 `doc-reference-tags`)
-  - citation (`string`)
-  - note (`string`)
+  - assertion (`Assertion`):
+    - tag (`string`)
+    - rank (`short`)
+    - references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md)):
+      - type (`string` 📚 `doc-reference-types`)
+      - tag (`string` 📚 `doc-reference-tags`)
+      - citation (`string`)
+      - note (`string`)

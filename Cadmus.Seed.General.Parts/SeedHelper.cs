@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using Cadmus.Refs.Bricks;
 using Fusi.Antiquity.Chronology;
+using System;
 using System.Collections.Generic;
 
 namespace Cadmus.Seed.General.Parts;
@@ -15,7 +16,7 @@ internal static class SeedHelper
     /// <returns>References.</returns>
     public static List<DocReference> GetDocReferences(int min, int max)
     {
-        List<DocReference> refs = new();
+        List<DocReference> refs = [];
 
         for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
         {
@@ -40,7 +41,7 @@ internal static class SeedHelper
     /// <returns>IDs.</returns>
     public static List<AssertedId> GetAssertedIds(int min, int max)
     {
-        List<AssertedId> ids = new();
+        List<AssertedId> ids = [];
         Faker faker = new();
 
         for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
@@ -69,7 +70,7 @@ internal static class SeedHelper
     public static List<AssertedCompositeId> GetAssertedCompositeIds(
         int min, int max)
     {
-        List<AssertedCompositeId> ids = new();
+        List<AssertedCompositeId> ids = [];
 
         for (int n = 1; n <= Randomizer.Seed.Next(min, max + 1); n++)
         {
@@ -93,7 +94,7 @@ internal static class SeedHelper
     /// <returns>Chronotopes.</returns>
     public static List<AssertedChronotope> GetAssertedChronotopes(int count)
     {
-        List<AssertedChronotope> chronotopes = new();
+        List<AssertedChronotope> chronotopes = [];
         for (int n = 1; n <= count; n++)
         {
             bool even = n % 2 == 0;
@@ -107,5 +108,23 @@ internal static class SeedHelper
             });
         }
         return chronotopes;
+    }
+
+    /// <summary>
+    /// Gets a random assertion.
+    /// </summary>
+    /// <param name="faker">The faker to use.</param>
+    /// <returns>Assertion.</returns>
+    public static Assertion GetAssertion(Faker faker)
+    {
+        ArgumentNullException.ThrowIfNull(faker);
+
+        return new Assertion
+        {
+            Tag = faker.Random.Bool(0.25F)? faker.Random.Word() : null,
+            Rank = (short)faker.Random.Number(1, 3),
+            References = GetDocReferences(1, 3),
+            Note = faker.Random.Bool(0.25f) ? faker.Lorem.Sentence() : null
+        };
     }
 }

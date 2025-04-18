@@ -49,13 +49,7 @@ public sealed class HistoricalEventsPartSeeder : PartSeederBase
                 .RuleFor(e => e.Eid, "events/" + Guid.NewGuid().ToString("N"))
                 .RuleFor(e => e.Type, even? "death" : "birth")
                 .RuleFor(e => e.Chronotopes, SeedHelper.GetAssertedChronotopes(1))
-                .RuleFor(e => e.Assertion, f => new Assertion
-                {
-                    Tag = "tag",
-                    Rank = (short)(n % 2 == 0? 2 : 1),
-                    References = SeedHelper.GetDocReferences(1, 3),
-                    Note = f.Random.Bool(0.25f)? f.Lorem.Sentence() : null
-                })
+                .RuleFor(e => e.Assertion, SeedHelper.GetAssertion)
                 .RuleFor(e => e.Description, f => f.Lorem.Sentence())
                 .RuleFor(e => e.RelatedEntities, GetRelatedEntities(2,
                     even? "killer" : "parent", "persons/"))
