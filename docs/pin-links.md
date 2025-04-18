@@ -14,11 +14,25 @@ Data pin based links. This part is used to collect any number of pin-based dynam
     - roleId (`string`)
     - name (`string`)
     - value (`string`)
-  - scope (`string` 📚 `comment-id-scopes`)
-  - tag (`string` 📚 `comment-id-tags`)
+  - scope (`string` 📚 `pin-link-scopes`)
+  - tag (`string` 📚 `pin-link-tags`)
   - assertion (🧱 [Assertion](https://github.com/vedph/cadmus-bricks/blob/master/docs/assertion.md)):
-    - tag (`string` 📚 `assertion-tags`)
+    - tag (`string` 📚 `pin-link-assertion-tags`)
     - rank (`short`)
-    - references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md))
+    - references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md)): 📚 `pin-link-docref-types`, `pin-link-docref-tags`.
 
 >⚠ Note: in versions before 5, `links` was of type `AssertedId[]`.
+
+Additionally, `pin-link-settings` can be used for UI settings, e.g.:
+
+```json
+{
+  "id": "pin-link-settings@en",
+  "entries": [
+    {
+      "id": "switch-mode",
+      "value": "true"
+    }
+  ]
+}
+```
