@@ -6,7 +6,7 @@ Asserted historical dates, each representing either a point or an interval with 
 
 🔑 `it.vedph.asserted-historical-dates`
 
-- dates (`AssertedDate`):
+- dates (`AssertedDate[]`):
   - tag (`string` 📚 `asserted-historical-date-tags`)
   - a* (🧱 [Datation](https://github.com/vedph/cadmus-bricks/blob/master/docs/datation.md)):
     - value* (`int`): the numeric value of the point. Its interpretation depends on other points properties: it may represent a year or a century, or a span between two consecutive Gregorian years.
