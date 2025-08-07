@@ -110,6 +110,17 @@
         }
       },
       {
+        "id": "seed.it.vedph.flags",
+        "options": {
+          "flags": [
+            "alpha",
+            "beta",
+            "gamma",
+            "delta"
+          ]
+        }
+      },
+      {
         "id": "seed.it.vedph.historical-date"
       },
       {

@@ -28,11 +28,15 @@ public class PartSeederFactoryTest
         Dictionary<string, IPartSeeder> seeders = _factory.GetPartSeeders();
 
         Assert.NotNull(seeders);
-        Assert.Equal(11, seeders.Count);
+        Assert.Equal(12, seeders.Count);
 
         string key = "it.vedph.categories";
         Assert.True(seeders.ContainsKey(key));
         Assert.NotNull(seeders[key] as CategoriesPartSeeder);
+
+        key = "it.vedph.flags";
+        Assert.True(seeders.ContainsKey(key));
+        Assert.NotNull(seeders[key] as FlagsPartSeeder);
 
         key = "it.vedph.historical-events";
         Assert.True(seeders.ContainsKey(key));

@@ -5,6 +5,7 @@
 General-purpose parts for Cadmus projects.
 
 - parts:
+  - [asserted historical dates](docs/asserted-historical-dates) 
   - [bibliography](docs/bibliography.md)
   - [categories](docs/categories.md)
   - [chronotopes](docs/chronotopes.md)
@@ -14,6 +15,7 @@ General-purpose parts for Cadmus projects.
   - [documental references](docs/doc-references.md)
   - [external bibliography](docs/ext-bibliography.md)
   - [external IDs](docs/external-ids.md)
+  - [flags](docs/flags.md)]
   - [historical date](docs/historical-date.md)
   - [historical events](docs/historical-events.md)
   - [index keywords](docs/index-keywords.md)
@@ -33,6 +35,12 @@ General-purpose parts for Cadmus projects.
   - [pin-links](docs/fr.pin-links.md)
 
 ## History
+
+### 7.0.5
+
+- 2025-08-07:
+  - updated packages.
+  - added `FlagsPart`.
 
 ### 7.0.4
 

@@ -42,12 +42,12 @@ public sealed class CategoriesPartSeederTest
         seeder.Configure(new CategoriesPartSeederOptions
         {
             MaxCategoriesPerItem = 0,   // invalid
-            Categories = new[]
-            {
+            Categories =
+            [
                 "alpha",
                 "beta",
                 "gamma"
-            }
+            ]
         });
 
         Assert.Null(seeder.GetPart(_item, null, _factory));
@@ -75,12 +75,12 @@ public sealed class CategoriesPartSeederTest
         seeder.Configure(new CategoriesPartSeederOptions
         {
             MaxCategoriesPerItem = 3,
-            Categories = new[]
-            {
+            Categories =
+            [
                 "alpha",
                 "beta",
                 "gamma"
-            }
+            ]
         });
 
         IPart? part = seeder.GetPart(_item, null, _factory);
