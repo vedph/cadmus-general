@@ -41,13 +41,19 @@ public sealed class FlagsPartSeeder : PartSeederBase,
     {
         ArgumentNullException.ThrowIfNull(item);
 
-        // cannot seed without options
-        if (_options == null) return null;
+        // cannot seed without options or with empty flags
+        if (_options == null || _options.Flags == null ||
+            _options.Flags.Count == 0)
+        {
+            return null;
+        }
+
+        int count = _options.Flags.Count;
+        int amountToPick = count == 1 ? 1 : new Faker().Random.Number(1, count);
 
         FlagsPart part = new Faker<FlagsPart>()
-           .RuleFor(p => p.Flags, f => new HashSet<string>(
-               f.PickRandom(_options.Flags,
-                            f.Random.Number(1, _options.Flags.Count))))
+           .RuleFor(p => p.Flags,
+                f => [.. f.PickRandom(_options.Flags, amountToPick)])
            .Generate();
 
         // add random notes for some of the flags
