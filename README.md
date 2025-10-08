@@ -36,6 +36,10 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
+### 7.0.7
+
+- 2025-10-08: updated packages.
+
 ### 7.0.6
 
 - 2025-08-31: fix to flags part seeder.

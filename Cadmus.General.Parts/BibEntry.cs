@@ -8,8 +8,7 @@ namespace Cadmus.General.Parts;
 /// </summary>
 public class BibEntry
 {
-    private static readonly IBibEntryRenderer _renderer =
-        new StandardBibEntryRenderer();
+    private static readonly StandardBibEntryRenderer _renderer = new();
 
     /// <summary>
     /// Gets or sets an optional, human-friendly key which can be used

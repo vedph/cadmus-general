@@ -29,11 +29,11 @@ A general purpose free-text comment with some attached metadata.
     - references (🧱 [DocReference[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/doc-reference.md))
 - categories (`string[]` 📚 `comment-categories`)
 - keywords ([IndexKeyword[]](index-keywords.md)):
-  - language* (`string` 📚 `languages`)
+  - language* (`string` 📚 `comment-keyword-languages`)
   - value* (`string`)
-  - indexId (`string` 📚 `keyword-indexes`)
+  - indexId (`string` 📚 `comment-keyword-indexes`)
   - note (`string`)
-  - tag (`string` 📚 `keyword-tags`)
+  - tag (`string` 📚 `comment-keyword-tags`)
 
 Other thesauri:
 
