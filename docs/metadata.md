@@ -9,4 +9,4 @@ Generic metadata.
   - name (`string` 📚 `metadata-names`)
   - value (`string`)
 
->Note that by convention the metadatum name `id` is reserved to represent one or more human-friendly identifiers assigned to the item including this part.
+>Note that by convention the metadatum name `eid` is reserved to represent one or more human-friendly identifiers assigned to the item including this part.
