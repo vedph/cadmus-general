@@ -36,6 +36,10 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
+### 8.0.0
+
+- 2025-11-23: ⚠️ upgraded to NET 10.
+
 ### 7.0.7
 
 - 2025-10-08: updated packages.
