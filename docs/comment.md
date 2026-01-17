@@ -22,6 +22,8 @@ A general purpose free-text comment with some attached metadata.
     - name (`string`)
     - value (`string`)
   - scope (`string` 📚 `comment-id-scopes`)
+  - features (`string[]` 📚 `asserted-id-features`, hierarchical)
+  - note (`string`)
   - tag (`string` 📚 `comment-id-tags`)
   - assertion (🧱 [Assertion](https://github.com/vedph/cadmus-bricks/blob/master/docs/assertion.md)):
     - tag (`string` 📚 `assertion-tags`)
@@ -34,9 +36,5 @@ A general purpose free-text comment with some attached metadata.
   - indexId (`string` 📚 `comment-keyword-indexes`)
   - note (`string`)
   - tag (`string` 📚 `comment-keyword-tags`)
-
-Other thesauri:
-
-- 📚 `pin-link-settings`
 
 >⚠️ Note: in versions before 5, `links` was `externalIds` of type `AssertedId[]`.

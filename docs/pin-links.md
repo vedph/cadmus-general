@@ -16,6 +16,8 @@ Data pin based links. This part is used to collect any number of pin-based dynam
     - value (`string`)
   - scope (`string` 📚 `pin-link-scopes`)
   - tag (`string` 📚 `pin-link-tags`)
+  - features (`string[]` 📚 `asserted-id-features`, hierarchical)
+  - note (`string`)
   - assertion (🧱 [Assertion](https://github.com/vedph/cadmus-bricks/blob/master/docs/assertion.md)):
     - tag (`string` 📚 `pin-link-assertion-tags`)
     - rank (`short`)
