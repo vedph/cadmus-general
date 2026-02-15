@@ -104,7 +104,8 @@ internal static class SeedHelper
                 {
                     Value = even ? "Even" : "Odd"
                 },
-                Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD")!)
+                Date = new AssertedHistoricalDate(
+                    HistoricalDate.Parse($"{1300 + n} AD")!)
             });
         }
         return chronotopes;

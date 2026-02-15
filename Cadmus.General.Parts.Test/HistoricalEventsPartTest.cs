@@ -90,13 +90,13 @@ public sealed class HistoricalEventsPartTest
                         {
                             Value = even ? "Even" : "Odd"
                         },
-                        Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD")!)
+                        Date = new AssertedHistoricalDate(
+                            HistoricalDate.Parse($"{1300 + n} AD")!)
                     }
                 },
                 RelatedEntities = even
-                    ? new List<RelatedEntity>
-                    {
-                        new RelatedEntity
+                    ? [
+                        new()
                         {
                             Relation = "evenness",
                             Id = new AssertedCompositeId
@@ -108,7 +108,8 @@ public sealed class HistoricalEventsPartTest
                                 },
                             }
                         }
-                    } : new List<RelatedEntity>()
+                    ]
+                    : []
             });
         }
 

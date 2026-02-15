@@ -16,7 +16,7 @@ public sealed class AssertedHistoricalDatesPart : PartBase
     /// <summary>
     /// Gets or sets the dates.
     /// </summary>
-    public List<AssertedDate> Dates { get; set; } = [];
+    public List<AssertedHistoricalDate> Dates { get; set; } = [];
 
     /// <summary>
     /// Get all the key=value pairs (pins) exposed by the implementor.
@@ -33,7 +33,7 @@ public sealed class AssertedHistoricalDatesPart : PartBase
 
         if (Dates?.Count > 0)
         {
-            foreach (AssertedDate date in Dates)
+            foreach (AssertedHistoricalDate date in Dates)
             {
                 builder.AddValue("date-value", date.GetSortValue());
                 if (!string.IsNullOrEmpty(date.Tag))

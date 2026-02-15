@@ -84,7 +84,8 @@ public sealed class ChronotopesPartTest
                 {
                     Value = n % 2 == 0 ? "Even" : "Odd"
                 },
-                Date = new AssertedDate(HistoricalDate.Parse($"{1300 + n} AD")!)
+                Date = new AssertedHistoricalDate(
+                    HistoricalDate.Parse($"{1300 + n} AD")!)
             });
         }
 

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Pack.bat" />
+    <File Path="Push.bat" />
+    <File Path="PushLocal.bat" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Cadmus.General.Parts.Test/Cadmus.General.Parts.Test.csproj" />
+  <Project Path="Cadmus.General.Parts/Cadmus.General.Parts.csproj" />
+  <Project Path="Cadmus.Seed.General.Parts.Test/Cadmus.Seed.General.Parts.Test.csproj" />
+  <Project Path="Cadmus.Seed.General.Parts/Cadmus.Seed.General.Parts.csproj" />
+</Solution>

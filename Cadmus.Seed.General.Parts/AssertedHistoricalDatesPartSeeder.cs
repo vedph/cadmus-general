@@ -11,9 +11,9 @@ namespace Cadmus.Seed.General.Parts;
 [Tag("seed.it.vedph.asserted-historical-dates")]
 public sealed class AssertedHistoricalDatesPartSeeder : PartSeederBase
 {
-    private static AssertedDate GetRandomDate()
+    private static AssertedHistoricalDate GetRandomDate()
     {
-        AssertedDate date = new();
+        AssertedHistoricalDate date = new();
 
         if (Randomizer.Seed.Next(1, 10) == 0)
         {
