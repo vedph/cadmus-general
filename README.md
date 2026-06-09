@@ -36,6 +36,10 @@ General-purpose parts for Cadmus projects.
 
 ## History
 
+### 8.0.3
+
+- 2026-06-09: updated packages.
+
 ### 8.0.2
 
 - 2026-02-15: updated packages.
