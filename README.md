@@ -1,5 +1,7 @@
 # Cadmus General Parts
 
+⚠️⚠️⚠️ **THIS IS OBSOLETE CODE. SEE <https://github.com/vedph/cadmus-core>** ⚠️⚠️⚠️
+
 👀 [Cadmus Page](https://myrmex.github.io/overview/cadmus/)
 
 General-purpose parts for Cadmus projects.
